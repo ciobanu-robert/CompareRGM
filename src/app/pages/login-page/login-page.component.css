@@ -1,0 +1,76 @@
+.container {
+    background-image: linear-gradient(45deg, #582796, #8670FF);
+    width: 100vw;
+    height: 100vh;
+    margin: -0.5em -0.5em;
+}
+
+.forum {
+    background-color: #F8F7FF;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 50px 20px;
+    color: #1B1C23;
+    text-align: center;
+    font-size: 25px;
+    width: 350px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    margin: 1em;
+}
+
+.input {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 40px 4px;
+    border: none;
+    border-radius: 50px;
+    width: 300px;
+    height: 10px;
+    margin: 2em 0;
+    padding: 1em;
+    text-indent: 2.5em;
+}
+
+.input-container {
+    position: relative;
+}
+  
+.fa-solid {
+    background: -webkit-linear-gradient(45deg, #582796, #8670FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    top: 1.25em;
+    left: 1em;
+}
+
+.button {
+    background-color: #D9D9D9;
+    font-size: 15px;
+    color: #1E1E1E;
+    margin: 1em;
+    width: 135px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
+}
+
+.login:hover, .register {
+    background-image: linear-gradient(45deg, #8670FF, #582796);
+    color: #D9D9D9;
+}
+
+.register:hover {
+    color: #1E1E1E;
+    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
+}
+
+.button:active {
+    background-image: linear-gradient(225deg, #2F2B44, #2F2B44);
+    color: #D9D9D9;
+}

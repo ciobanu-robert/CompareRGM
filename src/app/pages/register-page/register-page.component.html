@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="forum">
+        <h1 class="title">Register</h1>
+
+        <form>
+            <div class="input-container">
+                <i class="fa-solid fa-envelope"></i>
+                <input 
+                    type="text" 
+                    class="input email" 
+                    name="email"
+                    placeholder="Email"
+                >
+            </div>
+
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <input 
+                    type="text" 
+                    class="input email" 
+                    name="company"
+                    placeholder="Company"
+                >
+            </div>
+
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input 
+                    type="password" 
+                    class="input password" 
+                    name="password"
+                    placeholder="Password"
+                >
+            </div>
+
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input 
+                    type="password" 
+                    class="input confirm-password" 
+                    name="confirm-password"
+                    placeholder="Confirm password"
+                >
+            </div>
+            
+            <div class="therms">
+                <label>
+                    <input type="checkbox">
+                    <span class="input-check"></span>
+                    I agree with the 
+                    <a
+                        class="therms-link" 
+                        href=""
+                    >
+                        Therms and Conditions
+                    </a>
+                </label>
+            </div>
+            <input 
+                type="submit" 
+                class="button register" 
+                name="register"
+                value="Register"
+            > 
+            <button 
+                class=" button login" 
+                routerLink="/login"
+                routerLinkActive="active"
+            >
+                Login
+            </button>
+        </form>
+    </div>
+</div>

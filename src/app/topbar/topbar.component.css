@@ -1,0 +1,56 @@
+.container {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    background-color: #1B1C23;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-logo {
+    flex: 1;
+    flex-basis: 12em;
+}
+
+.title {
+    color: #D9D9D9;
+    font-size: 24px;
+    margin: auto;
+}
+
+.logo {
+    color: #8670FF;
+}
+
+.rgm {
+    font-style: normal;
+    color:#8670FF
+}
+
+.search-bar {
+    flex: 3;
+}
+
+.search {
+    width: 450px;
+    height: 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: #48474F;
+    color: #6C6A72;
+    text-indent: 1.2em;
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.fa-magnifying-glass {
+    color: #6C6A72;
+    font-size: 20px;
+    position: absolute;
+    margin: 0.15em 0 0 -22.2em;
+}
+
+.account {
+    flex: 0.2;
+}
