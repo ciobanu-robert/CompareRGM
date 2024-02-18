@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { TopbarComponent } from '../../topbar/topbar.component';
+import { TopbarComponent } from '../../menu-bar/topbar/topbar.component';
 
 @Component({
   selector: 'app-home-page',

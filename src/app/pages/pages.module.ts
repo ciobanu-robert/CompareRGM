@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TopbarComponent } from '../menu-bar/topbar/topbar.component';
 
 
 
@@ -8,7 +9,8 @@ import { HomePageComponent } from './home-page/home-page.component';
   declarations: [],
   imports: [
     CommonModule,
-    HomePageComponent
+    HomePageComponent,
+    TopbarComponent,
   ],
   exports: [
     HomePageComponent,

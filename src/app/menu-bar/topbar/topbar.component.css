@@ -39,9 +39,8 @@
     border-radius: 15px;
     background-color: #48474F;
     color: #6C6A72;
-    text-indent: 1.2em;
-    font-size: 25px;
-    font-weight: lighter;
+    text-indent: 1.5em;
+    font-size: 20px;
 }
 
 .fa-magnifying-glass {
@@ -52,5 +51,18 @@
 }
 
 .account {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     flex: 0.2;
+    color: #8670FF;
+    font-size: 25px;
+}
+
+.account a{
+    margin: 0 0.5em;
+}
+
+.account a:visited {
+    color: #8670FF;
 }
