@@ -1,0 +1,74 @@
+<div class="page">
+    <app-topbar></app-topbar>
+    <app-side-bar></app-side-bar>
+
+    <div class="container">
+        <div class="shadow">
+            <div class="title">
+                <h1>Settings</h1>
+            </div>
+        
+            <div class="content">
+                    <form class="form">
+                        <div class="about">
+                            <h3 class="title2">About</h3>
+                            <img class="profile-picture" src="assets/img/circle-user-solid.svg">
+
+                            <div class="input-container">                                
+                                <i class="fa-solid fa-image"></i>
+                                <input 
+                                    class="input upload" 
+                                    id="upload" 
+                                    name="upload" 
+                                    type="file" 
+                                    title="Upload image"
+                                    accept="image/png, image/jpeg"
+                                >
+                            </div>
+
+                            <div class="input-container">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input class="input email" type="text" placeholder="Email">
+                            </div>
+                            
+                            <div class="input-container">
+                                <i class="fa-solid fa-user"></i>
+                                <input class="input user" type="text" placeholder="Company name">
+                            </div>
+
+                            <div class="input-container">
+                                <i class="fa-solid fa-address-card"></i>
+                                <textarea 
+                                    class="input description"  
+                                    rows="6"
+                                    cols="271"
+                                    (keyup)="limitTextArea($event)"
+                                    placeholder="Description" 
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="password">
+                            <h3 class="title2">Password</h3>
+
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input class="input new-password" type="password" placeholder="New password">
+                            </div>
+
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input class="input confirm-new-password" type="password" placeholder="Confirm new password">
+                            </div>
+                        </div>
+                        
+                        <div class="buttons">
+                            <button class="button products">Edit products</button>
+                            <button class="button save">Save</button>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</div>

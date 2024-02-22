@@ -1,18 +1,29 @@
 <div class="container">
     <nav class="navigation">
-        <div class="selected" >
+        <div 
+            class="div-link"
+            routerLink="/dashboard"
+            routerLinkActive="active"    
+        >
             <a class="dashboard">
                 <hr class="invisible">
                 <i class="fa-solid fa-house"></i>
                 <p class="text">Dashboard</p>
                 <hr>
             </a>
+        </div >
+
+        <div
+            class="div-link"
+            routerLink="/settings"
+            routerLinkActive="/settings"
+        >
+            <a class="link settings">
+                <i class="fa-solid fa-gear"></i>
+                <p class="text">Settings</p>
+                <hr>
+            </a>
         </div>
-        <a class="link settings">
-            <i class="fa-solid fa-gear"></i>
-            <p class="text">Settings</p>
-            <hr>
-        </a>
         <a class="link competitors">
             <i class="fa-solid fa-user-gear"></i>
             <p class="text">Competitors</p>

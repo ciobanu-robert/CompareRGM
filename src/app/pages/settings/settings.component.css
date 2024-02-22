@@ -1,0 +1,139 @@
+.page {
+    margin: -0.5em;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 20px 5px;
+    background-color: #E8E7EB;
+    border-radius: 20px;
+    margin: 2em 2em 2em 8em;
+    width: 1190px;
+}
+
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.25) 4px 4px 4px;
+    border-radius: 20px;
+    padding: 0.5em;
+}
+
+.title {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 0.01em 1.5em;
+    margin: 0;
+}
+
+.content {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 0.5em;
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about {
+    margin: 0 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title2 {
+    text-align: center;
+}
+
+.profile-picture {
+    width: 65px;
+    align-self: center;
+}
+
+.password {
+    margin: 0 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 40px 4px;
+    border: none;
+    border-radius: 50px;
+    width: 300px;
+    height: 10px;
+    margin: 1.33em 0;
+    padding: 1em;
+    text-indent: 2.5em;
+}
+
+.fa-solid {
+    background: -webkit-linear-gradient(45deg, #582796, #8670FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+    position: absolute;
+    top: 0.95em;
+    left: 0.5em;
+}
+
+.upload {
+    color: #757575;
+    font-size: 13px;
+    padding: 0.8em 1em 1.2em 1em;
+}
+
+.upload::file-selector-button {
+    display: none;
+}
+
+.description {
+    border-radius: 20px;
+    overflow: hidden;
+    resize: none;
+    padding: 0.8em 1em 1.2em 1em;
+    height: 100px;
+}
+
+.buttons {
+    position: absolute;
+    top: 28.5em;
+    left: 52em;
+}
+
+.button {
+    background-color: #D9D9D9;
+    font-size: 15px;
+    color: #1E1E1E;
+    margin: 0 1em;
+    width: 135px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
+}
+
+.save:hover, .products {
+    background-image: linear-gradient(45deg, #8670FF, #582796);
+    color: #D9D9D9;
+}
+
+.products:hover {
+    color: #1E1E1E;
+    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
+}
+
+.button:active {
+    background-image: linear-gradient(225deg, #2F2B44, #2F2B44);
+    color: #D9D9D9;
+}

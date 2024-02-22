@@ -8,6 +8,18 @@
     height: 100vh;
 }
 
+.div-link {
+    cursor: pointer;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+a:visited {
+    color: #8670FF;
+}
+
 .invisible {
     margin: 0;
     padding: 0.5em 0;
