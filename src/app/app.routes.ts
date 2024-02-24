@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsSettingsPageComponent } from './pages/products-settings-page/products-settings-page.component';
+import { ThermsPageComponent } from './pages/therms-page/therms-page.component';
 
 export const routes: Routes = [
     {
@@ -43,4 +44,10 @@ export const routes: Routes = [
         component: ProductsSettingsPageComponent,
         title: 'Products',
     },
+    {
+        path: 'therms',
+        pathMatch: 'full',
+        component: ThermsPageComponent,
+        title: 'Therms',
+    }
 ];
