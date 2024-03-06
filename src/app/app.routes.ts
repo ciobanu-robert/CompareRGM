@@ -6,6 +6,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsSettingsPageComponent } from './pages/products-settings-page/products-settings-page.component';
 import { ThermsPageComponent } from './pages/therms-page/therms-page.component';
+import { CompetitorsPageComponent } from './pages/competitors-page/competitors-page.component';
 
 export const routes: Routes = [
     {
@@ -49,5 +50,11 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: ThermsPageComponent,
         title: 'Therms',
-    }
+    },
+    {
+        path: 'competitors',
+        pathMatch: 'full',
+        component: CompetitorsPageComponent,
+        title: 'Competitors',
+    },
 ];
