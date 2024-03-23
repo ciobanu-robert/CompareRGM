@@ -7,6 +7,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsSettingsPageComponent } from './pages/products-settings-page/products-settings-page.component';
 import { ThermsPageComponent } from './pages/therms-page/therms-page.component';
 import { CompetitorsPageComponent } from './pages/competitors-page/competitors-page.component';
+import { ComparePageComponent } from './pages/compare-page/compare-page.component';
+import { CompareProductsPageComponent } from './pages/compare-products-page/compare-products-page.component';
 
 export const routes: Routes = [
     {
@@ -56,5 +58,17 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: CompetitorsPageComponent,
         title: 'Competitors',
+    },
+    {
+        path: 'compare',
+        pathMatch: 'full',
+        component: ComparePageComponent,
+        title: 'Compare',
+    },
+    {
+        path: 'compare/products',
+        pathMatch: 'full',
+        component: CompareProductsPageComponent,
+        title: 'Compare',
     },
 ];

@@ -1,0 +1,135 @@
+.page {
+    margin: -0.5em;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 20px 5px;
+    background-color: #E8E7EB;
+    border-radius: 20px;
+    margin: 2em 2em 2em 8em;
+    width: 1190px;
+}
+
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.25) 4px 4px 4px;
+    border-radius: 20px;
+    padding: 0.5em;
+}
+
+.title {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 0.01em 1.5em;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-name {
+    display: flex;
+    flex-direction: row;
+}
+
+.a {
+    margin: 0.5em;
+}
+
+.content {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 0.5em;
+    height: 507px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.text {
+    margin-bottom: 5.5em;
+}
+
+.price {
+    text-align: center;
+}
+
+.display {
+    background-image: linear-gradient(to left, rgb(134, 112, 255), rgba(134, 112, 255, 0));
+    box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 4px;
+    width: 250px;
+    height: 30px; 
+    margin: 1em 4em;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.05em;
+    margin-top: -0.5em;
+}
+
+.value {
+    font-size: 8px;
+}
+
+.slider {
+    appearance: none;
+    width: 100%;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.25);
+}
+  
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 30px;
+    border: 0;
+    background: url('/assets/img/caret-down-solid.svg');
+    opacity: 50%;
+    background-repeat: no-repeat;
+}
+
+.button {
+    font-size: 15px;
+    width: 135px;
+    height: 35px;
+    display: block;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
+    background-image: linear-gradient(45deg, #8670FF, #582796);
+    color: #D9D9D9;
+}
+
+.button:hover {
+    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);    
+    color: #1E1E1E;
+}
+
+.button:active {
+    background-image: linear-gradient(225deg, #2F2B44, #2F2B44);
+    color: #D9D9D9;
+}
+
+.back-button {
+    position: fixed;
+    left: 11em;
+    top: 43em;
+}
+
+.line {
+    border: 0.5px solid #BFBFBF;
+    margin: 1.5em 0;
+}
