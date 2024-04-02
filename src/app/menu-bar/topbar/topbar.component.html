@@ -17,21 +17,22 @@
     </div>
 
     <div class="account">
-        <span href="">
+        <span (click)="notifVisibility()">
             <i class="fa-regular fa-bell"></i>
         </span>
-        
-        <span (click)="Visibility()">
+
+        <span (click)="accVisibility()">
             <i
-                *ngIf="!visible" 
+                *ngIf="!accVisible" 
                 class="fa-regular fa-circle-user"
             ></i>
             <i
-                *ngIf="visible" 
+                *ngIf="accVisible" 
                 class="fa-solid fa-circle-user"
             ></i>
         </span>
     </div>
 </div>
 
-<app-profile-dropdown *ngIf="visible"></app-profile-dropdown>
+<app-profile-dropdown *ngIf="accVisible"></app-profile-dropdown>
+<app-notoficaions-dropdown *ngIf="notifVisible"></app-notoficaions-dropdown>

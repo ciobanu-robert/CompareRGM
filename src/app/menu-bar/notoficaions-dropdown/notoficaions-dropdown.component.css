@@ -1,0 +1,90 @@
+.dropdown {
+    position: absolute;
+    right: 1px;
+    margin: 0.5em;
+    background-color: #1B1C23;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    border-radius: 10px;
+    width: 288px;
+    height: 139px;
+    overflow: auto;
+}
+
+.dropdown::-webkit-scrollbar {
+    display: none;
+}
+
+.competitor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-img {
+    width: 38px;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+    margin: 1em;
+}
+
+.text {
+    color: #FFFFFF ;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.comp-name {
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0.8em;
+}
+
+.check-button {
+    background-color: #17A514;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #D9D9D9;
+    margin: 0.2em;
+    width: 25px;
+    height: 25px;
+}
+
+.check-button:hover {
+    background-color: #22c91f;
+}
+
+.check-button:active {
+    background-color: #104a0f;
+}
+
+.x-button {
+    background-color: #A51418;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #D9D9D9;
+    margin: 0.2em;
+    width: 25px;
+    height: 25px;
+}
+
+.x-button:hover {
+    background-color: #d5262c;
+}
+
+.x-button:active {
+    background-color: #3f0809;
+}
+
+.line {
+    border: 0.5px solid #BFBFBF;
+    padding: 0;
+    margin: 0 1em;
+}
