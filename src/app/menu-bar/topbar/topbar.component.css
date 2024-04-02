@@ -58,6 +58,14 @@
     color: #8670FF;
     font-size: 25px;
 }
+ 
+.fa-bell:hover, .fa-circle-user:hover {
+    color: #9f91fb;
+}
+
+.fa-bell:active, .fa-circle-user:active {
+    color: rgb(81, 73, 131);
+} 
 
 .account span{
     margin: 0 0.5em;

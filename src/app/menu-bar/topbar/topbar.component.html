@@ -18,7 +18,14 @@
 
     <div class="account">
         <span (click)="notifVisibility()">
-            <i class="fa-regular fa-bell"></i>
+            <i
+                *ngIf="!notifVisible" 
+                class="fa-regular fa-bell"
+            ></i>
+            <i
+                *ngIf="notifVisible" 
+                class="fa-solid fa-bell"
+            ></i>
         </span>
 
         <span (click)="accVisibility()">
