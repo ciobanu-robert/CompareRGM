@@ -17,11 +17,21 @@
     </div>
 
     <div class="account">
-        <a href="">
+        <span href="">
             <i class="fa-regular fa-bell"></i>
-        </a>
-        <a href="">
-            <i class="fa-regular fa-circle-user"></i>
-        </a>
+        </span>
+        
+        <span (click)="Visibility()">
+            <i
+                *ngIf="!visible" 
+                class="fa-regular fa-circle-user"
+            ></i>
+            <i
+                *ngIf="visible" 
+                class="fa-solid fa-circle-user"
+            ></i>
+        </span>
     </div>
 </div>
+
+<app-profile-dropdown *ngIf="visible"></app-profile-dropdown>

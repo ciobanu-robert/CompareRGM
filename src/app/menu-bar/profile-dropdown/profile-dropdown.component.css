@@ -1,0 +1,53 @@
+.dropdown {
+    position: absolute;
+    right: 1px;
+    margin: 0.5em;
+    background-color: #1B1C23;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    border-radius: 10px;
+    width: 220px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+    width: 48px;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+}
+
+.name {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0.2em;
+}
+
+.button {
+    background-color: #D9D9D9;
+    font-size: 15px;
+    color: #1E1E1E;
+    margin: 0.2em;
+    width: 104px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
+}
+
+.settings:hover, .logout {
+    background-image: linear-gradient(45deg, #8670FF, #582796);
+    color: #D9D9D9;
+}
+
+.logout:hover {
+    color: #1E1E1E;
+    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
+}
+
+.button:active {
+    background-image: linear-gradient(225deg, #2F2B44, #2F2B44);
+    color: #D9D9D9;
+}
