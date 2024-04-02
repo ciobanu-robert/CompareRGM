@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 
 @Component({
-  selector: 'app-therms-page',
+  selector: 'app-terms-page',
   standalone: true,
   imports: [
     MenuBarModule,
   ],
-  templateUrl: './therms-page.component.html',
-  styleUrl: './therms-page.component.css'
+  templateUrl: './terms-page.component.html',
+  styleUrl: './terms-page.component.css'
 })
-export class ThermsPageComponent {
+export class TermsPageComponent {
 
 }

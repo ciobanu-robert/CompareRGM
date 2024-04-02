@@ -5,7 +5,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsSettingsPageComponent } from './pages/products-settings-page/products-settings-page.component';
-import { ThermsPageComponent } from './pages/therms-page/therms-page.component';
+import { TermsPageComponent } from './pages/terms-page/terms-page.component';
 import { CompetitorsPageComponent } from './pages/competitors-page/competitors-page.component';
 import { ComparePageComponent } from './pages/compare-page/compare-page.component';
 import { CompareProductsPageComponent } from './pages/compare-products-page/compare-products-page.component';
@@ -49,10 +49,10 @@ export const routes: Routes = [
         title: 'Products',
     },
     {
-        path: 'therms',
+        path: 'terms',
         pathMatch: 'full',
-        component: ThermsPageComponent,
-        title: 'Therms',
+        component: TermsPageComponent,
+        title: 'Terms',
     },
     {
         path: 'competitors',
