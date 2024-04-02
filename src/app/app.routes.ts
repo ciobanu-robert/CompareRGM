@@ -9,6 +9,7 @@ import { ThermsPageComponent } from './pages/therms-page/therms-page.component';
 import { CompetitorsPageComponent } from './pages/competitors-page/competitors-page.component';
 import { ComparePageComponent } from './pages/compare-page/compare-page.component';
 import { CompareProductsPageComponent } from './pages/compare-products-page/compare-products-page.component';
+import { StatisticsPageComponent } from './pages/statistics-page/statistics-page.component';
 
 export const routes: Routes = [
     {
@@ -70,5 +71,11 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: CompareProductsPageComponent,
         title: 'Compare',
+    },
+    {
+        path: 'statistics',
+        pathMatch: 'full',
+        component: StatisticsPageComponent,
+        title: 'Statistics',
     },
 ];
