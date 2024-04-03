@@ -62,12 +62,27 @@
 
 .title3 {
     margin-top: 0.7em;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.2em;
 }
 
 .chart {
     background-color: #FFFFFF;
+    border-radius: 10px;
     height: 130px;
     width: 260px;
     margin: 1.4em;
+}
+
+.s-chart {
+    margin: 0 1.4em;
+    height: 110px;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.procent {
+    position: absolute;
+    top: 535px;
 }
