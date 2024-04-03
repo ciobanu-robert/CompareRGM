@@ -14,5 +14,5 @@ import { TopbarComponent } from '../../menu-bar/topbar/topbar.component';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-
+  disabled = true;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProfileDropdownComponent } from '../profile-dropdown/profile-dropdown.component';
 import { CommonModule } from '@angular/common';
 import { NotoficaionsDropdownComponent } from '../notoficaions-dropdown/notoficaions-dropdown.component';
@@ -15,6 +15,8 @@ import { NotoficaionsDropdownComponent } from '../notoficaions-dropdown/notofica
   styleUrl: './topbar.component.css'
 })
 export class TopbarComponent {
+  @Input() disabled = false;
+
   accVisible = false;
   notifVisible = false;
 

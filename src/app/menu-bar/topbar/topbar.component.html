@@ -7,7 +7,7 @@
         </h1>
     </div>
 
-    <div class="search-bar">
+    <div class="search-bar" *ngIf="!disabled">
         <input 
         class="search" 
         type="search"
@@ -16,7 +16,7 @@
             <i class="fa-solid fa-magnifying-glass"></i>
     </div>
 
-    <div class="account">
+    <div class="account" *ngIf="!disabled">
         <span (click)="notifVisibility()">
             <i
                 *ngIf="!notifVisible" 
