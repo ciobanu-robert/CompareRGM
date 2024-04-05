@@ -19,6 +19,11 @@ export const routes: Routes = [
         title: 'Home',
     },
     {
+        path: 'home',
+        redirectTo: '',
+        pathMatch: 'full',
+    },
+    {
         path: 'login',
         pathMatch: 'full',
         component: LoginPageComponent,

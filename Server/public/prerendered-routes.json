@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/",
+    "/compare",
+    "/compare/products",
+    "/competitors",
+    "/dashboard",
+    "/login",
+    "/register",
+    "/settings",
+    "/settings/products",
+    "/statistics",
+    "/terms"
+  ]
+}
