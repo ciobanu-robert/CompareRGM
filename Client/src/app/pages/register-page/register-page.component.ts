@@ -1,5 +1,8 @@
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-register-page',
@@ -7,10 +10,64 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     RouterLink,
     RouterLinkActive,
+    ReactiveFormsModule,
+    JsonPipe,
+    CommonModule,
+    SharedModule,
   ],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
+  email = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  company = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
+  ]);
+  confirmPassword = new FormControl('', [
+    Validators.required,
+  ]);
+  terms = new FormControl(false, [
+    Validators.requiredTrue,
+  ]);
 
+  passwordTipe = 'password';
+  confirmPasswordTipe = 'password';
+  showAlert = false;
+  alertMsg = 'Please wait! Your account is being created.';
+  alertColor = 'blue'
+
+  registerForm = new FormGroup({
+    email: this.email,
+    company: this.company,
+    password: this.password,
+    confirmPassword: this.confirmPassword,
+    terms: this.terms,
+  });
+
+  visiblePassword() {
+    if (this.passwordTipe === 'password')
+      this.passwordTipe = 'text';
+    else
+      this.passwordTipe = 'password';
+  }
+  visibleConfirmPassword() {
+    if (this.confirmPasswordTipe === 'password')
+      this.confirmPasswordTipe = 'text';
+    else
+      this.confirmPasswordTipe = 'password';
+  }
+
+  register() {
+    this.showAlert = true;
+    this.alertMsg = 'Please wait! Your account is being created.';
+    this.alertColor = 'blue'
+  }
 }

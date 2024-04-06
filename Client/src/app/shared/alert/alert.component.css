@@ -1,0 +1,14 @@
+.alert {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1em;
+    margin: -3.4em 1em 0 1em;
+    border-radius: 10px;
+}
+
+.blue {
+    color: #142BA5;
+    border: #142BA5 solid 1px;
+    background-color: #abb9ff;
+}

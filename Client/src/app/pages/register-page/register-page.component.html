@@ -1,51 +1,68 @@
 <div class="container">
     <div class="forum">
         <h1 class="title">Register</h1>
+        <app-alert *ngIf="showAlert" [color]="alertColor">
+            {{ alertMsg }}
+        </app-alert>
 
-        <form>
-            <div class="input-container">
-                <i class="fa-solid fa-envelope"></i>
-                <input 
-                    type="text" 
-                    class="input email" 
-                    name="email"
-                    placeholder="Email"
-                >
-            </div>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <app-input 
+                [control]="email" 
+                placeholder="Email" 
+                invalid_class="fa-envelope"
+                valid_class="fa-envelope-open"
+            ></app-input>
 
-            <div class="input-container">
-                <i class="fa-solid fa-user"></i>
-                <input 
-                    type="text" 
-                    class="input email" 
-                    name="company"
-                    placeholder="Company"
-                >
-            </div>
-
-            <div class="input-container">
-                <i class="fa-solid fa-lock"></i>
-                <input 
-                    type="password" 
-                    class="input password" 
-                    name="password"
-                    placeholder="Password"
-                >
-            </div>
-
-            <div class="input-container">
-                <i class="fa-solid fa-lock"></i>
-                <input 
-                    type="password" 
-                    class="input confirm-password" 
-                    name="confirm-password"
-                    placeholder="Confirm password"
-                >
-            </div>
+            <app-input 
+                [control]="company" 
+                placeholder="Company" 
+                invalid_class="fa-user"
+                valid_class="fa-user-tie"
+            ></app-input>
             
-            <div class="therms">
+            <app-input 
+            [control]="password"
+            [type]="passwordTipe"
+            placeholder="Password" 
+            invalid_class="fa-lock"
+            valid_class="fa-unlock"
+            ></app-input>
+            <i 
+                *ngIf="passwordTipe === 'password'"
+                class="fa-solid fa-eye visible-password"
+                (click)="visiblePassword()"
+            ></i>
+            <i 
+                *ngIf="passwordTipe === 'text'"
+                class="fa-regular fa-eye visible-password"
+                (click)="visiblePassword()"
+            ></i>
+            
+            <app-input
+            [control]="confirmPassword" 
+            [type]="confirmPasswordTipe"
+            placeholder="Confirm password" 
+            invalid_class="fa-lock"
+            valid_class="fa-unlock"
+            ></app-input>
+            <i 
+                *ngIf="confirmPasswordTipe === 'password'"
+                class="fa-solid fa-eye visible-confirm-password"
+                (click)="visibleConfirmPassword()"
+            ></i>
+            <i 
+                *ngIf="confirmPasswordTipe === 'text'"
+                class="fa-regular fa-eye visible-confirm-password"
+                (click)="visibleConfirmPassword()"
+            ></i>
+            
+            
+            <div class="terms">
                 <label>
-                    <input type="checkbox">
+                    <input
+                        type="checkbox"
+                        formControlName="terms"
+                    >
                     <span class="input-check"></span>
                     I agree with the 
                     <a
@@ -56,14 +73,21 @@
                     </a>
                 </label>
             </div>
-            <input 
-                type="submit" 
+            <p
+                *ngIf="terms.touched 
+                    && terms.dirty
+                    && terms.errors"
+                class="errors"
+            >
+                You must accept to the terms and conditions.
+            </p>
+
+            <button 
                 class="button register" 
-                name="register"
-                value="Register"
-                routerLink="dashboard"
-                routerLinkActive="active"
-            > 
+                [disabled]="registerForm.invalid"
+            >
+                Register
+            </button>
             <button 
                 class=" button login" 
                 routerLink="/login"

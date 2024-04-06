@@ -1,0 +1,32 @@
+.input {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 40px 4px;
+    border: none;
+    border-radius: 50px;
+    width: 300px;
+    height: 10px;
+    margin: 2em 0;
+    padding: 1em;
+    text-indent: 2.5em;
+}
+
+.input-container {
+    position: relative;
+}
+
+.fa-solid {
+    background: -webkit-linear-gradient(45deg, #582796, #8670FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    top: 1.25em;
+    left: 1em;
+}
+
+.errors {
+  margin-top: -1.5em;
+  margin-left: 2em;
+  font-size: 12px;
+  text-align: left;
+  color: #df1b21;
+  position: absolute;
+}

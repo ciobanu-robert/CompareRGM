@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -7,6 +8,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     RouterLink,
     RouterLinkActive,
+    ReactiveFormsModule,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
