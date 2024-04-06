@@ -1,33 +1,77 @@
 <div class="container">
     <div class="forum">
         <h1 class="title">Login</h1>
-        <form>
+        <form #loginForm="ngForm" (ngSubmit)="login()">
             <div class="input-container">
-                <i class="fa-solid fa-envelope"></i>
+                <i 
+                    *ngIf="email.invalid"
+                    class="fa-solid fa-envelope"
+                ></i>
+                <i 
+                    *ngIf="email.valid"
+                    class="fa-solid fa-envelope-open"
+                ></i>
                 <input 
-                    type="text" 
+                    #email="ngModel"
+                    type="email" 
                     class="input email" 
                     name="email"
                     placeholder="Email"
+                    [(ngModel)]="credentials.email"
+                    required
+                    pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
                 >
             </div>
+            <p 
+                *ngIf="email.touched && email.dirty && email.errors"
+                class="errors"
+            >
+                Email is invalid
+            </p>
+
             <div class="input-container">
-                <i class="fa-solid fa-lock"></i>
+                <i 
+                    *ngIf="password.invalid"
+                    class="fa-solid fa-lock"
+                ></i>
+                <i 
+                    *ngIf="password.valid"
+                    class="fa-solid fa-unlock"
+                ></i>
+                <i 
+                    *ngIf="passwordTipe === 'password'"
+                    class="fa-solid fa-eye visible-password"
+                    (click)="visiblePassword()"
+                ></i>
+                <i 
+                    *ngIf="passwordTipe === 'text'"
+                    class="fa-regular fa-eye visible-password"
+                    (click)="visiblePassword()"
+                ></i>
                 <input 
-                    type="password" 
+                    #password="ngModel"
+                    [type]="passwordTipe"
                     class="input password" 
                     name="password"
                     placeholder="Password"
+                    [(ngModel)]="credentials.password"
+                    required
                 >
             </div>
-            <input 
+            <p 
+                *ngIf="password.touched && password.dirty && password.errors"
+                class="errors"
+            >
+                Password is invalid
+            </p>
+            <button 
+                [disabled]="loginForm.invalid"
                 type="submit" 
                 class="button login" 
                 name="login"
-                value="Login"
-                routerLink="/dashboard"
-                routerLinkActive="active"
-            > 
+            >
+                Login 
+            </button>
             <button 
                 class="button register" 
                 routerLink="/register"

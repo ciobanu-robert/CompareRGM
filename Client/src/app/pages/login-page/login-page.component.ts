@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -9,10 +10,28 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     RouterLink,
     RouterLinkActive,
     ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
+  passwordTipe = 'password';
 
+  credentials = {
+    email: '',
+    password: '',
+  }
+
+  visiblePassword() {
+    if (this.passwordTipe === 'password')
+      this.passwordTipe = 'text';
+    else
+      this.passwordTipe = 'password';
+  }
+
+  login() {
+    console.log(this.credentials)
+  }
 }
