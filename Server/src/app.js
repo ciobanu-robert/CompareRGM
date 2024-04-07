@@ -10,7 +10,6 @@ const staticRoot = __dirname + '/../public/browser/';
 const app = express();
 app.use(express.json());
 
-
 app.use(compression());
 app.use(cors({
     origin: 'http://localhost:4200',
@@ -29,7 +28,6 @@ app.use((req, res, next) => {
     }
 
     fs.createReadStream(staticRoot + 'index.html').pipe(res);
-
 });
 
 app.use(express.static(staticRoot));

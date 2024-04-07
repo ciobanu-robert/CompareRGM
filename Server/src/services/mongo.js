@@ -16,4 +16,4 @@ async function mongoConnect() {
     await mongoose.connect(MONGO_URL);
 }
 
-module.exports = mongoConnect
+module.exports = mongoConnect;
