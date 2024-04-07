@@ -50,6 +50,7 @@
 
 .visible-password {
   left: 12em;
+  cursor: pointer;
 }
 
 .errors {
