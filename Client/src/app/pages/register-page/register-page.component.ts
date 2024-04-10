@@ -4,6 +4,7 @@ import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angul
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { HttpErrorResponse } from '@angular/common/http';
+import { matchValidator } from '../../custom-validator/forms.validators';
 
 @Component({
   selector: 'app-register-page',
@@ -31,10 +32,13 @@ export class RegisterPageComponent {
   password = new FormControl('', [
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
+    matchValidator('confirmPassword', true)
   ]);
   confirmPassword = new FormControl('', [
     Validators.required,
+    matchValidator('password')
   ]);
+
   terms = new FormControl(false, [
     Validators.requiredTrue,
   ]);

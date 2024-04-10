@@ -38,4 +38,10 @@
         Passwords must be at least 8 characters long, have 1
         uppercase letter, 1 lowercase letter, 1 number and one special character.
     </p>
+    <p
+        *ngIf="control.hasError('matching') && !control.errors?.['required']"
+        class="errors"
+    >
+        Passwords must match.
+    </p>
 </ng-container>
