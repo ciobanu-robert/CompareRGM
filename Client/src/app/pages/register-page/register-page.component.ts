@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { response } from 'express';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-page',
@@ -75,7 +75,7 @@ export class RegisterPageComponent {
     const company = this.company.value;
     const password = this.password.value;
 
-    const response = await fetch('/api/register', {
+    const result = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -86,8 +86,18 @@ export class RegisterPageComponent {
         password,
       })
 
-    });
+    }).then((res) => res.json());
     
-    console.log(response)
+    if (result.status === 'ok') {
+      this.showAlert = true;
+      this.alertMsg = 'Your account has been created successfully!';
+      this.alertColor = 'green';
+    } else {
+      this.showAlert = true;
+      this.alertMsg = result.error;
+      this.alertColor = 'red';
+    }
+
+    console.log(HttpErrorResponse);
   }
 }

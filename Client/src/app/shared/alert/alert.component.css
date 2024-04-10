@@ -12,3 +12,15 @@
     border: #142BA5 solid 1px;
     background-color: #abb9ff;
 }
+
+.green {
+    color: #17A514;
+    border: #17A514 solid 1px;
+    background-color: #E2FFE1;
+}
+
+.red {
+    color: #A51418;
+    border: #A51418 solid 1px;
+    background-color: #FFDCE0;
+}
