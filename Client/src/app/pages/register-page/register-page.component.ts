@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { response } from 'express';
 
 @Component({
   selector: 'app-register-page',
@@ -65,9 +66,28 @@ export class RegisterPageComponent {
       this.confirmPasswordTipe = 'password';
   }
 
-  register() {
+  async register() {
     this.showAlert = true;
     this.alertMsg = 'Please wait! Your account is being created.';
-    this.alertColor = 'blue'
+    this.alertColor = 'blue';
+
+    const email = this.email.value;
+    const company = this.company.value;
+    const password = this.password.value;
+
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        company,
+        password,
+      })
+
+    });
+    
+    console.log(response)
   }
 }
