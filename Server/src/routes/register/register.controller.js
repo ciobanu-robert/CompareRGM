@@ -1,18 +1,18 @@
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/user.mongoose');
 
 async function httpAddNewUser(req,res) {
-    const {email, company, password} = req.body;
+    const {email, company, password: plainTextPassword} = req.body;
 
-    const pass = bcrypt.hash(password, 10);
+    const password = await bcrypt.hash(plainTextPassword, 10);
+    console.log(password);
     
     try {
         await User.create({
             email,
             company,
-            pass,
+            password,
         });
     } catch (error) {
         if (error.code === 11000  && error.keyPattern.email === 1) {
@@ -26,7 +26,7 @@ async function httpAddNewUser(req,res) {
         throw error;
     }
         
-    res.json({ status: 'ok' })
+    res.json({ status: 'ok' });
 };
 
 module.exports = httpAddNewUser;

@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { HttpErrorResponse } from '@angular/common/http';
 import { matchValidator } from '../../custom-validator/forms.validators';
 
 @Component({
@@ -45,6 +44,7 @@ export class RegisterPageComponent {
 
   passwordTipe = 'password';
   confirmPasswordTipe = 'password';
+  
   showAlert = false;
   alertMsg = 'Please wait! Your account is being created.';
   alertColor = 'blue'
@@ -89,7 +89,6 @@ export class RegisterPageComponent {
         company,
         password,
       })
-
     }).then((res) => res.json());
     
     if (result.status === 'ok') {
@@ -101,7 +100,5 @@ export class RegisterPageComponent {
       this.alertMsg = result.error;
       this.alertColor = 'red';
     }
-
-    console.log(HttpErrorResponse);
   }
 }

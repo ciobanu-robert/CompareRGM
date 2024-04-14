@@ -4,6 +4,7 @@ const path = require('path');
 const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const api = require('./routes/api')
 
@@ -17,6 +18,7 @@ app.use(cors({
     origin: 'http://localhost:4200',
 }));
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 app.use('/api', api);
 
