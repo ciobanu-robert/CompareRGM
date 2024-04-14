@@ -20,4 +20,7 @@ import { PagesModule } from './pages/pages.module';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  localStorage() {
+    localStorage.setItem('Application', 'CompareRGM');
+  }
 }

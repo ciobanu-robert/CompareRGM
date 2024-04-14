@@ -10,6 +10,9 @@ import { CompetitorsPageComponent } from './pages/competitors-page/competitors-p
 import { ComparePageComponent } from './pages/compare-page/compare-page.component';
 import { CompareProductsPageComponent } from './pages/compare-products-page/compare-products-page.component';
 import { StatisticsPageComponent } from './pages/statistics-page/statistics-page.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthGuardLoggedInService } from './services/auth-guard-logged-in.service';
+import { AuthGuardLoggedOutService } from './services/auth-guard-logged-out.service';
 
 export const routes: Routes = [
     {
@@ -17,41 +20,48 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: HomePageComponent,
         title: 'Home',
+        canActivate: [AuthGuardLoggedOutService]
     },
     {
         path: 'home',
         redirectTo: '',
         pathMatch: 'full',
+        canActivate: [AuthGuardLoggedOutService]
     },
     {
         path: 'login',
         pathMatch: 'full',
         component: LoginPageComponent,
         title: 'Login',
+        canActivate: [AuthGuardLoggedOutService]
     },
     {
         path: 'register',
         pathMatch: 'full',
         component: RegisterPageComponent,
         title: 'Register',
+        canActivate: [AuthGuardLoggedOutService]
     },
     {
         path: 'dashboard',
         pathMatch: 'full',
         component: DashboardPageComponent,
         title: 'Dashboard',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'settings',
         pathMatch: 'full',
         component: SettingsComponent,
         title: 'Settings',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'settings/products',
         pathMatch: 'full',
         component: ProductsSettingsPageComponent,
         title: 'Products',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'terms',
@@ -64,23 +74,32 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: CompetitorsPageComponent,
         title: 'Competitors',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'compare',
         pathMatch: 'full',
         component: ComparePageComponent,
         title: 'Compare',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'compare/products',
         pathMatch: 'full',
         component: CompareProductsPageComponent,
         title: 'Compare',
+        canActivate: [AuthGuardLoggedInService],
     },
     {
         path: 'statistics',
         pathMatch: 'full',
         component: StatisticsPageComponent,
         title: 'Statistics',
+        canActivate: [AuthGuardLoggedInService],
     },
+    {
+        path: '**',
+        component: NotFoundComponent,
+        title: 'Page not found'
+    }
 ];

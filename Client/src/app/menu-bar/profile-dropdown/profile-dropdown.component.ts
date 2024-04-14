@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -12,5 +12,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './profile-dropdown.component.css'
 })
 export class ProfileDropdownComponent {
+  constructor(private router: Router) {}
 
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login'])
+  }
 }
