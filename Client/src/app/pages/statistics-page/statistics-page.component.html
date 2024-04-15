@@ -1,61 +1,62 @@
 <div class="page">
-    <app-topbar></app-topbar>
-    <app-side-bar></app-side-bar>
+    <app-topbar class="topbar"></app-topbar>
 
+    <div class="contents">
+        <app-side-bar class="sidebar"></app-side-bar>
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Statistics</h1>
+                </div>
+            
+                <div class="content">
+                    <div class="stats option l-options">
+                        <h3 class="title2 stats-title">Price statistics</h3>
+                        <div class="chart">
+                            <canvas id="prices">{{ prices }}</canvas>
+                        </div>
+                    </div>
     
-    <div class="container">
-        <div class="shadow">
-            <div class="title">
-                <h1>Statistics</h1>
-            </div>
-        
-            <div class="content">
-                <div class="stats option l-options">
-                    <h3 class="title2 stats-title">Price statistics</h3>
-                    <div class="chart">
-                        <canvas id="prices">{{ prices }}</canvas>
+                    <div class="stats option l-options">
+                        <h3 class="title2 stats-title">Competitors</h3>
+                        <div class="chart">
+                            <canvas id="competitors">{{ competitors }}</canvas>
+                        </div>
                     </div>
-                </div>
-
-                <div class="stats option l-options">
-                    <h3 class="title2 stats-title">Competitors</h3>
-                    <div class="chart">
-                        <canvas id="competitors">{{ competitors }}</canvas>
+    
+                    <div class="stats option l-options">
+                        <h3 class="title2 stats-title">Products</h3>
+                        <div class="chart">
+                            <canvas id="products">{{ products }}</canvas>
+                        </div>
                     </div>
-                </div>
-
-                <div class="stats option l-options">
-                    <h3 class="title2 stats-title">Products</h3>
-                    <div class="chart">
-                        <canvas id="products">{{ products }}</canvas>
+    
+                    <div class="stats option s-option">
+                        <h3 class="title3">Total price change</h3>
+                        <div class="s-chart">
+                            <canvas id="totalPrice">{{ totalPrice }}</canvas>
+                            <h1 class="procent">33%</h1>
+                        </div>
                     </div>
-                </div>
-
-                <div class="stats option s-option">
-                    <h3 class="title3">Total price change</h3>
-                    <div class="s-chart">
-                        <canvas id="totalPrice">{{ totalPrice }}</canvas>
-                        <h1 class="procent">33%</h1>
+    
+                    <div class="stats option s-option">
+                        <h3 class="title3">Competitors increase</h3>
+                        <div class="s-chart">
+                            <canvas id="compIncrease">{{ compIncrease }}</canvas>
+                            <h1 class="procent">59%</h1>
+                        </div>
                     </div>
-                </div>
-
-                <div class="stats option s-option">
-                    <h3 class="title3">Competitors increase</h3>
-                    <div class="s-chart">
-                        <canvas id="compIncrease">{{ compIncrease }}</canvas>
-                        <h1 class="procent">59%</h1>
+    
+                    <div class="stats option s-option">
+                        <h3 class="title3">Products increase</h3>
+                        <div class="s-chart">
+                            <canvas id="productsIncrease">{{ productsIncrease }}</canvas>
+                            <h1 class="procent">10%</h1>
+                        </div>
                     </div>
+                    
+    
                 </div>
-
-                <div class="stats option s-option">
-                    <h3 class="title3">Products increase</h3>
-                    <div class="s-chart">
-                        <canvas id="productsIncrease">{{ productsIncrease }}</canvas>
-                        <h1 class="procent">10%</h1>
-                    </div>
-                </div>
-                
-
             </div>
         </div>
     </div>

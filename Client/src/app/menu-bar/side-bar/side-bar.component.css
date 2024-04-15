@@ -3,9 +3,13 @@
     box-shadow: rgba(0, 0, 0, 0.25) 4px 4px 4px;
     color: #8670FF;
     text-align: center;
-    position: fixed;
     width: 95px;
     height: 100vh;
+    margin-top: -3.91em;
+}
+
+.dashboard-link {
+    padding-top: 3.91em;
 }
 
 .div-link {
