@@ -1,101 +1,105 @@
 <div class="page">
-    <app-topbar></app-topbar>
-    <app-side-bar></app-side-bar>
+    <app-topbar class="topbar"></app-topbar>
 
-    <div class="container">
-        <div class="shadow">
-            <div class="title">
-                <h1>Settings</h1>
-
-                <div class="header-buttons">
-                    <button class="button upload-exel settings">Upload Excel</button>
-                    <button class="button new-product settings">Add new product</button>
+    <div class="contents">
+        <app-side-bar class="sidebar"></app-side-bar>
+    
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Settings</h1>
+    
+                    <div class="header-buttons">
+                        <button class="button upload-exel settings">Upload Excel</button>
+                        <button class="button new-product settings">Add new product</button>
+                    </div>
                 </div>
-            </div>
+            
+                <div class="content">
+                    <div class="table">
+
+                        <table class="products">
+                            <tr class="table-header">
+                                <th class="name">Name</th>
+                                <th class="category">Category</th>
+                                <th class="price">Price</th>
+                                <th class="size">Size</th>
+                                <th class="quantity">Quantity</th>
+                                <th class="edit"></th>
+                            </tr>
         
-            <div class="content">
-                <table class="products">
-                    <tr class="table-header">
-                        <th class="name">Name</th>
-                        <th class="category">Category</th>
-                        <th class="price">Price</th>
-                        <th class="size">Size</th>
-                        <th class="quantity">Quantity</th>
-                        <th class="edit"></th>
-                    </tr>
-
-                    <tr class="product">
-                        <td>Product</td>
-                        <td>Food</td>
-                        <td>$99</td>
-                        <td>99kg</td>
-                        <td>99</td>
-                        <td>
-                            <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                    </tr>
-                    
-                    <tr class="product">
-                        <td>Product</td>
-                        <td>Food</td>
-                        <td>$99</td>
-                        <td>99kg</td>
-                        <td>99</td>
-                        <td>
-                            <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                    </tr>
-                    
-                    <tr class="product">
-                        <td>Product</td>
-                        <td>Food</td>
-                        <td>$99</td>
-                        <td>99kg</td>
-                        <td>99</td>
-                        <td>
-                            <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                    </tr>
-                    
-                    <tr class="product">
-                        <td>Product</td>
-                        <td>Food</td>
-                        <td>$99</td>
-                        <td>99kg</td>
-                        <td>99</td>
-                        <td>
-                            <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                    </tr>
-                    
-                    <tr class="product">
-                        <td>Product</td>
-                        <td>Food</td>
-                        <td>$99</td>
-                        <td>99kg</td>
-                        <td>99</td>
-                        <td>
-                            <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                    </tr>
-
- 
-                </table>
-
-                <div class="buttons">
-                    <button 
-                        class="button settings"
-                        routerLink="/settings"
-                        routerLinkActive="active"
-                    >
-                        Back
-                    </button>
-                    <button class="button save">Save</button>
+                            <tr class="product">
+                                <td>Product</td>
+                                <td>Food</td>
+                                <td>$99</td>
+                                <td>99kg</td>
+                                <td>99</td>
+                                <td>
+                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                </td>
+                            </tr>
+                            
+                            <tr class="product">
+                                <td>Product</td>
+                                <td>Food</td>
+                                <td>$99</td>
+                                <td>99kg</td>
+                                <td>99</td>
+                                <td>
+                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                </td>
+                            </tr>
+                            
+                            <tr class="product">
+                                <td>Product</td>
+                                <td>Food</td>
+                                <td>$99</td>
+                                <td>99kg</td>
+                                <td>99</td>
+                                <td>
+                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                </td>
+                            </tr>
+                            
+                            <tr class="product">
+                                <td>Product</td>
+                                <td>Food</td>
+                                <td>$99</td>
+                                <td>99kg</td>
+                                <td>99</td>
+                                <td>
+                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                </td>
+                            </tr>
+                            
+                            <tr class="product">
+                                <td>Product</td>
+                                <td>Food</td>
+                                <td>$99</td>
+                                <td>99kg</td>
+                                <td>99</td>
+                                <td>
+                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    <div class="buttons">
+                        <button 
+                            class="button settings"
+                            routerLink="/settings"
+                            routerLinkActive="active"
+                        >
+                            Back
+                        </button>
+                        <button class="button save">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
