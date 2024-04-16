@@ -1,194 +1,199 @@
 <div class="page">
-    <app-topbar></app-topbar>
-    <app-side-bar></app-side-bar>
+    <app-topbar class="topbar"></app-topbar>
 
-    <div class="container">
-        <div class="shadow">
-            <div class="title">
-                <h1>Compare</h1>
-
-                <div class="products-name">
-                    <p class="product1 a">Product1</p>
-                    <hr class="separator-name a">
-                    <p class="product2 a">Product2</p>
+    <div class="contents">
+        <app-side-bar class="sidebar"></app-side-bar>
+    
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Compare</h1>
+    
+                    <div class="products-name">
+                        <p class="product1 a">Product1</p>
+                        <hr class="separator-name a">
+                        <p class="product2 a">Product2</p>
+                        <button 
+                            class="button back-button"
+                            routerLink="/compare"
+                            routerLinkActive="active"
+                        >
+                            Back
+                        </button>
+                    </div>
                 </div>
-            </div>
+
+            
+                <div class="content">
+                    <div class="price">
+                        <h3 class="text">Price</h3>
+                        <div class="stats">
+    
+                            <p>User: <span>$13</span></p>
+                            <div class="display user">
+                                
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range"
+                                        min="0" 
+                                        max="15" 
+                                        value="13"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">$0</p>
+                                    <p class="value">$2</p>
+                                    <p class="value">$6</p>
+                                    <p class="value">$9</p>
+                                    <p class="value">$12</p>
+                                    <p class="value">$15</p>
+                                </div>
+                            </div>
+    
+                            <p>Competitor: <span>$8</span></p>
+                            <div class="display competitor">
         
-            <div class="content">
-                <div class="price">
-                    <h3 class="text">Price</h3>
-                    <div class="stats">
-
-                        <p>User: <span>$13</span></p>
-                        <div class="display user">
-                            
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range"
-                                    min="0" 
-                                    max="15" 
-                                    value="13"
-                                >
-                            </div>
-                            
-                            <div class="values">
-                                <p class="value">$0</p>
-                                <p class="value">$2</p>
-                                <p class="value">$6</p>
-                                <p class="value">$9</p>
-                                <p class="value">$12</p>
-                                <p class="value">$15</p>
-                            </div>
-                        </div>
-
-                        <p>Competitor: <span>$8</span></p>
-                        <div class="display competitor">
-    
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range" 
-                                    min="0" 
-                                    max="15" 
-                                    value="8"
-                                >
-                            </div>
-                            
-                            <div class="values">
-                                <p class="value">$0</p>
-                                <p class="value">$2</p>
-                                <p class="value">$6</p>
-                                <p class="value">$9</p>
-                                <p class="value">$12</p>
-                                <p class="value">$15</p>
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range" 
+                                        min="0" 
+                                        max="15" 
+                                        value="8"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">$0</p>
+                                    <p class="value">$2</p>
+                                    <p class="value">$6</p>
+                                    <p class="value">$9</p>
+                                    <p class="value">$12</p>
+                                    <p class="value">$15</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <hr class="line">
-
-                <div class="price">
-                    <h3 class="text">Size</h3>
-                    <div class="stats">
-
-                        <p>User: <span>13kg</span></p>
-                        <div class="display user">
+                    
+                    <hr class="line">
     
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range"
-                                    min="0" 
-                                    max="15" 
-                                    value="13"
-                                >
+                    <div class="price">
+                        <h3 class="text">Size</h3>
+                        <div class="stats">
+    
+                            <p>User: <span>13kg</span></p>
+                            <div class="display user">
+        
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range"
+                                        min="0" 
+                                        max="15" 
+                                        value="13"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">0kg</p>
+                                    <p class="value">2kg</p>
+                                    <p class="value">6kg</p>
+                                    <p class="value">kg9</p>
+                                    <p class="value">kg12</p>
+                                    <p class="value">kg15</p>
+                                </div>
                             </div>
-                            
-                            <div class="values">
-                                <p class="value">0kg</p>
-                                <p class="value">2kg</p>
-                                <p class="value">6kg</p>
-                                <p class="value">kg9</p>
-                                <p class="value">kg12</p>
-                                <p class="value">kg15</p>
-                            </div>
-                        </div>
-
-                        <p>Competitor: <span>8kg</span></p>
-                        <div class="display competitor">
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range" 
-                                    min="0" 
-                                    max="15" 
-                                    value="8"
-                                >
-                            </div>
-                            
-                            <div class="values">
-                                <p class="value">0kg</p>
-                                <p class="value">2kg</p>
-                                <p class="value">6kg</p>
-                                <p class="value">9kg</p>
-                                <p class="value">12kg</p>
-                                <p class="value">15kg</p>
+    
+                            <p>Competitor: <span>8kg</span></p>
+                            <div class="display competitor">
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range" 
+                                        min="0" 
+                                        max="15" 
+                                        value="8"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">0kg</p>
+                                    <p class="value">2kg</p>
+                                    <p class="value">6kg</p>
+                                    <p class="value">9kg</p>
+                                    <p class="value">12kg</p>
+                                    <p class="value">15kg</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <hr class="line">
-
-                <div class="price">
-                    <h3 class="text">Quantity</h3>
-                    <div class="stats">
-
-                        <p>User: <span>13</span></p>
-                        <div class="display user">
+                    
+                    <hr class="line">
     
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range" 
-                                    min="0" 
-                                    max="15" 
-                                    value="13"
-                                >
-                            </div>
-                            
-                            <div class="values">
-                                <p class="value">0</p>
-                                <p class="value">2</p>
-                                <p class="value">6</p>
-                                <p class="value">9</p>
-                                <p class="value">12</p>
-                                <p class="value">15</p>
-                            </div>
-                        </div>
-
-                        <p>Competitor: <span>8</span></p>
-
-                        <div class="display competitor">
+                    <div class="price">
+                        <h3 class="text">Quantity</h3>
+                        <div class="stats">
     
-                            <div class="range">
-                                <input 
-                                    class="slider"
-                                    disabled
-                                    type="range" 
-                                    min="0" 
-                                    max="15" 
-                                    value="8"
-                                >
+                            <p>User: <span>13</span></p>
+                            <div class="display user">
+        
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range" 
+                                        min="0" 
+                                        max="15" 
+                                        value="13"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">0</p>
+                                    <p class="value">2</p>
+                                    <p class="value">6</p>
+                                    <p class="value">9</p>
+                                    <p class="value">12</p>
+                                    <p class="value">15</p>
+                                </div>
                             </div>
-                            
-                            <div class="values">
-                                <p class="value">0</p>
-                                <p class="value">2</p>
-                                <p class="value">6</p>
-                                <p class="value">9</p>
-                                <p class="value">12</p>
-                                <p class="value">15</p>
+    
+                            <p>Competitor: <span>8</span></p>
+    
+                            <div class="display competitor">
+        
+                                <div class="range">
+                                    <input 
+                                        class="slider"
+                                        disabled
+                                        type="range" 
+                                        min="0" 
+                                        max="15" 
+                                        value="8"
+                                    >
+                                </div>
+                                
+                                <div class="values">
+                                    <p class="value">0</p>
+                                    <p class="value">2</p>
+                                    <p class="value">6</p>
+                                    <p class="value">9</p>
+                                    <p class="value">12</p>
+                                    <p class="value">15</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
-        <button 
-            class="button back-button"
-            routerLink="/compare"
-            routerLinkActive="active"
-        >
-            Back
-        </button>
     </div>
 </div>
