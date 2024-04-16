@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
 }
+
 .topbar {
     z-index: 1;
     position: relative;
@@ -45,7 +46,7 @@
     background-color: #FFFFFF;
     border-radius: 10px;
     margin-top: 0.5em;
-    height: 507px;
+    padding: 3.5em 4em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -100,5 +101,5 @@
 
 .procent {
     position: absolute;
-    top: 535px;
+    top: 527px;
 }
