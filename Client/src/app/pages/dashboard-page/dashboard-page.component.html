@@ -1,106 +1,108 @@
 <div class="page">
-    <app-topbar></app-topbar>
-    <app-side-bar></app-side-bar>
+    <app-topbar class="topbar"></app-topbar>
 
-    
-    <div class="container">
-        <div class="shadow">
-            <div class="title">
-                <h1>Dashboard</h1>
-            </div>
+    <div class="contents">
+        <app-side-bar class="sidebar"></app-side-bar>
         
-            <div class="content">
-                <div class="info option l-option">
-                    <h3 class="title2 info-title">General info</h3>
-                    <img class="acc-img" src="assets/img/circle-user-solid.svg">
-                    <p class="acc-name">Company: User</p>
-                    <p class="acc-email">Email: user&#64;user.com</p>
-                    <button 
-                        class="button info-button"
-                        routerLink="/settings"
-                        routerLinkActive="active"
-                    >
-                        Edit
-                    </button>
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Dashboard</h1>
                 </div>
-    
-                <div class="top-competitors option l-option">
-                    <h3 class="title2 top-competitors-title">Top competitors</h3>
-                    <div class="competitors-options">
-                        <div class="c-option">
-                            <img src="assets/img/circle-user-regular.svg">
-                            <p>Competitor1</p>
-                        </div>
-                        <div class="c-option">
-                            <img src="assets/img/circle-user-regular.svg">
-                            <p>Competitor2</p>
-                        </div>
-                        <div class="c-option">
-                            <img src="assets/img/circle-user-regular.svg">
-                            <p>Competitor3</p>
-                        </div>
-                        <div class="c-option">
-                            <img src="assets/img/circle-user-regular.svg">
-                            <p>Competitor4</p>
-                        </div>
+            
+                <div class="content">
+                    <div class="info option l-option">
+                        <h3 class="title2 info-title">General info</h3>
+                        <img class="acc-img" src="assets/img/circle-user-solid.svg">
+                        <p class="acc-name">Company: User</p>
+                        <p class="acc-email">Email: user&#64;user.com</p>
+                        <button 
+                            class="button info-button"
+                            routerLink="/settings"
+                            routerLinkActive="active"
+                        >
+                            Edit
+                        </button>
                     </div>
-                    <button 
-                        class="button t-c-button"
-                        routerLink="/competitors"
-                        routerLinkActive="active"
-                    >
-                        Add competitors
-                    </button>
-                </div>
-                
-                <div class="stats option l-options">
-                    <h3 class="title2 stats-title">Price statistics</h3>
-                    <div class="chart">
-                        <canvas id="prices">{{ prices }}</canvas>
+        
+                    <div class="top-competitors option l-option">
+                        <h3 class="title2 top-competitors-title">Top competitors</h3>
+                        <div class="competitors-options">
+                            <div class="c-option">
+                                <img src="assets/img/circle-user-regular.svg">
+                                <p>Competitor1</p>
+                            </div>
+                            <div class="c-option">
+                                <img src="assets/img/circle-user-regular.svg">
+                                <p>Competitor2</p>
+                            </div>
+                            <div class="c-option">
+                                <img src="assets/img/circle-user-regular.svg">
+                                <p>Competitor3</p>
+                            </div>
+                            <div class="c-option">
+                                <img src="assets/img/circle-user-regular.svg">
+                                <p>Competitor4</p>
+                            </div>
+                        </div>
+                        <button 
+                            class="button t-c-button"
+                            routerLink="/competitors"
+                            routerLinkActive="active"
+                        >
+                            Add competitors
+                        </button>
                     </div>
-                    <button 
-                        class="button button-stats"
-                        routerLink="/statistics"
-                        routerLinkActive="active"
-                    >
-                        View more
-                    </button>
-                </div>
-    
-                <div class="products option s-option">
-                    <h3 class="title3 products-title">Products</h3>
-                    <p class="value">9999</p>
-                    <button 
-                        class="button"
-                        routerLink="/settings/products"
-                        routerLinkActive="active"
-                    >
-                        Add products
-                    </button>
-                </div>
-    
-                <div class="competitors option s-option">
-                    <h3 class="title3 competitors-title">Competitors</h3>
-                    <p class="value">9999</p>
-                    <button 
-                        class="button"
-                        routerLink="/competitors"
-                        routerLinkActive="active"
-                    >
-                        Add competitors
-                    </button>
-                </div>
-    
-                <div class="products-value option s-option">
-                    <h3 class="title3 products-value-title">Products value</h3>
-                    <p class="value">$9999</p>
-                    <button 
-                        class="button"
-                        routerLink="/competitors"
-                        routerLinkActive="active"
-                    >
-                        Add competitors
-                    </button>
+                    
+                    <div class="stats option l-options">
+                        <h3 class="title2 stats-title">Price statistics</h3>
+                        <div class="chart">
+                            <canvas id="prices">{{ prices }}</canvas>
+                        </div>
+                        <button 
+                            class="button button-stats"
+                            routerLink="/statistics"
+                            routerLinkActive="active"
+                        >
+                            View more
+                        </button>
+                    </div>
+        
+                    <div class="products option s-option">
+                        <h3 class="title3 products-title">Products</h3>
+                        <p class="value">9999</p>
+                        <button 
+                            class="button"
+                            routerLink="/settings/products"
+                            routerLinkActive="active"
+                        >
+                            Add products
+                        </button>
+                    </div>
+        
+                    <div class="competitors option s-option">
+                        <h3 class="title3 competitors-title">Competitors</h3>
+                        <p class="value">9999</p>
+                        <button 
+                            class="button"
+                            routerLink="/competitors"
+                            routerLinkActive="active"
+                        >
+                            Add competitors
+                        </button>
+                    </div>
+        
+                    <div class="products-value option s-option">
+                        <h3 class="title3 products-value-title">Products value</h3>
+                        <p class="value">$9999</p>
+                        <button 
+                            class="button"
+                            routerLink="/competitors"
+                            routerLinkActive="active"
+                        >
+                            Add competitors
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

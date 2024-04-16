@@ -11,7 +11,11 @@
                 </div>
             
                 <div class="content">
-                        <form class="form">
+                        <form 
+                            class="form" 
+                            [formGroup]="settingsForm"
+                            (ngSubmit)="save()"
+                        >
                             <div class="about">
                                 <h3 class="title2">About</h3>
                                 <img class="profile-picture" src="assets/img/circle-user-solid.svg">
@@ -20,17 +24,10 @@
                                     <i class="fa-solid fa-image"></i>
                                     <input 
                                         class="input upload" 
-                                        id="upload" 
-                                        name="upload" 
-                                        type="file" 
+                                        type="file"
                                         title="Upload image"
                                         accept="image/png, image/jpeg"
                                     >
-                                </div>
-    
-                                <div class="input-container">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <input class="input email" type="text" placeholder="Email">
                                 </div>
                                 
                                 <div class="input-container">

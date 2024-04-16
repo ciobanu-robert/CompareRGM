@@ -22,11 +22,11 @@
             ></app-input>
             
             <app-input 
-            [control]="password"
-            [type]="passwordTipe"
-            placeholder="Password" 
-            invalid_class="fa-lock"
-            valid_class="fa-unlock"
+                [control]="password"
+                [type]="passwordTipe"
+                placeholder="Password" 
+                invalid_class="fa-lock"
+                valid_class="fa-unlock"
             ></app-input>
             <i 
                 *ngIf="passwordTipe === 'password'"
@@ -40,11 +40,11 @@
             ></i>
             
             <app-input
-            [control]="confirmPassword" 
-            [type]="confirmPasswordTipe"
-            placeholder="Confirm password" 
-            invalid_class="fa-lock"
-            valid_class="fa-unlock"
+                [control]="confirmPassword" 
+                [type]="confirmPasswordTipe"
+                placeholder="Confirm password" 
+                invalid_class="fa-lock"
+                valid_class="fa-unlock"
             ></app-input>
             <i 
                 *ngIf="confirmPasswordTipe === 'password'"
