@@ -50,15 +50,17 @@
 }
 
 .form {
+    text-align: center;
+    text-align: center;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
 }
 
 .about {
+    width: 350px;
     margin: 0 3em;
     display: flex;
     flex-direction: column;
@@ -75,10 +77,12 @@
 }
 
 .password {
+    width: 350px;
     margin: 0 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 
 .input-container {
@@ -94,16 +98,40 @@
     margin: 1.33em 0;
     padding: 1em;
     text-indent: 2.5em;
+    
 }
 
-.fa-solid {
+.fa-image, .fa-address-card {
     background: -webkit-linear-gradient(45deg, #582796, #8670FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 25px;
     position: absolute;
     top: 0.95em;
-    left: 0.5em;
+    left: 0.95em;
+    text-align: center;
+}
+
+.visible-password {
+    background: -webkit-linear-gradient(45deg, #582796, #8670FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    cursor: pointer;
+    top: 8em;
+    left: 12em;
+    font-size: 25px;
+}
+
+.visible-confirm-password {
+    background: -webkit-linear-gradient(45deg, #582796, #8670FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    cursor: pointer;
+    top: 11.5em;
+    left: 12em;
+    font-size: 25px;
 }
 
 .upload {
@@ -123,6 +151,15 @@
     padding: 0.8em 1em 1.2em 1em;
     height: 100px;
 }
+
+.errors {
+    margin-top: -4.3em;
+    margin-left: 2em;
+    font-size: 12px;
+    text-align: left;
+    color: #df1b21;
+    position: absolute;
+  }
 
 .buttons {
     position: absolute;

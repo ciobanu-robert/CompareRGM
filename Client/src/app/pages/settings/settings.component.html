@@ -26,14 +26,25 @@
                                         class="input upload" 
                                         type="file"
                                         title="Upload image"
-                                        accept="image/png, image/jpeg"
+                                        accept="image/*"
+                                        formControlName="newImage"
                                     >
                                 </div>
+                                <p
+                                    *ngIf="newImage.touched 
+                                        && newImage.dirty
+                                        && newImage.errors"
+                                    class="errors"
+                                >
+                                    Please upload an image with aspect ratio 1:1.
+                                </p>
                                 
-                                <div class="input-container">
-                                    <i class="fa-solid fa-user"></i>
-                                    <input class="input user" type="text" placeholder="Company name">
-                                </div>
+                                <app-input 
+                                    [control]="newCompany" 
+                                    placeholder="Company" 
+                                    invalid_class="fa-user"
+                                    valid_class="fa-user-tie"
+                                ></app-input>
     
                                 <div class="input-container">
                                     <i class="fa-solid fa-address-card"></i>
@@ -42,7 +53,7 @@
                                         rows="6"
                                         cols="271"
                                         (keyup)="limitTextArea($event)"
-                                        placeholder="Description" 
+                                        placeholder="Description"
                                     ></textarea>
                                 </div>
                             </div>
@@ -50,15 +61,42 @@
                             <div class="password">
                                 <h3 class="title2">Password</h3>
     
-                                <div class="input-container">
-                                    <i class="fa-solid fa-lock"></i>
-                                    <input class="input new-password" type="password" placeholder="New password">
-                                </div>
-    
-                                <div class="input-container">
-                                    <i class="fa-solid fa-lock"></i>
-                                    <input class="input confirm-new-password" type="password" placeholder="Confirm new password">
-                                </div>
+                                <app-input 
+                                    [control]="newPassword"
+                                    [type]="passwordTipe"
+                                    placeholder="Password" 
+                                    invalid_class="fa-lock"
+                                    valid_class="fa-unlock"
+                                ></app-input>
+                                <i 
+                                    *ngIf="passwordTipe === 'password'"
+                                    class="fa-solid fa-eye visible-password"
+                                    (click)="visiblePassword()"
+                                ></i>
+                                <i 
+                                    *ngIf="passwordTipe === 'text'"
+                                    class="fa-regular fa-eye visible-password"
+                                    (click)="visiblePassword()"
+                                ></i>
+                                
+                                <app-input
+                                    [control]="confirmNewPassword" 
+                                    [type]="confirmPasswordTipe"
+                                    placeholder="Confirm password" 
+                                    invalid_class="fa-lock"
+                                    valid_class="fa-unlock"
+                                ></app-input>
+                                <i 
+                                    *ngIf="confirmPasswordTipe === 'password'"
+                                    class="fa-solid fa-eye visible-confirm-password"
+                                    (click)="visibleConfirmPassword()"
+                                ></i>
+                                <i 
+                                    *ngIf="confirmPasswordTipe === 'text'"
+                                    class="fa-regular fa-eye visible-confirm-password"
+                                    (click)="visibleConfirmPassword()"
+                                ></i>
+            
                             </div>
                             
                             <div class="buttons">

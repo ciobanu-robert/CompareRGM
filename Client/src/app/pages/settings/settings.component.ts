@@ -4,6 +4,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatchValidatorService } from '../../services/match-validator.service';
 import { InputComponent } from '../../shared/input/input.component';
+import { CommonModule } from '@angular/common';
+import { ImageRatioValidatorService } from '../../services/image-ratio-validator.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,21 +16,29 @@ import { InputComponent } from '../../shared/input/input.component';
     RouterLinkActive,
     ReactiveFormsModule,
     InputComponent,
+    CommonModule,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent {
-  constructor(private matchValidator: MatchValidatorService) {}
-  newPasswordTipe = 'password';
-  confirmNewPasswordTipe = 'password';
+  constructor(
+    private matchValidator: MatchValidatorService, 
+    private iamgeValidator: ImageRatioValidatorService,
+  ) {}
+  passwordTipe = 'password';
+  confirmPasswordTipe = 'password';
 
-  newImage = new FormControl('');
+  
+  newImage = new FormControl(null , [
+    this.iamgeValidator.ratio(['1:1']),
+  ]);
   newCompany = new FormControl('',[
     Validators.minLength(3),
   ]);
   newDescription = new FormControl('' , [
     Validators.maxLength(271),
+    Validators.minLength(3),
   ]);
   newPassword = new FormControl('', [
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
@@ -59,6 +69,20 @@ export class SettingsComponent {
 
     textarea.value = newContent;
   }
+
+  visiblePassword() {
+    if (this.passwordTipe === 'password')
+      this.passwordTipe = 'text';
+    else
+      this.passwordTipe = 'password';
+  }
+  visibleConfirmPassword() {
+    if (this.confirmPasswordTipe === 'password')
+      this.confirmPasswordTipe = 'text';
+    else
+      this.confirmPasswordTipe = 'password';
+  }
+
 
   save() {
 

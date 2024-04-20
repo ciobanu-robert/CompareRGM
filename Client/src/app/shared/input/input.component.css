@@ -20,6 +20,8 @@
     position: absolute;
     top: 1.25em;
     left: 1em;
+    font-size: 25px;
+    text-align: center;
 }
 
 .errors {
