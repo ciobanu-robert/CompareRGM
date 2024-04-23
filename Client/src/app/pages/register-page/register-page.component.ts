@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { MatchValidatorService } from '../../services/match-validator.service';
+import { matchValidator } from '../../validators/match-validator';
 
 @Component({
   selector: 'app-register-page',
@@ -20,8 +20,6 @@ import { MatchValidatorService } from '../../services/match-validator.service';
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
-  constructor(private matchValidator: MatchValidatorService) {}
-
   email = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -33,11 +31,11 @@ export class RegisterPageComponent {
   password = new FormControl('', [
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
-    this.matchValidator.match('confirmPassword', true)
+    matchValidator('confirmPassword', true)
   ]);
   confirmPassword = new FormControl('', [
     Validators.required,
-    this.matchValidator.match('password')
+    matchValidator('password')
   ]);
 
   terms = new FormControl(false, [

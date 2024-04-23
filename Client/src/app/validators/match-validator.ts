@@ -1,12 +1,6 @@
-import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class MatchValidatorService {
-  match(
+export function matchValidator(
     matchTo: string, 
     reverse?: boolean
   ): ValidatorFn {
@@ -27,4 +21,3 @@ export class MatchValidatorService {
         : { matching: true };
     };
   }
-}

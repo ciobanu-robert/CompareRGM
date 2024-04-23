@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatchValidatorService } from '../../services/match-validator.service';
 import { InputComponent } from '../../shared/input/input.component';
 import { CommonModule } from '@angular/common';
-import { ImageRatioValidatorService } from '../../services/image-ratio-validator.service';
+import { matchValidator } from '../../validators/match-validator';
+import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-validators';
 
 @Component({
   selector: 'app-settings',
@@ -17,35 +17,37 @@ import { ImageRatioValidatorService } from '../../services/image-ratio-validator
     ReactiveFormsModule,
     InputComponent,
     CommonModule,
+    RxReactiveFormsModule,
   ],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css'
+  styleUrl: './settings.component.css',
 })
+
 export class SettingsComponent {
-  constructor(
-    private matchValidator: MatchValidatorService, 
-    private iamgeValidator: ImageRatioValidatorService,
-  ) {}
+  
   passwordTipe = 'password';
   confirmPasswordTipe = 'password';
 
-  
-  newImage = new FormControl(null , [
-    this.iamgeValidator.ratio(['1:1']),
+  newImage = new FormControl(null, [
+    RxwebValidators.image({
+        maxHeight: 100,  
+        maxWidth: 100, 
+        minHeight: 100, 
+        minWidth: 100 ,
+      }),
   ]);
   newCompany = new FormControl('',[
     Validators.minLength(3),
   ]);
   newDescription = new FormControl('' , [
     Validators.maxLength(271),
-    Validators.minLength(3),
   ]);
   newPassword = new FormControl('', [
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
-    this.matchValidator.match('confirmNewPassword', true),
+    matchValidator('confirmNewPassword', true),
   ]);
   confirmNewPassword = new FormControl('', [
-    this.matchValidator.match('newPassword')
+    matchValidator('newPassword')
   ]);
 
   settingsForm = new FormGroup({

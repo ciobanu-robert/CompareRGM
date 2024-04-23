@@ -8,14 +8,14 @@ export class AuthGuardLoggedInService {
   constructor(private router: Router) {}
   
   canActivate() {
-    if (localStorage.length > 1) {
-      return true;
-    } else {
-      this.router.navigate(['/PageNotFound'])
-      return false;
-    }
+    // if (localStorage.length > 1) {
+    //   return true;
+    // } else {
+    //   this.router.navigate(['/PageNotFound'])
+    //   return false;
+    // }
 
     //? Client evelopment 
-    // return true;
+    return true;
   }
 }

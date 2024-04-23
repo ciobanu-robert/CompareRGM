@@ -23,6 +23,7 @@
                                 <div class="input-container">                                
                                     <i class="fa-solid fa-image"></i>
                                     <input 
+                                        #newImg
                                         class="input upload" 
                                         type="file"
                                         title="Upload image"
@@ -36,7 +37,7 @@
                                         && newImage.errors"
                                     class="errors"
                                 >
-                                    Please upload an image with aspect ratio 1:1.
+                                    Please upload an image with width and height of 100 pixels.
                                 </p>
                                 
                                 <app-input 
@@ -54,13 +55,22 @@
                                         cols="271"
                                         (keyup)="limitTextArea($event)"
                                         placeholder="Description"
+                                        formControlName="newDescription"
                                     ></textarea>
+                                    <p
+                                        *ngIf="newDescription.touched 
+                                            && newDescription.dirty
+                                            && newDescription.errors"
+                                        class="description-error"
+                                    >
+                                        It must be less than 271 characters long.
+                                    </p>
                                 </div>
                             </div>
+                            
     
                             <div class="password">
                                 <h3 class="title2">Password</h3>
-    
                                 <app-input 
                                     [control]="newPassword"
                                     [type]="passwordTipe"
@@ -107,7 +117,10 @@
                                 >
                                     Edit products
                                 </button>
-                                <button class="button save">Save</button>
+                                <button 
+                                    class="button save"
+                                    [disabled]="settingsForm.invalid"
+                                >Save</button>
                             </div>
                         </form>
     
