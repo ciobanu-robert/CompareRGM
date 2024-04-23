@@ -74,6 +74,7 @@
 .profile-picture {
     width: 65px;
     align-self: center;
+    border-radius: 50px;
 }
 
 .password {
@@ -101,7 +102,7 @@
     
 }
 
-.fa-image, .fa-address-card {
+.fa-image, .fa-images, .fa-address-card, .fa-id-card {
     background: -webkit-linear-gradient(45deg, #582796, #8670FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

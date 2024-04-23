@@ -8,8 +8,8 @@
     margin-top: -3.91em;
 }
 
-.dashboard-link {
-    padding-top: 3.91em;
+.navigation {
+    padding-top: 4.91em;
 }
 
 .div-link {
@@ -24,12 +24,6 @@ a:visited {
     color: #8670FF;
 }
 
-.invisible {
-    margin: 0;
-    padding: 0.5em 0;
-    background-color: #1E1E1E;
-}
-
 .fa-solid {
     margin: 0;
     font-size: 25px;
@@ -40,4 +34,10 @@ hr {
     background-color: #4C428A;
     height: 1px;
     border-width: 0;
+}
+
+.active {
+    border-left: #8670FF  solid 4px;
+    margin-top: -16px;
+    padding-top: 16px;
 }

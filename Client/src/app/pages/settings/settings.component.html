@@ -18,10 +18,30 @@
                         >
                             <div class="about">
                                 <h3 class="title2">About</h3>
-                                <img class="profile-picture" src="assets/img/circle-user-solid.svg">
+                                <img 
+                                    *ngIf="newImage.errors || !preview"
+                                    class="profile-picture" 
+                                    src="/assets/img/circle-user-solid.svg"
+                                >
+                                <img 
+                                    *ngIf="!newImage.errors"
+                                    class="profile-picture" 
+                                    [src]="preview"
+                                >
     
                                 <div class="input-container">                                
-                                    <i class="fa-solid fa-image"></i>
+                                    <i 
+                                        *ngIf="newImage.errors
+                                            || !newImage.touched
+                                            || !newImage.dirty"
+                                        class="fa-regular fa-image"
+                                    ></i>
+                                    <i 
+                                        *ngIf="!newImage.errors
+                                            && newImage.touched
+                                            && newImage.dirty"
+                                        class="fa-solid fa-image"
+                                    ></i>
                                     <input 
                                         #newImg
                                         class="input upload" 
@@ -29,6 +49,7 @@
                                         title="Upload image"
                                         accept="image/*"
                                         formControlName="newImage"
+                                        (change)="showPreview($event)"
                                     >
                                 </div>
                                 <p
@@ -37,7 +58,7 @@
                                         && newImage.errors"
                                     class="errors"
                                 >
-                                    Please upload an image with width and height of 100 pixels.
+                                    Please upload an image with height and width of 1000 pixels.
                                 </p>
                                 
                                 <app-input 
@@ -48,11 +69,22 @@
                                 ></app-input>
     
                                 <div class="input-container">
-                                    <i class="fa-solid fa-address-card"></i>
+                                    <i 
+                                        *ngIf="newDescription.errors
+                                            || !newDescription.touched
+                                            || !newDescription.dirty"
+                                        class="fa-regular fa-address-card"
+                                    ></i>
+                                    <i 
+                                        *ngIf="!newDescription.errors
+                                            && newDescription.touched
+                                            && newDescription.dirty"
+                                        class="fa-solid fa-address-card"
+                                    ></i>
                                     <textarea 
                                         class="input description"  
-                                        rows="6"
-                                        cols="271"
+                                        rows="8"
+                                        cols="316"
                                         (keyup)="limitTextArea($event)"
                                         placeholder="Description"
                                         formControlName="newDescription"
@@ -63,7 +95,7 @@
                                             && newDescription.errors"
                                         class="description-error"
                                     >
-                                        It must be less than 271 characters long.
+                                        It must be less than 316 characters long.
                                     </p>
                                 </div>
                             </div>
