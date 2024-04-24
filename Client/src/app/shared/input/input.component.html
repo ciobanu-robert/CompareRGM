@@ -1,8 +1,8 @@
 <div class="input-container">
-<ng-container *ngIf="!control.errors && control.touched && control.dirty">
+<ng-container *ngIf="!control.errors && control.dirty">
         <i [class]="faSolid + valid_class"></i>
     </ng-container>
-    <ng-container *ngIf="control.errors || !control.touched || !control.dirty">
+    <ng-container *ngIf="control.errors || !control.dirty">
         <i [class]="faSolid + invalid_class"></i>
     </ng-container>
     <input 

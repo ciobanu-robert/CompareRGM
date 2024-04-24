@@ -8,6 +8,10 @@
             <div class="shadow">
                 <div class="title">
                     <h1>Settings</h1>
+                    <app-alert class="alert" *ngIf="showAlert" [color]="alertColor">
+                        {{ alertMsg }}
+                    </app-alert>
+                    <div class="space"></div>
                 </div>
             
                 <div class="content">
@@ -58,7 +62,7 @@
                                         && newImage.errors"
                                     class="errors"
                                 >
-                                    Please upload an image with height and width of 1000 pixels.
+                                    Please upload an image with height and width of 100 pixels.
                                 </p>
                                 
                                 <app-input 
@@ -71,13 +75,11 @@
                                 <div class="input-container">
                                     <i 
                                         *ngIf="newDescription.errors
-                                            || !newDescription.touched
                                             || !newDescription.dirty"
                                         class="fa-regular fa-address-card"
                                     ></i>
                                     <i 
                                         *ngIf="!newDescription.errors
-                                            && newDescription.touched
                                             && newDescription.dirty"
                                         class="fa-solid fa-address-card"
                                     ></i>
@@ -151,11 +153,10 @@
                                 </button>
                                 <button 
                                     class="button save"
-                                    [disabled]="settingsForm.invalid"
+                                    [disabled]="settingsForm.invalid || !settingsForm.dirty || !settingsForm.touched"
                                 >Save</button>
                             </div>
                         </form>
-    
                 </div>
             </div>
         </div>

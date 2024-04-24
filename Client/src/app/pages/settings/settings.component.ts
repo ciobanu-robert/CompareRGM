@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import {  FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { InputComponent } from '../../shared/input/input.component';
+import {  FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { matchValidator } from '../../validators/match-validator';
 import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-validators';
@@ -14,7 +14,7 @@ import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-val
     RouterLink,
     RouterLinkActive,
     ReactiveFormsModule,
-    InputComponent,
+    SharedModule,
     CommonModule,
     RxReactiveFormsModule,
   ],
@@ -32,10 +32,10 @@ export class SettingsComponent {
 
   newImage = new FormControl(null, [
     RxwebValidators.image({
-        maxHeight: 1000,  
-        maxWidth: 1000, 
-        minHeight: 1000, 
-        minWidth: 1000 ,
+        maxHeight: 100,  
+        maxWidth: 100, 
+        minHeight: 100, 
+        minWidth: 100,
       }),
   ]);
   newCompany = new FormControl('',[
@@ -72,7 +72,6 @@ export class SettingsComponent {
           this.preview = reader.result;
         };
         reader.readAsDataURL(file);
-
       }
     }
   }
@@ -104,8 +103,40 @@ export class SettingsComponent {
       this.confirmPasswordTipe = 'password';
   }
 
+  showAlert = false;
+  alertMsg = 'Please wait! Your account is being updated.';
+  alertColor = 'blue'
 
-  save() {
+  async save() {
+    this.showAlert = true;
+    this.alertMsg = 'Please wait! Your account is being updated.';
+    this.alertColor = 'blue'
 
+    const image = this.preview;
+    
+    const result = await fetch('/api/save', {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        newImage: image,
+        newCompany: this.newCompany.value,
+        newDescription: this.newDescription.value,
+        newPassword: this.newPassword.value,
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+
+    if (result.status === "ok") {
+      this.showAlert = true;
+      this.alertMsg = 'Your account has been updated successfully!';
+      this.alertColor = 'green';
+    } else {
+      this.showAlert = true;
+      this.alertMsg = result.error;
+      this.alertColor = 'red';
+    }
   }
 }
