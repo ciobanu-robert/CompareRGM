@@ -8,10 +8,15 @@ async function httpAddNewUser(req,res) {
     const password = await bcrypt.hash(plainTextPassword, 10);
     console.log(password);
     
+    const profileImage = '';
+    const description = '';
+
     try {
         await User.create({
+            profileImage,
             email,
             company,
+            description,
             password,
         });
     } catch (error) {
