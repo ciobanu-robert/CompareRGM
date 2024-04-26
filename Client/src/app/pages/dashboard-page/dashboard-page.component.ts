@@ -18,8 +18,9 @@ import { GetProfileInfoService } from '../../services/get-profile-info.service';
 export class DashboardPageComponent implements OnInit{
   constructor(private getProfileInfo: GetProfileInfoService) {}
 
-  public prices: any;
+  prices: any;
   imageUrl = ''
+  companyName= ''
 
   createChart() {
     this.prices = new Chart('prices', {
@@ -74,5 +75,6 @@ export class DashboardPageComponent implements OnInit{
   async ngOnInit() {
       this.createChart();
       this.imageUrl = await this.getProfileInfo.image()
+      this.companyName = await this.getProfileInfo.company();
   }
 }

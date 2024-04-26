@@ -14,7 +14,8 @@ import { get } from 'http';
   styleUrl: './profile-dropdown.component.css'
 })
 export class ProfileDropdownComponent {
-  imageUrl='';
+  imageUrl = '';
+  companyName = '';
 
   constructor(private router: Router, private getProfileInfo: GetProfileInfoService) {}
 
@@ -25,5 +26,6 @@ export class ProfileDropdownComponent {
 
   async ngOnInit() {
     this.imageUrl = await this.getProfileInfo.image();
+    this.companyName = await this.getProfileInfo.company();
   }
 }

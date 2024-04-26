@@ -28,6 +28,7 @@ export class SettingsComponent implements OnInit{
 
   imageUrl: any;
   fileToUpload: any;
+  companyName = '';
 
   passwordTipe = 'password';
   confirmPasswordTipe = 'password';
@@ -41,7 +42,7 @@ export class SettingsComponent implements OnInit{
         minWidth: 100,
       }),
   ]);
-  newCompany = new FormControl('',[
+  newCompany = new FormControl('', [
     Validators.minLength(3),
   ]);
   newDescription = new FormControl('' , [
