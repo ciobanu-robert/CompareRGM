@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Chart, Legend } from 'chart.js/auto';
+import { GetProfileInfoService } from '../../services/get-profile-info.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,7 +16,10 @@ import { Chart, Legend } from 'chart.js/auto';
   styleUrl: './dashboard-page.component.css'
 })
 export class DashboardPageComponent implements OnInit{
+  constructor(private getProfileInfo: GetProfileInfoService) {}
+
   public prices: any;
+  imageUrl = ''
 
   createChart() {
     this.prices = new Chart('prices', {
@@ -67,7 +71,8 @@ export class DashboardPageComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
       this.createChart();
+      this.imageUrl = await this.getProfileInfo.image()
   }
 }

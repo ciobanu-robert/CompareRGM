@@ -23,14 +23,14 @@
                             <div class="about">
                                 <h3 class="title2">About</h3>
                                 <img 
-                                    *ngIf="newImage.errors || !preview"
+                                    *ngIf="newImage.errors || !imageUrl"
                                     class="profile-picture" 
                                     src="/assets/img/circle-user-solid.svg"
                                 >
                                 <img 
                                     *ngIf="!newImage.errors"
                                     class="profile-picture" 
-                                    [src]="preview"
+                                    [src]="imageUrl"
                                 >
     
                                 <div class="input-container">                                

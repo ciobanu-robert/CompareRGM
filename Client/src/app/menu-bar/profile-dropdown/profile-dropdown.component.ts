@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { GetProfileInfoService } from '../../services/get-profile-info.service';
+import { get } from 'http';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -12,10 +14,16 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './profile-dropdown.component.css'
 })
 export class ProfileDropdownComponent {
-  constructor(private router: Router) {}
+  imageUrl='';
+
+  constructor(private router: Router, private getProfileInfo: GetProfileInfoService) {}
 
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login'])
+  }
+
+  async ngOnInit() {
+    this.imageUrl = await this.getProfileInfo.image();
   }
 }

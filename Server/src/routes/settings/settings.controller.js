@@ -14,10 +14,10 @@ async function httpSaveSettings(req, res) {
         newImage
     } = req.body;
     try {
-        const user = jwt.verify(token, JWT_SECRET);
+        const _user = jwt.verify(token, JWT_SECRET);
         
-        const _id = user.id;
-        const _user = await User.findById(_id);
+        const _id = _user.id;
+        const user = await User.findById(_id);
 
         let profileImage = '';
         let company = '';
@@ -25,22 +25,22 @@ async function httpSaveSettings(req, res) {
         let password = '';
 
         if (!newImage) {
-            profileImage = _user.profileImage;
+            profileImage = user.profileImage;
         } else {
             profileImage = newImage;
         }
         if (!newCompany) {
-            company = _user.company;
+            company = user.company;
         } else {
             company = newCompany;
         }
         if (!newDescription) {
-            description = _user.description;
+            description = user.description;
         } else {
             description = newDescription;
         }
         if (!newPassword) {
-            password = _user.password;
+            password = user.password;
         } else {
             password = await bcrypt.hash(newPassword, 10);
         }

@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { matchValidator } from '../../validators/match-validator';
 import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-validators';
+import { GetProfileInfoService } from '../../services/get-profile-info.service';
 @Component({
   selector: 'app-settings',
   standalone: true,
@@ -22,8 +23,10 @@ import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-val
   styleUrl: './settings.component.css',
 })
 
-export class SettingsComponent {
-  preview: any;
+export class SettingsComponent implements OnInit{
+  constructor(private getProfileInfo: GetProfileInfoService) {}
+
+  imageUrl: any;
   fileToUpload: any;
 
   passwordTipe = 'password';
@@ -69,7 +72,7 @@ export class SettingsComponent {
         const reader = new FileReader();
 
         reader.onload = (e: any) => {
-          this.preview = reader.result;
+          this.imageUrl = reader.result;
         };
         reader.readAsDataURL(file);
       }
@@ -112,7 +115,7 @@ export class SettingsComponent {
     this.alertMsg = 'Please wait! Your account is being updated.';
     this.alertColor = 'blue'
 
-    const image = this.preview;
+    const image = this.imageUrl;
     
     const result = await fetch('/api/save', {
 
@@ -138,5 +141,9 @@ export class SettingsComponent {
       this.alertMsg = result.error;
       this.alertColor = 'red';
     }
+  }
+
+  async ngOnInit() {
+    this.imageUrl = await this.getProfileInfo.image();
   }
 }
