@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const User = require('../../models/user.mongoose');
 
-const JWT_SECRET = ')BWZY1[a$APg*{xaJ.Xky.y21XkW&#,Bjx8P!aKB@t::#K5WkR-x2Sv&BS(VL;crr#KW4vLktKjTZk03KDV6/+rR)bUr7Yj:(}$3';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 async function httpGetUser(req, res) {
     const { email, password } = req.body; 

@@ -31,4 +31,18 @@ export class GetProfileInfoService {
     }).then((res) => res.json());
     return result.data;
   }
+
+  async email() {
+    const result = await fetch('/api/profile-info/email', {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+    return result.data;
+  }
 }

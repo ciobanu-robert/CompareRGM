@@ -1,8 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const User = require('../../models/user.mongoose');
-const JWT_SECRET = ')BWZY1[a$APg*{xaJ.Xky.y21XkW&#,Bjx8P!aKB@t::#K5WkR-x2Sv&BS(VL;crr#KW4vLktKjTZk03KDV6/+rR)bUr7Yj:(}$3';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 async function httpGetProfileImage(req, res) {
@@ -35,7 +36,23 @@ async function httpGetProfileCompany(req, res) {
     }
 }
 
+async function httpGetProfileEmail(req, res) {
+    const { token } = req.body;
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+        
+        const _id = _user.id;
+        const user = await User.findById(_id);
+        const email = user.email;
+
+        res.json({ status: 'ok', data: email})
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' })
+    }
+}
+
 module.exports = { 
     httpGetProfileImage, 
-    httpGetProfileCompany 
+    httpGetProfileCompany,
+    httpGetProfileEmail,
 };

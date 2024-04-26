@@ -8,14 +8,14 @@ export class AuthGuardLoggedOutService {
   constructor(private router: Router) {}
   
   canActivate() {
-    // if (localStorage.length === 1) {
-    //   return true;
-    // } else {
-    //   this.router.navigate(['/dashboard'])
-    //   return false;
-    // }
+    if (localStorage.length === 1) {
+      return true;
+    } else {
+      this.router.navigate(['/dashboard'])
+      return false;
+    }
 
     //? Client development 
-    return true;
+    // return true;
   }
 }
