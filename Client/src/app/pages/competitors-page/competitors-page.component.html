@@ -15,7 +15,10 @@
                         <div *ngFor="let competitor of competitors">
                             <button class="competitor" (click)="onSelect(competitor)">
                                 <div class="img">
-                                    <img class="profile-img" [src]="competitor.profileImage || '/assets/img/circle-user-solid.svg'">
+                                    <img 
+                                        class="profile-img" 
+                                        [src]="competitor.profileImage || '/assets/img/circle-user-solid.svg'"
+                                    >
                                 </div>
                                 <div class="text">
                                     <h4 class="name">{{ competitor.company }}</h4>
@@ -31,11 +34,21 @@
     
                     <div class="selected">
                         <div *ngIf="selected">
-                            <img class="selected-profile-img" [src]="competitor.profileImage || '/assets/img/circle-user-solid.svg'">
+                            <app-alert 
+                                class="alert" 
+                                *ngIf="showAlert" 
+                                [color]="alertColor"
+                            >
+                                {{ alertMsg }}
+                            </app-alert>
+                            <img 
+                                class="selected-profile-img"
+                                [src]="competitor.profileImage || '/assets/img/circle-user-solid.svg'"
+                            >
                             <h3 class="selected-name">{{ competitor.company }}</h3>
                             <h4 class="about">About</h4>
                             <p class="about-info">{{ competitor.description || 'No description yet'}}</p>
-                            <button class="button">Send invite</button>
+                            <button class="button" (click)="sendInvite()">Send invite</button>
                         </div>
                     </div>
                 </div>

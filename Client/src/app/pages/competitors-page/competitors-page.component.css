@@ -110,6 +110,10 @@ img {
     margin: 1.5em 0;
 }
 
+.alert {
+    margin: 5em
+}
+
 .selected {
     width: 500px;
     white-space: pre-wrap;

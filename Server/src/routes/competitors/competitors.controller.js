@@ -12,7 +12,7 @@ async function httpGetCompetitors(req, res) {
         const user = jwt.verify(token, JWT_SECRET);
 
         competitors = await User.find({_id: {$ne: user.id}}).select({
-            password:0,
+            password: 0,
             notifications: 0,
             competitors: 0,
         });

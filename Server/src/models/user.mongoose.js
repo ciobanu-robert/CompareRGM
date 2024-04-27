@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
         password: { type: String, require: true },
         notifications: [
             {
-                id: { type: String },
+                competitorID: { type: String },
                 profileImage: { type: String },
                 competitor: { type: String },
             }
