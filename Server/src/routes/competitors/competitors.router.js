@@ -3,6 +3,6 @@ const httpGetCompetitors = require('./competitors.controller');
 
 const competitorsRouter = express.Router();
 
-competitorsRouter.get('/', httpGetCompetitors);
+competitorsRouter.post('/', httpGetCompetitors);
 
 module.exports = competitorsRouter;

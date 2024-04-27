@@ -18,15 +18,23 @@ import { ICompetitor } from '../../interfaces/competitor.interface';
 export class CompetitorsPageComponent implements OnInit{
   competitors: ICompetitor[] = []
   competitor: ICompetitor = {};
-  selected = '';
+  selected = false;
 
   onSelect(competitor: ICompetitor) {
     this.competitor = competitor;
-    this.selected = 'selected-competitor';
+    this.selected = true;
   }
   
   async ngOnInit() {
-    const result = await fetch('/api/competitors').then((res) => res.json());
+    const result = await fetch('/api/competitors', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
     this.competitors = result.data;
   }
 }

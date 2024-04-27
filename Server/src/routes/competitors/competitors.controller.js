@@ -1,9 +1,17 @@
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 const User = require('../../models/user.mongoose');
+const JWT_SECRET = process.env.JWT_SECRET;
+
 
 async function httpGetCompetitors(req, res) {
+    const { token } = req.body;
 
     try {
-        competitors = await User.find({'__v': 0});
+        const user = jwt.verify(token, JWT_SECRET);
+
+        competitors = await User.find({_id: {$ne: user.id}});
         res.json({ status: 'ok', data: competitors });
     } catch {
         res.json({ status: 'error', error: 'Something went wrong' })
