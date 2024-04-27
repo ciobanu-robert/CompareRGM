@@ -6,6 +6,19 @@ const UserSchema = new mongoose.Schema({
         company: { type: String, require: true, unique: true },
         description: { type: String, require: true },
         password: { type: String, require: true },
+        notifications: [
+            {
+                id: { type: String },
+                profileImage: { type: String },
+                competitor: { type: String },
+            }
+        ],
+        competitors: [
+            {
+                id: { type: String },
+                company: { type: String },                
+            }
+        ],
     },
     { collection: 'users' }
 );
