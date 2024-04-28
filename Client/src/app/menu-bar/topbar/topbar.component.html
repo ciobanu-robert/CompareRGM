@@ -19,13 +19,16 @@
     <div class="account" *ngIf="!disabled">
         <span (click)="notifVisibility()">
             <i
-                *ngIf="!notifVisible" 
-                class="fa-regular fa-bell"
+            *ngIf="!notifVisible" 
+            class="fa-regular fa-bell"
             ></i>
             <i
-                *ngIf="notifVisible" 
-                class="fa-solid fa-bell"
+            *ngIf="notifVisible" 
+            class="fa-solid fa-bell"
             ></i>
+            <div class="notifications-count" *ngIf="notifications.length !== 0">
+                <p class="count">{{ notifications.length }}</p>
+            </div>
         </span>
 
         <span (click)="accVisibility()">

@@ -57,6 +57,7 @@
     flex: 0.2;
     color: #8670FF;
     font-size: 25px;
+    position: relative;
 }
  
 .fa-bell:hover, .fa-circle-user:hover {
@@ -66,6 +67,24 @@
 .fa-bell:active, .fa-circle-user:active {
     color: rgb(81, 73, 131);
 } 
+
+.notifications-count {
+    position: absolute;
+    top: 1px;
+    left: 25px;
+    width: 13px;
+    height: 13px;
+    font-size: 10px;
+    text-align: center;
+    color: #D9D9D9;
+    background-color: #A51418;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.count {
+    margin: 0;
+}
 
 .account span{
     margin: 0 0.5em;

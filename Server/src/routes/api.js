@@ -5,6 +5,7 @@ const settingsRouter = require('./settings/settings.router');
 const profileInfoRouter = require('./profile-info/profile-info.router');
 const competitorsRouter = require('./competitors/competitors.router');
 const inviteRouter = require('./invite/invite.router');
+const notificationsRouter = require('./notifications/notifications.router');
 
 const api = express.Router();
 
@@ -14,6 +15,7 @@ api.use('/save', settingsRouter);
 api.use('/profile-info', profileInfoRouter);
 api.use('/competitors', competitorsRouter);
 api.use('/invite', inviteRouter)
+api.use('/notifications', notificationsRouter)
 
 
 module.exports = api;

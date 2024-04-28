@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ProfileDropdownComponent } from '../profile-dropdown/profile-dropdown.component';
 import { CommonModule } from '@angular/common';
 import { NotoficaionsDropdownComponent } from '../notoficaions-dropdown/notoficaions-dropdown.component';
+import { INotification } from '../../interfaces/notification.interface';
 
 @Component({
   selector: 'app-topbar',
@@ -16,6 +17,7 @@ import { NotoficaionsDropdownComponent } from '../notoficaions-dropdown/notofica
 })
 export class TopbarComponent {
   @Input() disabled = false;
+  notifications: INotification[] = [];
 
   accVisible = false;
   notifVisible = false;
@@ -28,5 +30,20 @@ export class TopbarComponent {
   notifVisibility() {
     this.notifVisible = !this.notifVisible;
     this.accVisible = false;
+  }
+
+
+  async ngOnInit() {
+    const result = await fetch('/api/notifications', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+    this.notifications = result.data;
+    console.log(this.notifications)
   }
 }
