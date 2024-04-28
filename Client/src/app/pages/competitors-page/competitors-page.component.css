@@ -100,6 +100,30 @@ img {
     margin: 0 1.5em;
 }
 
+.no-competitors {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 12em 0;
+}
+
+.no-competitors {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 12em 0;
+}
+
+.no-selected-competitor {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 11em 0;
+}
+
 .name, .email {
     font-size: 16px;
     margin: 0 1em;

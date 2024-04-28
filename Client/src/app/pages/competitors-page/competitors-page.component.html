@@ -28,6 +28,9 @@
 
                             <hr class="line line-competitors">
                         </div>
+                        <div class="no-competitors" *ngIf="competitors.length === 0">
+                            <p>No competitors</p>
+                        </div>
                     </div>
                     
                     <hr class="line line-selected">
@@ -49,6 +52,9 @@
                             <h4 class="about">About</h4>
                             <p class="about-info">{{ competitor.description || 'No description yet'}}</p>
                             <button class="button" (click)="sendInvite()">Send invite</button>
+                        </div>
+                        <div class="no-selected-competitor" *ngIf="!selected">
+                            <p>No competitor selected</p>
                         </div>
                     </div>
                 </div>
