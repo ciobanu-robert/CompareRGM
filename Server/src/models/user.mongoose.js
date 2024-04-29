@@ -20,6 +20,15 @@ const UserSchema = new mongoose.Schema({
                 competitor: { type: String },                
             }
         ],
+        products: [
+            {
+                name: { type: String },
+                category: { type: String },
+                price: { type: Number },
+                size: { type: Number },
+                quantity: { type: Number },
+            }
+        ]
     },
     { collection: 'users' }
 );
