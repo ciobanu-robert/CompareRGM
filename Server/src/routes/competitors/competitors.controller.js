@@ -47,8 +47,19 @@ async function httpCoutCompetitors(req, res) {
 }
 
 async function httpGetTopCompetitors(req, res) {
-    res.json({ status: 'ok' })
-}
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+
+        const user = await User.findById(_user.id);
+
+        const topCompetitors = user.competitors.slice(0, 4);
+    
+        res.json({ status: 'ok', data: topCompetitors })
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong' });
+    }}
 
 module.exports = {
     httpGetCompetitors,

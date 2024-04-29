@@ -28,21 +28,9 @@
                     <div class="top-competitors option l-option">
                         <h3 class="title2 top-competitors-title">Top competitors</h3>
                         <div class="competitors-options">
-                            <div class="c-option">
-                                <img src="assets/img/circle-user-regular.svg">
-                                <p>Competitor1</p>
-                            </div>
-                            <div class="c-option">
-                                <img src="assets/img/circle-user-regular.svg">
-                                <p>Competitor2</p>
-                            </div>
-                            <div class="c-option">
-                                <img src="assets/img/circle-user-regular.svg">
-                                <p>Competitor3</p>
-                            </div>
-                            <div class="c-option">
-                                <img src="assets/img/circle-user-regular.svg">
-                                <p>Competitor4</p>
+                            <div class="c-option" *ngFor="let competitor of topCompetitors">
+                                <img [src]="competitor.profileImage || 'assets/img/circle-user-solid.svg'">
+                                <p>{{ competitor.competitor }}</p>
                             </div>
                         </div>
                         <button 

@@ -3,6 +3,7 @@ import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { CommonModule } from '@angular/common';
 import { ICompetitor } from '../../interfaces/competitor.interface';
 import { AlertComponent } from '../../shared/alert/alert.component';
+import { GetCompetitorsService } from '../../services/get-competitors.service';
 
 
 
@@ -18,6 +19,8 @@ import { AlertComponent } from '../../shared/alert/alert.component';
   styleUrl: './competitors-page.component.css'
 })
 export class CompetitorsPageComponent implements OnInit{
+  constructor(private getCompetitors: GetCompetitorsService) {}
+
   competitors: ICompetitor[] = []
   competitor: ICompetitor = {};
   selected = false;
@@ -60,15 +63,6 @@ export class CompetitorsPageComponent implements OnInit{
   }
   
   async ngOnInit() {
-    const result = await fetch('/api/competitors/competitors-list', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        token: localStorage.getItem('token'),
-      })
-    }).then((res) => res.json());
-    this.competitors = result.data;
+    this.competitors = await this.getCompetitors.list();
   }
 }

@@ -3,6 +3,10 @@ import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Chart } from 'chart.js/auto';
 import { GetProfileInfoService } from '../../services/get-profile-info.service';
+import { GetCompetitorsService } from '../../services/get-competitors.service';
+import { ICompetitor } from '../../interfaces/competitor.interface';
+import { CommonModule } from '@angular/common';
+import { INotification } from '../../interfaces/notification.interface';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -11,18 +15,23 @@ import { GetProfileInfoService } from '../../services/get-profile-info.service';
     MenuBarModule,
     RouterLink,
     RouterLinkActive,
+    CommonModule,
   ],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.css'
 })
 export class DashboardPageComponent implements OnInit{
-  constructor(private getProfileInfo: GetProfileInfoService) {}
+  constructor(
+    private getProfileInfo: GetProfileInfoService, 
+    private getCompetitors: GetCompetitorsService
+  ) {}
 
   prices: any;
   imageUrl = '';
   companyName= '';
   email = '';
   countCompetitors = 0;
+  topCompetitors: INotification[] = [];
 
   createChart() {
     this.prices = new Chart('prices', {
@@ -79,16 +88,8 @@ export class DashboardPageComponent implements OnInit{
       this.imageUrl = await this.getProfileInfo.image()
       this.companyName = await this.getProfileInfo.company();
       this.email = await this.getProfileInfo.email();
-
-      const result = await fetch('/api/competitors/competitors-number', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token: localStorage.getItem('token'),
-        })
-      }).then((res) => res.json());
-      this.countCompetitors = result.data;
+      this.countCompetitors = await this.getCompetitors.number();
+      this.topCompetitors = await this.getCompetitors.top();
+      console.log(this.topCompetitors);
   }
 }

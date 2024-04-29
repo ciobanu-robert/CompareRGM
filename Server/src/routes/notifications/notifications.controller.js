@@ -57,7 +57,6 @@ async function httpAccept(req, res) {
             competitor: _competitor.company,
         }];
         competitor.push(...user.competitors);
-        console.log(competitor)
 
         await User.findOneAndUpdate({_id: _user.id}, {
             competitors: competitor
@@ -69,7 +68,6 @@ async function httpAccept(req, res) {
             competitor: user.company,
         }];
         userInfo.push(..._competitor.competitors);
-        console.log(userInfo)
 
         await User.findOneAndUpdate({_id: notification}, {
             competitors: userInfo

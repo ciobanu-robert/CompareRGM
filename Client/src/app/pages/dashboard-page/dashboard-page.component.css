@@ -98,6 +98,9 @@ img {
     margin-top: 2.5em;
 }
 
+.top-competitors {
+    position: relative;
+}
 
 .competitors-options {
     display: flex;
@@ -106,12 +109,18 @@ img {
     justify-content: space-evenly;
 }
 
+.c-option {
+    margin: 0 1em;
+}
+
 .c-option img, .c-option p{
-    margin: 0.1em 0.8em;
+    margin: 0.1em 1em;
 }
 
 .t-c-button {
-    margin-top: 1em;
+    position: absolute;
+    bottom: 1em;
+    left: 7.6em;
 }
 
 .chart {
