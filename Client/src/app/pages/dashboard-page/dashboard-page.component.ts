@@ -22,6 +22,7 @@ export class DashboardPageComponent implements OnInit{
   imageUrl = '';
   companyName= '';
   email = '';
+  countCompetitors = 0;
 
   createChart() {
     this.prices = new Chart('prices', {
@@ -78,5 +79,16 @@ export class DashboardPageComponent implements OnInit{
       this.imageUrl = await this.getProfileInfo.image()
       this.companyName = await this.getProfileInfo.company();
       this.email = await this.getProfileInfo.email();
+
+      const result = await fetch('/api/competitors/competitors-number', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem('token'),
+        })
+      }).then((res) => res.json());
+      this.countCompetitors = result.data;
   }
 }

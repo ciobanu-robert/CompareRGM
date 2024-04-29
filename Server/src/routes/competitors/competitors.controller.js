@@ -28,8 +28,30 @@ async function httpGetCompetitors(req, res) {
 
         res.json({ status: 'ok', data: competitorsList });
     } catch {
-        res.json({ status: 'error', error: 'Something went wrong' })
+        res.json({ status: 'error', error: 'Something went wrong' });
     }
 }
 
-module.exports = httpGetCompetitors;
+async function httpCoutCompetitors(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+
+        const user = await User.findById(_user.id);
+    
+        res.json({ status: 'ok', data: user.competitors.length })
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong' });
+    }
+}
+
+async function httpGetTopCompetitors(req, res) {
+    res.json({ status: 'ok' })
+}
+
+module.exports = {
+    httpGetCompetitors,
+    httpCoutCompetitors,
+    httpGetTopCompetitors,
+};

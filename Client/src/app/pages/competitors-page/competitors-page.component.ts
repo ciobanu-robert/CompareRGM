@@ -60,7 +60,7 @@ export class CompetitorsPageComponent implements OnInit{
   }
   
   async ngOnInit() {
-    const result = await fetch('/api/competitors', {
+    const result = await fetch('/api/competitors/competitors-list', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
