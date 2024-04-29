@@ -16,14 +16,17 @@ async function httpGetCompetitors(req, res) {
         for (let notification of user.notifications) {
             negateUsers.push(notification.competitorID);
         }
+        for (let competitor of user.competitors) {
+            negateUsers.push(competitor.competitorID);
+        }
 
-        const competitors = await User.find({_id: {'$nin': negateUsers}}).select({
+        const competitorsList = await User.find({_id: {'$nin': negateUsers}}).select({
             password: 0,
             notifications: 0,
             competitors: 0,
         });
 
-        res.json({ status: 'ok', data: competitors });
+        res.json({ status: 'ok', data: competitorsList });
     } catch {
         res.json({ status: 'error', error: 'Something went wrong' })
     }

@@ -15,8 +15,8 @@ const UserSchema = new mongoose.Schema({
         ],
         competitors: [
             {
-                id: { type: String },
-                company: { type: String },                
+                competitorID: { type: String },
+                competitor: { type: String },                
             }
         ],
     },

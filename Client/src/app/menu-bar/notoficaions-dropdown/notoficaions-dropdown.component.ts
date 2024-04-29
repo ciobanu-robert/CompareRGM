@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { INotification } from '../../interfaces/notification.interface';
 
@@ -13,7 +13,21 @@ import { INotification } from '../../interfaces/notification.interface';
 })
 export class NotoficaionsDropdownComponent implements OnInit{
   notifications: INotification[] = [];
-  countNotifications = this.notifications.length;
+
+  async accept(notification: string | undefined) {
+    const result = await fetch('/api/notifications/accept', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notification,
+        token: localStorage.getItem('token')
+      })
+    }).then((res) => res.json());
+    this.notifications = result.data;
+  }
+
 
   async decline(notification: string | undefined) {
     const result = await fetch('/api/notifications/decline', {

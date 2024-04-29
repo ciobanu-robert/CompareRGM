@@ -22,7 +22,7 @@ async function httpSendInvite(req, res) {
                 if (newNotification.competitorID == notification.competitorID) {
                     return res.json({ 
                         status: 'error', 
-                        error: `You just send an invite to ${_user.company}. Please wait for their response.` 
+                        error: `You just send an invite to ${_competitor.company}. Please wait for their response.` 
                     });
                 }
             }
