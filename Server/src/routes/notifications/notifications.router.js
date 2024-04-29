@@ -1,8 +1,12 @@
 const express = require('express');
-const httpGetNotifications = require('./notifications.controller');
+const { 
+    httpGetNotifications,
+    httpDecline
+} = require('./notifications.controller');
 
 const notificationsRouter = express.Router();
 
-notificationsRouter.post('/', httpGetNotifications);
+notificationsRouter.post('/get-notifications', httpGetNotifications);
+notificationsRouter.post('/decline', httpDecline)
 
 module.exports = notificationsRouter;

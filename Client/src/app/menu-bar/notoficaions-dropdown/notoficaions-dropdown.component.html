@@ -10,13 +10,22 @@
                  wants to share his data with you
             </p>
             <div class="buttons">
-                <button class="check-button"><i class="fa-solid fa-check"></i></button>
-                <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                <button 
+                    class="check-button"
+                >
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button 
+                    class="x-button" 
+                    (click)="decline(notification.competitorID)"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
         </div>
         <hr class="line">
     </div>
-    <div class="no-notifications" *ngIf="!notifications">
+    <div class="no-notifications" *ngIf="notifications.length === 0">
         <p>No notifications</p>
     </div>
 </div>
