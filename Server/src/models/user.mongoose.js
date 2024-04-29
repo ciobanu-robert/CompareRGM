@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
         competitors: [
             {
                 competitorID: { type: String },
+                profileImage: { type: String },
                 competitor: { type: String },                
             }
         ],

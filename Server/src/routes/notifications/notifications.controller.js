@@ -53,6 +53,7 @@ async function httpAccept(req, res) {
         const _competitor = await User.findById(notification);
         const competitor = [{
             competitorID: _competitor._id,
+            profileImage: _competitor.profileImage,
             competitor: _competitor.company,
         }];
         competitor.push(...user.competitors);
@@ -64,6 +65,7 @@ async function httpAccept(req, res) {
 
         userInfo = [{
             competitorID: user._id,
+            profileImage: user.profileImage,
             competitor: user.company,
         }];
         userInfo.push(..._competitor.competitors);
