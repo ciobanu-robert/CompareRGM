@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { GetProfileInfoService } from '../../services/get-profile-info.service';
-import { get } from 'http';
 
 @Component({
   selector: 'app-profile-dropdown',

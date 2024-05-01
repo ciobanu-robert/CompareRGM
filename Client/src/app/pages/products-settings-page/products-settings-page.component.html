@@ -11,7 +11,12 @@
     
                     <div class="header-buttons">
                         <button class="button upload-exel settings">Upload Excel</button>
-                        <button class="button new-product settings">Add new product</button>
+                        <button 
+                            class="button new-product settings" 
+                            (click)="addNewProduct()"
+                        >
+                            Add new product
+                        </button>
                     </div>
                 </div>
             
@@ -27,64 +32,101 @@
                                 <th class="quantity">Quantity</th>
                                 <th class="edit"></th>
                             </tr>
-        
-                            <tr class="product">
-                                <td>Product</td>
-                                <td>Food</td>
-                                <td>$99</td>
-                                <td>99kg</td>
-                                <td>99</td>
+
+
+                            <tr class="newProduct" *ngIf="visible">
                                 <td>
-                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                     <input
+                                        #name="ngModel"
+                                        type="text" 
+                                        class="input" 
+                                        name="name"
+                                        [(ngModel)]="credentials.name"
+                                     >
+                                     <p
+                                        *ngIf="error.name" 
+                                        class="errors"
+                                    >
+                                        Filed is required.
+                                    </p>
+                                </td>
+                                <td>
+                                    <input
+                                        #category="ngModel"
+                                        type="text" 
+                                        class="input" 
+                                        name="category"
+                                        [(ngModel)]="credentials.category"
+                                    >
+                                    <p
+                                        *ngIf="error.category" 
+                                        class="errors"
+                                    >
+                                        Filed is required.
+                                    </p>
+                                </td>
+                                <td>
+                                    <input
+                                        #price="ngModel"
+                                        type="number" 
+                                        class="input" 
+                                        name="price"
+                                        [(ngModel)]="credentials.price"
+                                    >
+                                    <p
+                                        *ngIf="error.price" 
+                                        class="errors"
+                                    >
+                                        Filed is required.
+                                    </p>
+                                </td>
+                                <td>
+                                    <input
+                                        #size="ngModel"
+                                        type="number" 
+                                        class="input" 
+                                        name="size"
+                                        [(ngModel)]="credentials.size"
+                                    >
+                                </td>
+                                <td>
+                                    <input
+                                        #quantity="ngModel"
+                                        type="number" 
+                                        class="input" 
+                                        name="quantity"
+                                        [(ngModel)]="credentials.quantity"
+                                    >
+                                </td>
+                                <td>
+                                    <button 
+                                        class="check-button"
+                                        (click)="confirm()"
+                                    >
+                                        <i class="fa-solid fa-check"></i>
+                                    </button>
+                                    <button 
+                                        class="x-button" 
+                                        (click)="cancel()"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
                                 </td>
                             </tr>
-                            
-                            <tr class="product">
-                                <td>Product</td>
-                                <td>Food</td>
-                                <td>$99</td>
-                                <td>99kg</td>
-                                <td>99</td>
+
+                            <tr class="product" *ngFor="let product of products">
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>${{ product.price }}</td>
+                                <td>{{ product.size }}kg</td>
+                                <td>{{ product.quantity }}</td>
                                 <td>
-                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                                </td>
-                            </tr>
-                            
-                            <tr class="product">
-                                <td>Product</td>
-                                <td>Food</td>
-                                <td>$99</td>
-                                <td>99kg</td>
-                                <td>99</td>
-                                <td>
-                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                                </td>
-                            </tr>
-                            
-                            <tr class="product">
-                                <td>Product</td>
-                                <td>Food</td>
-                                <td>$99</td>
-                                <td>99kg</td>
-                                <td>99</td>
-                                <td>
-                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
-                                </td>
-                            </tr>
-                            
-                            <tr class="product">
-                                <td>Product</td>
-                                <td>Food</td>
-                                <td>$99</td>
-                                <td>99kg</td>
-                                <td>99</td>
-                                <td>
-                                    <button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="x-button"><i class="fa-solid fa-xmark"></i></button>
+                                    <button 
+                                        class="x-button"
+                                        (click)="delete(product.productID)"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </table>

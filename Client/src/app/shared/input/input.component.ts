@@ -19,5 +19,4 @@ export class InputComponent {
   @Input() invalid_class = '';
   @Input() valid_class = '';
   faSolid= 'fa-solid ';
-
 }
