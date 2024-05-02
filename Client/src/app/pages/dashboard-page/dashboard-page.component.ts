@@ -7,6 +7,7 @@ import { GetCompetitorsService } from '../../services/get-competitors.service';
 import { ICompetitor } from '../../interfaces/competitor.interface';
 import { CommonModule } from '@angular/common';
 import { INotification } from '../../interfaces/notification.interface';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -23,15 +24,18 @@ import { INotification } from '../../interfaces/notification.interface';
 export class DashboardPageComponent implements OnInit{
   constructor(
     private getProfileInfo: GetProfileInfoService, 
-    private getCompetitors: GetCompetitorsService
+    private getCompetitors: GetCompetitorsService,
+    private productsService: ProductsService,
   ) {}
 
   prices: any;
   imageUrl = '';
   companyName= '';
   email = '';
-  countCompetitors = 0;
   topCompetitors: INotification[] = [];
+  countCompetitors = 0;
+  countProducts = 0;
+  productPrices = 0;
 
   createChart() {
     this.prices = new Chart('prices', {
@@ -90,5 +94,7 @@ export class DashboardPageComponent implements OnInit{
       this.email = await this.getProfileInfo.email();
       this.countCompetitors = await this.getCompetitors.number();
       this.topCompetitors = await this.getCompetitors.top();
+      this.countProducts = await this.productsService.countProducts();
+      this.productPrices = await this.productsService.productsPrices();
   }
 }

@@ -30,4 +30,30 @@ export class ProductsService {
     }).then((res) => res.json());
     return result.data;
   }
+
+  async countProducts() {
+    const result = await fetch('/api/products/count-products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+    return result.data;
+  }
+
+  async productsPrices() {
+    const result = await fetch('/api/products/products-prices', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+    return result.data;
+  }
 }

@@ -58,7 +58,7 @@
         
                     <div class="products option s-option">
                         <h3 class="title3 products-title">Products</h3>
-                        <p class="value">9999</p>
+                        <p class="value">{{ countProducts }}</p>
                         <button 
                             class="button"
                             routerLink="/settings/products"
@@ -82,13 +82,13 @@
         
                     <div class="products-value option s-option">
                         <h3 class="title3 products-value-title">Products value</h3>
-                        <p class="value">$9999</p>
+                        <p class="value">${{ productPrices }}</p>
                         <button 
                             class="button"
                             routerLink="/competitors"
                             routerLinkActive="active"
                         >
-                            Add competitors
+                            Add products
                         </button>
                     </div>
                 </div>

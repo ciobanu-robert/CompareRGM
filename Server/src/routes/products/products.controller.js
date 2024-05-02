@@ -27,12 +27,41 @@ async function httpGetProducts(req, res) {
         const _user = jwt.verify(token, JWT_SECRET);
 
         const user = await User.findById(_user.id);
-        console.log(user);
-
-        const products = user.products;
-        console.log(products);
         
         res.json({ status: 'ok', data: user.products })
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
+
+async function httpCountProducts(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+
+        const user = await User.findById(_user.id);
+
+        res.json({ status: 'ok', data: user.products.length })
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
+
+async function httpGetProductsPrices(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+
+        const user = await User.findById(_user.id);
+        let prices = 0;
+
+        for(let products of user.products) {
+            prices += products.price;
+        }
+
+        res.json({ status: 'ok', data: prices })
     } catch {
         res.json({ status: 'error', error: 'Something went wrong.' });
     }
@@ -41,4 +70,6 @@ async function httpGetProducts(req, res) {
 module.exports = {
     httpSaveProducts,
     httpGetProducts,
+    httpCountProducts,
+    httpGetProductsPrices,
 };
