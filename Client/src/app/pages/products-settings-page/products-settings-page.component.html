@@ -130,6 +130,9 @@
                                 </td>
                             </tr>
                         </table>
+                        <div class="no-products" *ngIf="products.length === 0">
+                            <p>No products</p>
+                        </div>
                     </div>
     
                     <div class="buttons">
