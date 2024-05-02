@@ -27,8 +27,8 @@
                             <tr class="table-header">
                                 <th class="name">Name</th>
                                 <th class="category">Category</th>
-                                <th class="price">Price</th>
-                                <th class="size">Size</th>
+                                <th class="price">Price ($)</th>
+                                <th class="size">Size (kg)</th>
                                 <th class="quantity">Quantity</th>
                                 <th class="edit"></th>
                             </tr>
@@ -140,7 +140,12 @@
                         >
                             Back
                         </button>
-                        <button class="button save">Save</button>
+                        <button 
+                            class="button save"
+                            (click)="save()"
+                        >
+                            Save
+                        </button>
                     </div>
                 </div>
             </div>

@@ -90,6 +90,5 @@ export class DashboardPageComponent implements OnInit{
       this.email = await this.getProfileInfo.email();
       this.countCompetitors = await this.getCompetitors.number();
       this.topCompetitors = await this.getCompetitors.top();
-      console.log(this.topCompetitors);
   }
 }

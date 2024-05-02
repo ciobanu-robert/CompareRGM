@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { InputComponent } from '../../shared/input/input.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IProduct } from '../../interfaces/product.interface';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-products-settings-page',
@@ -21,7 +22,9 @@ import { IProduct } from '../../interfaces/product.interface';
   templateUrl: './products-settings-page.component.html',
   styleUrl: './products-settings-page.component.css'
 })
-export class ProductsSettingsPageComponent {
+export class ProductsSettingsPageComponent implements OnInit {
+  constructor(private productsService: ProductsService) {}
+
   visible = false;
   error = {
     name: false,
@@ -104,5 +107,13 @@ export class ProductsSettingsPageComponent {
           this.products.splice(index, 1)
       ]
     });
+  }
+
+  async save() {
+    await this.productsService.save(this.products);
+  }
+
+  async ngOnInit() {
+    this.products = await this.productsService.getProducts();
   }
 }
