@@ -21,7 +21,8 @@ import { GetCompetitorsService } from '../../services/get-competitors.service';
 export class CompetitorsPageComponent implements OnInit{
   constructor(private getCompetitors: GetCompetitorsService) {}
 
-  competitors: ICompetitor[] = []
+  competitors: ICompetitor[] = [];
+  selectedCompetitor = '';
   competitor: ICompetitor = {};
   selected = false;
 

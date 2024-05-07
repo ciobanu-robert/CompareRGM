@@ -104,14 +104,23 @@
 }
 
 .product {
+    background: none;
+    border: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin: 0;
+    width: 44.5em;
 }
 
 .product:hover {
+    background-color: #8670FF;
+    cursor: pointer;
+}
+
+.product:focus {
     background-color: #8670FF;
     cursor: pointer;
 }
@@ -136,6 +145,18 @@
     font-weight: bold;
 }
 
+form {
+    position: relative;
+}
+
+.competitors-not-selected {
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    left: 14.5em;
+}
+
 .competitor-products {
     width: 583px;
     height: 380px;
@@ -146,6 +167,14 @@
 .compare-button {
     margin: 0.6em 1em;
     float: right;
+}
+
+.no-products {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 9em 0;
 }
 
 .button {

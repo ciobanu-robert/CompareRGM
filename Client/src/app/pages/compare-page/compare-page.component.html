@@ -29,121 +29,61 @@
                    <div class="your-products">
                         <h3 class="your-products-title">Your products</h3>
                         <div class="products">
-                            <div class="product">
-                                <p>Product</p>
+                            <div *ngFor="let product of yourProducts">
+                                <button class="product" (click)="selectYourProduct(product)">
+                                    <p>{{ product.name }}</p>
+                                </button>
+                                <hr class="line line-products">
                             </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
+                            <div class="no-products" *ngIf="yourProducts.length === 0">
+                                <p>No products</p>
                             </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
                         </div>
                    </div>
     
                    <hr class="line separator">
     
                    <div class="your-products">
-                    <select class="input competitors-select select">
-                        <option disabled selected>Competitors</option>
-                        <option>Competitor1</option>
-                        <option>Competitor2</option>
-                        <option>Competitor3</option>
-                        <option>Competitor4</option>
-                        <option>Competitor5</option>
-                        <option>Competitor6</option>
-                    </select>
+                    <form 
+                        [formGroup]="selectedCompetitor" 
+                        (change)="selectCompetitor(selectedCompetitor.value.competitor)"
+                    >
+                    <p 
+                        class="competitors-not-selected" 
+                        *ngIf="!competitor._id"
+                    >
+                        Competitors
+                    </p>
+                        <select 
+                            class="input competitors-select select"
+                            formControlName="competitor"
+                        >
+                            <option 
+                                *ngFor="let competitor of competitors"
+                                [ngValue]="competitor"
+                            >
+                                {{ competitor.company }}
+                            </option>
+                        </select>
+                    </form>
                     
                     <div class="competitor-products">
-                            <div class="product">
-                                <p>Product</p>
+                            <div *ngFor="let product of competitor.products">
+                                <button class="product" (click)="selectCompetitorProduct(product)">
+                                    <p>{{ product.name }}</p>
+                                </button>
+                                <hr class="line line-products">
                             </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
+                            <div class="no-products" *ngIf="!competitor._id">
+                                <p>No competitor selected</p>
                             </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
+                            <div 
+                                class="no-products" 
+                                *ngIf="competitor._id 
+                                    && competitor.products?.length === 0"
+                            >
+                                <p>No products</p>
                             </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
-        
-                            <div class="product">
-                                <p>Product</p>
-                            </div>
-                            <hr class="line line-products">
                         </div>
     
                         <div class="compare-button">

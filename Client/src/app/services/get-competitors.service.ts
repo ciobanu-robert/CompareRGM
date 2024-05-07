@@ -42,4 +42,17 @@ export class GetCompetitorsService {
     }).then((res) => res.json());
     return result.data;
   }
+
+  async data() {
+      const result = await fetch('/api/competitors/competitors-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token: localStorage.getItem('token'),
+        })
+      }).then((res) => res.json());
+      return result.data;
+  }
 }
