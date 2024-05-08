@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ICompetitor } from '../../interfaces/competitor.interface';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetCompetitorsService } from '../../services/get-competitors.service';
+import { CompareService } from '../../services/compare.service';
 
 @Component({
   selector: 'app-compare-page',
@@ -26,13 +27,16 @@ export class ComparePageComponent implements OnInit{
   constructor(
     private productsService: ProductsService,
     private getCompetitors: GetCompetitorsService,
-  ) {}
+    private compare: CompareService,
+  ) {
+    this.compare.getYourProduct.subscribe(product => this.yourProduct = product);
+  }
   competitors: ICompetitor[] = [];
   competitor: ICompetitor = {
     company: '',
     products: [],
   };
-  competitorPorduct: IProduct = {
+  competitorProduct: IProduct = {
     productID: 0,
     name: '',
     category: '',
@@ -45,7 +49,7 @@ export class ComparePageComponent implements OnInit{
   });
 
   yourProducts: IProduct[] = [];
-  yourPorduct: IProduct = {
+  yourProduct: IProduct = {
     productID: 0,
     name: '',
     category: '',
@@ -55,15 +59,19 @@ export class ComparePageComponent implements OnInit{
   };
 
   selectYourProduct(product: IProduct) {
-    this.yourPorduct = product;
+    this.yourProduct = product;
   }
 
   selectCompetitorProduct(product: IProduct) {
-    this.competitorPorduct = product;
+    this.competitorProduct = product;
   }
 
   selectCompetitor(selectCompetitor: any) {
     this.competitor = selectCompetitor;
+  }
+
+  compareProducts() {
+    this.compare.setProducts(this.yourProduct, this.competitorProduct);
   }
 
   async ngOnInit() {

@@ -10,17 +10,18 @@
                     <h1>Compare</h1>
     
                     <div class="products-name">
-                        <p class="product1 a">Product1</p>
+                        <p class="product1 a">{{ yourProduct.name }}</p>
                         <hr class="separator-name a">
-                        <p class="product2 a">Product2</p>
-                        <button 
-                            class="button back-button"
-                            routerLink="/compare"
-                            routerLinkActive="active"
-                        >
-                            Back
-                        </button>
+                        <p class="product2 a">{{ competitorProduct.name }}</p>
                     </div>
+                    
+                    <button 
+                        class="button back-button"
+                        routerLink="/compare"
+                        routerLinkActive="active"
+                    >
+                        Back
+                    </button>
                 </div>
 
             
@@ -29,7 +30,7 @@
                         <h3 class="text">Price</h3>
                         <div class="stats">
     
-                            <p>User: <span>$13</span></p>
+                            <p>User: <span>${{ yourProduct.price }}</span></p>
                             <div class="display user">
                                 
                                 <div class="range">
@@ -38,162 +39,171 @@
                                         disabled
                                         type="range"
                                         min="0" 
-                                        max="15" 
-                                        value="13"
+                                        [max]="maxPrice" 
+                                        [value]="yourProduct.price"
                                     >
                                 </div>
                                 
                                 <div class="values">
                                     <p class="value">$0</p>
-                                    <p class="value">$2</p>
-                                    <p class="value">$6</p>
-                                    <p class="value">$9</p>
-                                    <p class="value">$12</p>
-                                    <p class="value">$15</p>
+                                    <p class="value">${{ round(maxPrice / 4) }}</p>
+                                    <p class="value">${{ round(maxPrice / 2) }}</p>
+                                    <p class="value">${{ round(maxPrice / 4*3) }}</p>
+                                    <p class="value">${{ maxPrice }}</p>
                                 </div>
                             </div>
     
-                            <p>Competitor: <span>$8</span></p>
                             <div class="display competitor">
-        
+                                
                                 <div class="range">
                                     <input 
                                         class="slider"
                                         disabled
                                         type="range" 
                                         min="0" 
-                                        max="15" 
-                                        value="8"
-                                    >
+                                        [max]="maxPrice" 
+                                        [value]="competitorProduct.price"
+                                        >
+                                    </div>
+                                    
+                                    <div class="values">
+                                        <p class="value">$0</p>
+                                        <p class="value">${{ round(maxPrice / 4) }}</p>
+                                        <p class="value">${{ round(maxPrice / 2) }}</p>
+                                        <p class="value">${{ round(maxPrice / 4*3) }}</p>
+                                        <p class="value">${{ maxPrice }}</p>
+                                    </div>
                                 </div>
                                 
-                                <div class="values">
-                                    <p class="value">$0</p>
-                                    <p class="value">$2</p>
-                                    <p class="value">$6</p>
-                                    <p class="value">$9</p>
-                                    <p class="value">$12</p>
-                                    <p class="value">$15</p>
-                                </div>
-                            </div>
+                                <p>Competitor: <span>${{ competitorProduct.price }}</span></p>
                         </div>
                     </div>
                     
-                    <hr class="line">
-    
-                    <div class="price">
+                    <hr class="line" 
+                        *ngIf="yourProduct.size !== 0 
+                        && competitorProduct.size !== 0"
+                    >
+
+                    <div 
+                        class="price" 
+                        *ngIf="yourProduct.size !== 0 
+                        && competitorProduct.size !== 0"
+                    >
                         <h3 class="text">Size</h3>
                         <div class="stats">
     
-                            <p>User: <span>13kg</span></p>
+                            <p>User: <span>${{ yourProduct.size }}</span></p>
                             <div class="display user">
-        
+                                
                                 <div class="range">
                                     <input 
                                         class="slider"
                                         disabled
                                         type="range"
                                         min="0" 
-                                        max="15" 
-                                        value="13"
+                                        [max]="maxSize" 
+                                        [value]="yourProduct.size"
                                     >
                                 </div>
                                 
                                 <div class="values">
-                                    <p class="value">0kg</p>
-                                    <p class="value">2kg</p>
-                                    <p class="value">6kg</p>
-                                    <p class="value">kg9</p>
-                                    <p class="value">kg12</p>
-                                    <p class="value">kg15</p>
+                                    <p class="value">$0</p>
+                                    <p class="value">${{ round(maxSize / 4) }}</p>
+                                    <p class="value">${{ round(maxSize / 2) }}</p>
+                                    <p class="value">${{ round(maxSize / 4*3) }}</p>
+                                    <p class="value">${{ maxSize }}</p>
                                 </div>
                             </div>
     
-                            <p>Competitor: <span>8kg</span></p>
                             <div class="display competitor">
+                                
                                 <div class="range">
                                     <input 
                                         class="slider"
                                         disabled
                                         type="range" 
                                         min="0" 
-                                        max="15" 
-                                        value="8"
-                                    >
+                                        [max]="maxSize" 
+                                        [value]="competitorProduct.size"
+                                        >
+                                    </div>
+                                    
+                                    <div class="values">
+                                        <p class="value">$0</p>
+                                        <p class="value">${{ round(maxSize / 4) }}</p>
+                                        <p class="value">${{ round(maxSize / 2) }}</p>
+                                        <p class="value">${{ round(maxSize / 4*3) }}</p>
+                                        <p class="value">${{ maxSize }}</p>
+                                    </div>
                                 </div>
                                 
-                                <div class="values">
-                                    <p class="value">0kg</p>
-                                    <p class="value">2kg</p>
-                                    <p class="value">6kg</p>
-                                    <p class="value">9kg</p>
-                                    <p class="value">12kg</p>
-                                    <p class="value">15kg</p>
-                                </div>
-                            </div>
+                                <p>Competitor: <span>${{ competitorProduct.size }}</span></p>
                         </div>
                     </div>
                     
-                    <hr class="line">
+                    <hr class="line" 
+                        *ngIf="yourProduct.quantity !== 0 
+                        && competitorProduct.quantity !== 0"
+                    >
     
-                    <div class="price">
+                    <div 
+                        class="price" 
+                        *ngIf="yourProduct.quantity !== 0 
+                        && competitorProduct.quantity !== 0"
+                    >
                         <h3 class="text">Quantity</h3>
                         <div class="stats">
     
-                            <p>User: <span>13</span></p>
+                            <p>User: <span>${{ yourProduct.quantity }}</span></p>
                             <div class="display user">
-        
+                                
                                 <div class="range">
                                     <input 
                                         class="slider"
                                         disabled
-                                        type="range" 
+                                        type="range"
                                         min="0" 
-                                        max="15" 
-                                        value="13"
+                                        [max]="maxQuantity" 
+                                        [value]="yourProduct.quantity"
                                     >
                                 </div>
                                 
                                 <div class="values">
-                                    <p class="value">0</p>
-                                    <p class="value">2</p>
-                                    <p class="value">6</p>
-                                    <p class="value">9</p>
-                                    <p class="value">12</p>
-                                    <p class="value">15</p>
+                                    <p class="value">$0</p>
+                                    <p class="value">${{ round(maxQuantity / 4) }}</p>
+                                    <p class="value">${{ round(maxQuantity / 2) }}</p>
+                                    <p class="value">${{ round(maxQuantity / 4*3) }}</p>
+                                    <p class="value">${{ maxQuantity }}</p>
                                 </div>
                             </div>
-    
-                            <p>Competitor: <span>8</span></p>
     
                             <div class="display competitor">
-        
+                                
                                 <div class="range">
                                     <input 
                                         class="slider"
                                         disabled
                                         type="range" 
                                         min="0" 
-                                        max="15" 
-                                        value="8"
-                                    >
+                                        [max]="maxQuantity" 
+                                        [value]="competitorProduct.quantity"
+                                        >
+                                    </div>
+                                    
+                                    <div class="values">
+                                        <p class="value">$0</p>
+                                        <p class="value">${{ round(maxQuantity / 4) }}</p>
+                                        <p class="value">${{ round(maxQuantity / 2) }}</p>
+                                        <p class="value">${{ round(maxQuantity / 4*3) }}</p>
+                                        <p class="value">${{ maxQuantity }}</p>
+                                    </div>
                                 </div>
                                 
-                                <div class="values">
-                                    <p class="value">0</p>
-                                    <p class="value">2</p>
-                                    <p class="value">6</p>
-                                    <p class="value">9</p>
-                                    <p class="value">12</p>
-                                    <p class="value">15</p>
-                                </div>
-                            </div>
+                                <p>Competitor: <span>${{ competitorProduct.quantity }}</span></p>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>

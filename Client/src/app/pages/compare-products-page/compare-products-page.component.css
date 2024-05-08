@@ -44,11 +44,24 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .products-name {
     display: flex;
     flex-direction: row;
+    position: absolute;
+    left: 36.5em;
+}
+
+.product1 {
+    position: absolute;
+    right: 7.2em;
+    margin: 0;
+}
+
+.product2 {
+    text-align: right;
 }
 
 .a {
@@ -67,7 +80,7 @@
 }
 
 .text {
-    margin-bottom: 5.5em;
+    margin-bottom: 6.5em;
 }
 
 .price {
@@ -141,7 +154,7 @@
 }
 
 .back-button {
-    margin-left: 22.5em;
+    margin-left: 58em;
 }
 
 .line {
