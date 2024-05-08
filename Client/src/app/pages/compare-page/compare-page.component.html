@@ -8,20 +8,16 @@
             <div class="shadow">
                 <div class="title">
                     <h1>Compare</h1>
-    
-                    <div class="filter">
-                        <form class="filter-form">
-                            <p class="filter-title">Filter</p>
-                            <select class="input category select">
-                                <option disabled selected>Category</option>
-                                <option>Food</option>
-                                <option>Home</option>
-                                <option>Animals</option>
-                            </select>
-    
-                            <input class="input price" type="number" placeholder="Price">
-                            <input class="input size" type="number" placeholder="Size">
-                        </form>
+
+                    <div class="products-name">
+                        <p class="product1 a">{{ yourProduct.name }}</p>
+
+                        <hr 
+                            class="separator-name a"  
+                            *ngIf="yourProduct.name && competitorProduct.name"
+                        >
+
+                        <p class="product2 a">{{ competitorProduct.name }}</p>
                     </div>
                 </div>
             

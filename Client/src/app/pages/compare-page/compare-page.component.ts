@@ -28,9 +28,7 @@ export class ComparePageComponent implements OnInit{
     private productsService: ProductsService,
     private getCompetitors: GetCompetitorsService,
     private compare: CompareService,
-  ) {
-    this.compare.getYourProduct.subscribe(product => this.yourProduct = product);
-  }
+  ) {}
   competitors: ICompetitor[] = [];
   competitor: ICompetitor = {
     company: '',
