@@ -13,6 +13,7 @@ import { StatisticsPageComponent } from './pages/statistics-page/statistics-page
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuardLoggedInService } from './services/auth-guard-logged-in.service';
 import { AuthGuardLoggedOutService } from './services/auth-guard-logged-out.service';
+import { CompareGuardService } from './services/compare-guard.service';
 
 export const routes: Routes = [
     {
@@ -88,7 +89,8 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: CompareProductsPageComponent,
         title: 'Compare',
-        canActivate: [AuthGuardLoggedInService],
+        canActivate: [CompareGuardService],
+
     },
     {
         path: 'statistics',
