@@ -35,7 +35,7 @@ export class CompareGuardService {
 
   canActivate() {
     if (localStorage.length > 1) {
-      if (this.yourProduct.productID !== 0 && this.competitorProduct.productID !== 0) {
+      if (this.yourProduct.name && this.competitorProduct.name) {
         return true;
       } else {
         this.router.navigate(['/compare'])

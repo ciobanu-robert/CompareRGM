@@ -7,7 +7,6 @@ const competitorsRouter = require('./competitors/competitors.router');
 const inviteRouter = require('./invite/invite.router');
 const notificationsRouter = require('./notifications/notifications.router');
 const productsRouter = require('./products/products.router');
-const compareRouter = require('./compare/compare.router');
 
 const api = express.Router();
 
@@ -19,6 +18,5 @@ api.use('/competitors', competitorsRouter);
 api.use('/invite', inviteRouter);
 api.use('/notifications', notificationsRouter);
 api.use('/products', productsRouter);
-api.use('/compare', compareRouter);
 
 module.exports = api;

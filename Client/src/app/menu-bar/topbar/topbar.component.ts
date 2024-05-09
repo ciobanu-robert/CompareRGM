@@ -22,10 +22,6 @@ export class TopbarComponent {
   accVisible = false;
   notifVisible = false;
 
-  onUpdate(notificationsData: number) {
-    
-  }
-
   accVisibility() {
     this.accVisible = !this.accVisible;
     this.notifVisible = false;
