@@ -30,7 +30,7 @@ export class CompareService {
 
 
   setProducts(yourProduct: any, competitorProduct: any) {
-    this.yourProduct.next(yourProduct)
-    this.competitorProduct.next(competitorProduct)
+    this.yourProduct.next(yourProduct);
+    this.competitorProduct.next(competitorProduct);
   }
 }

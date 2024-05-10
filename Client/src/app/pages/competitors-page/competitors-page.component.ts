@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ICompetitor } from '../../interfaces/competitor.interface';
 import { AlertComponent } from '../../shared/alert/alert.component';
 import { GetCompetitorsService } from '../../services/get-competitors.service';
+import { SearchService } from '../../services/search.service';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 
 
@@ -14,17 +16,26 @@ import { GetCompetitorsService } from '../../services/get-competitors.service';
     MenuBarModule,
     CommonModule,
     AlertComponent,
+    FilterPipe
   ],
   templateUrl: './competitors-page.component.html',
   styleUrl: './competitors-page.component.css'
 })
 export class CompetitorsPageComponent implements OnInit{
-  constructor(private getCompetitors: GetCompetitorsService) {}
+  constructor(
+    private getCompetitors: GetCompetitorsService,
+    private search: SearchService,
+  ) {
+    this.search.getSearchText.subscribe(text => this.searchText = text);
+  }
 
   competitors: ICompetitor[] = [];
+  filteredCompetitors: any[]= [];
   selectedCompetitor = '';
   competitor: ICompetitor = {};
   selected = false;
+
+  searchText = '';
 
   showAlert = false;
   alertMsg = 'Sending your invitation...';
@@ -65,5 +76,6 @@ export class CompetitorsPageComponent implements OnInit{
   
   async ngOnInit() {
     this.competitors = await this.getCompetitors.list();
+    this.filteredCompetitors = this.competitors;
   }
 }

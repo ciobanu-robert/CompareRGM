@@ -11,7 +11,7 @@ export class AuthGuardLoggedInService {
     if (localStorage.length > 1) {
       return true;
     } else {
-      this.router.navigate(['/PageNotFound'])
+      this.router.navigate(['/PageNotFound']);
       return false;
     }
   }

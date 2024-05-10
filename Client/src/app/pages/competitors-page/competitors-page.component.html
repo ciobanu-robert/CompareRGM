@@ -12,7 +12,7 @@
             
                 <div class="content">
                     <div class="competitors">
-                        <div *ngFor="let competitor of competitors">
+                        <div *ngFor="let competitor of competitors | filter: searchText ">
                             <button class="competitor" (click)="onSelect(competitor)">
                                 <div class="img">
                                     <img 

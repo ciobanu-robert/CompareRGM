@@ -38,11 +38,11 @@ export class CompareGuardService {
       if (this.yourProduct.name && this.competitorProduct.name) {
         return true;
       } else {
-        this.router.navigate(['/compare'])
+        this.router.navigate(['/compare']);
         return false;
       }
     } else {
-      this.router.navigate(['/PageNotFound'])
+      this.router.navigate(['/PageNotFound']);
       return false;
     }
   }

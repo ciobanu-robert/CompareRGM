@@ -12,6 +12,10 @@
         class="search" 
         type="search"
         placeholder="Search"
+        aria-selected
+        [(ngModel)]="searchText"
+        (click)="navigate()"
+        (input)="search()"
         >
             <i class="fa-solid fa-magnifying-glass"></i>
     </div>

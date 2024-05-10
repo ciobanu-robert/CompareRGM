@@ -1,8 +1,11 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProfileDropdownComponent } from '../profile-dropdown/profile-dropdown.component';
 import { CommonModule } from '@angular/common';
 import { NotoficaionsDropdownComponent } from '../notoficaions-dropdown/notoficaions-dropdown.component';
 import { INotification } from '../../interfaces/notification.interface';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-topbar',
@@ -11,16 +14,24 @@ import { INotification } from '../../interfaces/notification.interface';
     ProfileDropdownComponent,
     NotoficaionsDropdownComponent,
     CommonModule,
+    FormsModule,
   ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.css'
 })
 export class TopbarComponent {
+  constructor(
+    private router: Router,
+    private searchService: SearchService,
+  ) {}
+
   @Input() disabled = false;
   notifications: INotification[] = [];
 
   accVisible = false;
   notifVisible = false;
+
+  searchText = '';
 
   accVisibility() {
     this.accVisible = !this.accVisible;
@@ -32,6 +43,15 @@ export class TopbarComponent {
     this.accVisible = false;
   }
 
+  navigate() {
+    if (this.router.url !== '/compare') {
+      this.router.navigate(['/competitors']);
+    }
+  }
+
+  search() {
+    this.searchService.setSearchText(this.searchText)
+  }
 
   async ngOnInit() {
     const result = await fetch('/api/notifications/get-notifications', {
