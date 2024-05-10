@@ -30,7 +30,6 @@ export class CompetitorsPageComponent implements OnInit{
   }
 
   competitors: ICompetitor[] = [];
-  filteredCompetitors: any[]= [];
   selectedCompetitor = '';
   competitor: ICompetitor = {};
   selected = false;
@@ -76,6 +75,5 @@ export class CompetitorsPageComponent implements OnInit{
   
   async ngOnInit() {
     this.competitors = await this.getCompetitors.list();
-    this.filteredCompetitors = this.competitors;
   }
 }

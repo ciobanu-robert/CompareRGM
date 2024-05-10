@@ -8,6 +8,8 @@ import { ICompetitor } from '../../interfaces/competitor.interface';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetCompetitorsService } from '../../services/get-competitors.service';
 import { CompareService } from '../../services/compare.service';
+import { SearchService } from '../../services/search.service';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-compare-page',
@@ -19,6 +21,7 @@ import { CompareService } from '../../services/compare.service';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    FilterPipe,
   ],
   templateUrl: './compare-page.component.html',
   styleUrl: './compare-page.component.css'
@@ -28,7 +31,13 @@ export class ComparePageComponent implements OnInit{
     private productsService: ProductsService,
     private getCompetitors: GetCompetitorsService,
     private compare: CompareService,
-  ) {}
+    private search: SearchService,
+  ) {
+    this.search.getSearchText.subscribe(text => this.searchText = text);
+  }
+
+  searchText = '';
+
   competitors: ICompetitor[] = [];
   competitor: ICompetitor = {
     company: '',

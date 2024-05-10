@@ -25,7 +25,7 @@
                    <div class="your-products">
                         <h3 class="your-products-title">Your products</h3>
                         <div class="products">
-                            <div *ngFor="let product of yourProducts">
+                            <div *ngFor="let product of yourProducts | filter: searchText">
                                 <button class="product" (click)="selectYourProduct(product)">
                                     <p>{{ product.name }}</p>
                                 </button>
@@ -64,7 +64,7 @@
                     </form>
                     
                     <div class="competitor-products">
-                            <div *ngFor="let product of competitor.products">
+                            <div *ngFor="let product of competitor.products | filter: searchText">
                                 <button class="product" (click)="selectCompetitorProduct(product)">
                                     <p>{{ product.name }}</p>
                                 </button>
