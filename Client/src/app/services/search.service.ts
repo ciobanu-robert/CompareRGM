@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ICompetitor } from '../interfaces/competitor.interface';
 
 @Injectable({
   providedIn: 'root'

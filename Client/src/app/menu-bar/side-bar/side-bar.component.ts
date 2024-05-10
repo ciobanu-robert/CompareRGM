@@ -12,5 +12,4 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
-
 }

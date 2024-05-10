@@ -4,7 +4,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Chart } from 'chart.js/auto';
 import { GetProfileInfoService } from '../../services/get-profile-info.service';
 import { GetCompetitorsService } from '../../services/get-competitors.service';
-import { ICompetitor } from '../../interfaces/competitor.interface';
 import { CommonModule } from '@angular/common';
 import { INotification } from '../../interfaces/notification.interface';
 import { ProductsService } from '../../services/products.service';
