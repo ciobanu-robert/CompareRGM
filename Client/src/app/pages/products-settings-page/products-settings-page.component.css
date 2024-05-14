@@ -54,10 +54,6 @@
     height: 507px;
 }
 
-.table {
-    height: 450px;
-}
-
 .input {
     width: 100%;
     text-align: center;
@@ -76,6 +72,27 @@
     border-collapse: collapse;
     text-align: center;
     position: relative;
+}
+
+.table {
+    height: 450px;
+    overflow: auto;
+}
+
+.table::-webkit-scrollbar {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: inset rgba(0, 0, 0, 0.25) 0 0 10px;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: inset rgba(0, 0, 0, 0.25) 0 0 10px;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+    background-color: #dddcdc;
 }
 
 th {
@@ -105,7 +122,7 @@ th, td {
     font-size: 20px;
     font-weight: bold;
     color: #BFBFBF;
-    margin: 10em 0;
+    margin: 9.5em 0;
     width: 100%;
 }
 
@@ -196,6 +213,15 @@ th, td {
 .new-product {
     margin-right: 0;
 }
+
+.file-upload {
+    display: none;
+}
+
+.upload-exel {
+    padding: 9px 27px;
+}
+
 .errors {
   margin-top: -0.8em;
   margin: auto;

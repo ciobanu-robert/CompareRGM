@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
+import readXlsxFile from 'read-excel-file';
 
 @Component({
   selector: 'app-products-settings-page',
@@ -32,6 +33,7 @@ export class ProductsSettingsPageComponent implements OnInit {
     price: false,
   };
 
+  exel: any;
   products: IProduct[] = [];
   credentials: IProduct = {
     productID: 0,
@@ -107,6 +109,47 @@ export class ProductsSettingsPageComponent implements OnInit {
           this.products.splice(index, 1)
       ]
     });
+  }
+
+  async importExcelDoc(event: any) {
+    const schema: any = {
+      'Name': {
+        prop: 'name',
+        type: String,
+        required: true,
+      },
+      'Category': {
+        prop: 'category',
+        type: String,
+        required: true,
+      },
+      'Price': {
+        prop: 'price',
+        type: Number,
+        required: true,
+      },
+      'Size': {
+        prop: 'size',
+        type: Number,
+      },
+      'Quantity': {
+        prop: 'quantity',
+        type: Number,
+      },
+    };
+
+    const file = event.target.files[0];
+    const data = await readXlsxFile(file, { schema });
+
+    if (data.errors.length === 0) {
+      this.exel = data.rows;
+      let i = 0;
+      for (let product of this.exel) {
+        product['productID'] = this.products.length + i;
+        i++;
+      }
+      this.products.push(...this.exel);
+    }
   }
 
   async save() {

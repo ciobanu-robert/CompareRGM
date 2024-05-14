@@ -10,7 +10,20 @@
                     <h1>Settings</h1>
     
                     <div class="header-buttons">
-                        <button class="button upload-exel settings">Upload Excel</button>
+                        <label 
+                            for="file-upload" 
+                            class="button upload-exel"
+                        >
+                            Upload xlsx
+                        </label>
+                        <input 
+                            id="file-upload" 
+                            class="file-upload" 
+                            type="file" 
+                            accept=".xlsx"
+                            (change)="importExcelDoc($event)"
+                        >
+
                         <button 
                             class="button new-product settings" 
                             (click)="addNewProduct()"
