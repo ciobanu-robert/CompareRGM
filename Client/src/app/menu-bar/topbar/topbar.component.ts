@@ -45,7 +45,9 @@ export class TopbarComponent {
 
   navigate() {
     if (this.router.url !== '/compare') {
-      this.router.navigate(['/competitors']);
+      if (this.router.url !== '/settings/products') {
+        this.router.navigate(['/competitors']);
+      }
     }
   }
 

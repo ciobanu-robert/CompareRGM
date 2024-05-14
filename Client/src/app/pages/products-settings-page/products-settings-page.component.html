@@ -21,7 +21,7 @@
                             class="file-upload" 
                             type="file" 
                             accept=".xlsx"
-                            (change)="importExcelDoc($event)"
+                            (change)="importXlsx($event)"
                         >
 
                         <button 
@@ -127,7 +127,7 @@
                                 </td>
                             </tr>
 
-                            <tr class="product" *ngFor="let product of products">
+                            <tr class="product" *ngFor="let product of products | filter: searchText">
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.category }}</td>
                                 <td>${{ product.price }}</td>

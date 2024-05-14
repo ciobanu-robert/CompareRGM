@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import readXlsxFile from 'read-excel-file';
+import { SearchService } from '../../services/search.service';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-products-settings-page',
@@ -19,13 +21,20 @@ import readXlsxFile from 'read-excel-file';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    FilterPipe,
   ],
   templateUrl: './products-settings-page.component.html',
   styleUrl: './products-settings-page.component.css'
 })
 export class ProductsSettingsPageComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private search: SearchService,
+  ) {
+    this.search.getSearchText.subscribe(text => this.searchText = text);
+  }
 
+  searchText = '';
   visible = false;
   error = {
     name: false,
@@ -111,7 +120,7 @@ export class ProductsSettingsPageComponent implements OnInit {
     });
   }
 
-  async importExcelDoc(event: any) {
+  async importXlsx(event: any) {
     const schema: any = {
       'Name': {
         prop: 'name',
