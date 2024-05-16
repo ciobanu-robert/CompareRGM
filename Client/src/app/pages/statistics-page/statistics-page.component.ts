@@ -1,17 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuBarModule } from '../../menu-bar/menu-bar.module';
 import { Chart } from 'chart.js/auto';
+import { StatisticsService } from '../../services/statistics.service';
+import { IStatistics } from '../../interfaces/statistics.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-statistics-page',
   standalone: true,
   imports: [
       MenuBarModule,
+      CommonModule
   ],
   templateUrl: './statistics-page.component.html',
   styleUrl: './statistics-page.component.css'
 })
 export class StatisticsPageComponent implements OnInit{
+  constructor(private statistics: StatisticsService) {}
+  
+  productsStatistics: IStatistics[] = [];
+  productsLABELS: string[] = [];
+  productsDATA: string[] = [];
+
   public prices: any;
   public competitors: any;
   public products: any;
@@ -19,8 +29,10 @@ export class StatisticsPageComponent implements OnInit{
   public compIncrease: any;
   public productsIncrease: any;
 
+  date = new Date().getFullYear();
+
   pricesData = {
-    labels: ['2020' , '2021', '2022', '2023', '2024'],
+    labels: [`${this.date - 4}` , `${this.date - 3}`, `${this.date - 2}`, `${this.date - 1}`, `${this.date}`],
 
     datasets: [
       {
@@ -58,11 +70,11 @@ export class StatisticsPageComponent implements OnInit{
   };
 
   productsData = {
-    labels: ['2020' , '2021', '2022', '2023', '2024'],
+    labels: this.productsLABELS,
     datasets: [
       {
         label: "Products",
-        data: ['22', '43', '65', '75', '80'],
+        data: this.productsDATA,
         backgroundColor: 'rgb(20, 43, 165)',
         borderColor: 'rgb(20, 43, 165)',
       },
@@ -187,12 +199,21 @@ export class StatisticsPageComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
-      this.createChartPrices();
-      this.createChartCompetitors();
-      this.createChartProducts();
-      this.createChartTotalPrice();
-      this.createChartCompIncrease();
-      this.createChartProductsIncrease();
+  async ngOnInit() {
+    this.createChartPrices();
+    this.createChartCompetitors();
+
+    this.productsStatistics = await this.statistics.getProducts();
+    for (let products of this.productsStatistics) {
+      this.productsLABELS.push(`${products.year}`);
+      this.productsDATA.push(`${products.number}`);
+    }
+    this.productsLABELS = this.productsLABELS.slice(0, 5);
+    this.productsDATA = this.productsDATA.slice(0, 5);
+    this.createChartProducts();
+    
+    this.createChartTotalPrice();
+    this.createChartCompIncrease();
+    this.createChartProductsIncrease();
   }
 }

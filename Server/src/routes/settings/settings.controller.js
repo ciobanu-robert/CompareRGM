@@ -56,7 +56,7 @@ async function httpSaveSettings(req, res) {
             }
         });
     } catch {
-        res.json({ status: 'error', error: 'Something went wrong.' })
+        res.json({ status: 'error', error: 'Something went wrong.' });
     }
 
     res.json({ status: 'ok' })

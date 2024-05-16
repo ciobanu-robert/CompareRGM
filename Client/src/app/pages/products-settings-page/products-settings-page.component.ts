@@ -9,6 +9,7 @@ import { ProductsService } from '../../services/products.service';
 import readXlsxFile from 'read-excel-file';
 import { SearchService } from '../../services/search.service';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { StatisticsService } from '../../services/statistics.service';
 
 @Component({
   selector: 'app-products-settings-page',
@@ -30,6 +31,7 @@ export class ProductsSettingsPageComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private search: SearchService,
+    private statistics: StatisticsService,
   ) {
     this.search.getSearchText.subscribe(text => this.searchText = text);
   }
@@ -162,8 +164,10 @@ export class ProductsSettingsPageComponent implements OnInit {
   }
 
   async save() {
+    await this.statistics.postProducts(this.products.length);
     await this.productsService.save(this.products);
   }
+
 
   async ngOnInit() {
     this.products = await this.productsService.getProducts();

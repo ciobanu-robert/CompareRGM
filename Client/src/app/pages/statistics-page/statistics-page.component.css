@@ -61,6 +61,7 @@
     font-size: 15px;
     margin: 0.5em;
     width: 300px;
+    position: relative;
 }
 
 .l-option {
@@ -91,7 +92,6 @@
 }
 
 .s-chart {
-    margin: 0 1.4em;
     height: 110px;
     width: 260px;
     display: flex;
@@ -101,5 +101,17 @@
 
 .procent {
     position: absolute;
-    top: 527px;
+    top: 59px;
+}
+
+.no {
+    position: absolute;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #BFBFBF;
+    padding-top: 55px;
+    height: 74px;
+    left: -5.5px;
+    top: 29px;
 }

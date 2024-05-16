@@ -7,6 +7,7 @@ const competitorsRouter = require('./competitors/competitors.router');
 const inviteRouter = require('./invite/invite.router');
 const notificationsRouter = require('./notifications/notifications.router');
 const productsRouter = require('./products/products.router');
+const statisticsRouter = require('./statistics/statistics.router');
 
 const api = express.Router();
 
@@ -18,5 +19,6 @@ api.use('/competitors', competitorsRouter);
 api.use('/invite', inviteRouter);
 api.use('/notifications', notificationsRouter);
 api.use('/products', productsRouter);
+api.use('/statistics', statisticsRouter);
 
 module.exports = api;

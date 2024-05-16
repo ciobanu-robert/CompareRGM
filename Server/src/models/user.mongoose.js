@@ -29,7 +29,13 @@ const UserSchema = new mongoose.Schema({
                 size: { type: Number },
                 quantity: { type: Number },
             }
-        ]
+        ],
+        productsStatistics: [
+            {
+                number: { type: Number },
+                year: { type: Number },
+            }
+        ],
     },
     { collection: 'users' }
 );
