@@ -93,18 +93,36 @@
 
 .s-chart {
     height: 110px;
-    width: 260px;
+    width: 110px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin: auto;
+    padding: 0;
+}
+
+canvas {
+    position: absolute;
+    z-index: 1;
 }
 
 .procent {
+    z-index: 0;
+    border-radius: 50px;
+    width: 99px;
+    align-self: center;
+    justify-self: center;
+    background-color: #FFFFFF;
     position: absolute;
-    top: 59px;
+    text-align: center;
+    margin: 48px;
+    padding: 31px 0;
+    top: 0.1px;
 }
 
 .no {
+    z-index: 2;
     position: absolute;
     text-align: center;
     font-size: 19px;
@@ -114,4 +132,20 @@
     height: 74px;
     left: -5.5px;
     top: 29px;
+}
+
+.no-procent {
+    border-radius: 50px;
+    width: 98px;
+    align-self: center;
+    justify-self: center;
+    background-color: #FFFFFF;
+    position: absolute;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 48px;
+    padding: 38px 0;
+    top: 0.1px;
 }

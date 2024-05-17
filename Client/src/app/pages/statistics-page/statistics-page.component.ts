@@ -4,13 +4,15 @@ import { Chart } from 'chart.js/auto';
 import { StatisticsService } from '../../services/statistics.service';
 import { IStatistics } from '../../interfaces/statistics.interface';
 import { CommonModule } from '@angular/common';
+import { PositivePipe } from '../../pipes/positive.pipe';
 
 @Component({
   selector: 'app-statistics-page',
   standalone: true,
   imports: [
       MenuBarModule,
-      CommonModule
+      CommonModule,
+      PositivePipe,
   ],
   templateUrl: './statistics-page.component.html',
   styleUrl: './statistics-page.component.css'
@@ -21,25 +23,30 @@ export class StatisticsPageComponent implements OnInit{
   public comparisons: any;
   public competitors: any;
   public products: any;
-  public totalPrice: any;
-  public compIncrease: any;
-  public productsIncrease: any;
+  public comparisonsChange: any;
+  public compChange: any;
+  public productsChange: any;
 
   comparisonsStatistics: IStatistics[] = [];
   comparisonsLABELS: string[] = [];
   comparisonsDATA: string[] = [];
+  comparisonsChangeDATA: number[] = [];
+  comparisonsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
 
   competitorsStatistics: IStatistics[] = [];
   competitorsLABELS: string[] = [];
   competitorsDATA: string[] = [];
+  competitorsChangeDATA: number[] = [];
+  competitorsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
   
   productsStatistics: IStatistics[] = [];
   productsLABELS: string[] = [];
   productsDATA: string[] = [];
+  productsChangeDATA: number[] = [];
+  productsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
 
   comparisonsData = {
     labels: this.comparisonsLABELS,
-
     datasets: [
       {
         label: "Competitors",
@@ -52,7 +59,6 @@ export class StatisticsPageComponent implements OnInit{
 
   competitorsData = {
     labels: this.competitorsLABELS,
-
     datasets: [
       {
         label: "Competitors",
@@ -75,42 +81,33 @@ export class StatisticsPageComponent implements OnInit{
     ]
   };
 
-  totalPriceData = {
+  comparisonsChangeData = {
     datasets: [
       {
-        data: [33, 67],
-        backgroundColor: [
-          'rgb(23, 165, 20)',
-          'rgba(217, 217, 217, 0)'
-        ],
+        data: this.comparisonsChangeDATA,
+        backgroundColor: this.comparisonsChangeColor,
         borderColor: 'rgba(217, 217, 217, 0)',
         cutout: '70%'
       },
     ]
   };
 
-  compIncreaseData = {
+  compChangeData = {
     datasets: [
       {
-        data: [59, 41],
-        backgroundColor: [
-          'rgb(23, 165, 20)',
-          'rgba(217, 217, 217, 0)'
-        ],
+        data: this.competitorsChangeDATA,
+        backgroundColor: this.competitorsChangeColor,
         borderColor: 'rgba(217, 217, 217, 0)',
         cutout: '70%'
       },
     ]
   };
 
-  productsIncreaseData = {
+  productsChangeData = {
     datasets: [
       {
-        data: [10, 90],
-        backgroundColor: [
-          'rgb(23, 165, 20)',
-          'rgba(217, 217, 217, 0)'
-        ],
+        data: this.productsChangeDATA,
+        backgroundColor: this.productsChangeColor,
         borderColor: 'rgba(217, 217, 217, 0)',
         cutout: '70%'
       },
@@ -169,26 +166,26 @@ export class StatisticsPageComponent implements OnInit{
     });
   }
 
-  createChartTotalPrice() {
-    this.totalPrice = new Chart('totalPrice', {
+  createChartComparisonsChange() {
+    this.comparisonsChange = new Chart('comparisonsChange', {
       type: 'doughnut',
-      data: this.totalPriceData,
+      data: this.comparisonsChangeData,
       options: this.optionsDoughnut,
     });
   }
 
-  createChartCompIncrease() {
-    this.compIncrease = new Chart('compIncrease', {
+  createChartCompChange() {
+    this.compChange = new Chart('compChange', {
       type: 'doughnut',
-      data: this.compIncreaseData,
+      data: this.compChangeData,
       options: this.optionsDoughnut,
     });
   }
 
-  createChartProductsIncrease() {
-    this.productsIncrease = new Chart('productsIncrease', {
+  createChartProductsChange() {
+    this.productsChange = new Chart('productsChange', {
       type: 'doughnut',
-      data: this.productsIncreaseData,
+      data: this.productsChangeData,
       options: this.optionsDoughnut,
     });
   }
@@ -221,11 +218,52 @@ export class StatisticsPageComponent implements OnInit{
       this.productsDATA.push(`${products.number}`);
     }
     this.productsLABELS = this.productsLABELS.slice(0, 5);
-    this.productsDATA = this.productsDATA.slice(0, 5);
+    this.productsDATA = this.productsDATA.slice(0, 5);    
     this.createChartProducts();
     
-    this.createChartTotalPrice();
-    this.createChartCompIncrease();
-    this.createChartProductsIncrease();
+    this.comparisonsChangeDATA.push(
+      Math.round(
+        (Number(this.comparisonsDATA[0]) 
+        - Number(this.comparisonsDATA[1])) 
+        / Number(this.comparisonsDATA[1]) * 100
+      )
+    ); 
+    this.comparisonsChangeDATA.push(100 - this.comparisonsChangeDATA[0]);
+    if (this.comparisonsChangeDATA[0] > 0) {
+      this.comparisonsChangeColor.unshift('rgb(23, 165, 20)'); 
+    } else {
+      this.comparisonsChangeColor.unshift('rgb(156, 20, 24)');
+    }
+    this.createChartComparisonsChange();
+
+    this.competitorsChangeDATA.push(
+      Math.round(
+        (Number(this.competitorsDATA[0]) 
+        - Number(this.competitorsDATA[1])) 
+        / Number(this.competitorsDATA[1]) * 100
+      )
+    ); 
+    this.competitorsChangeDATA.push(100 - this.competitorsChangeDATA[0]);
+    if (this.competitorsChangeDATA[0] > 0) {
+      this.competitorsChangeColor.unshift('rgb(23, 165, 20)'); 
+    } else {
+      this.competitorsChangeColor.unshift('rgb(156, 20, 24)');
+    }
+    this.createChartCompChange();
+
+    this.productsChangeDATA.push(
+      Math.round(
+        (Number(this.productsDATA[0]) 
+        - Number(this.productsDATA[1])) 
+        / Number(this.productsDATA[1]) * 100
+      )
+    ); 
+    this.productsChangeDATA.push(100 - this.productsChangeDATA[0]);
+    if (this.competitorsChangeDATA[0] > 0) {
+      this.productsChangeColor.unshift('rgb(23, 165, 20)'); 
+    } else {
+      this.productsChangeColor.unshift('rgb(156, 20, 24)');
+    }
+    this.createChartProductsChange();
   }
 }

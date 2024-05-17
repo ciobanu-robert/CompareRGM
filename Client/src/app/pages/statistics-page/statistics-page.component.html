@@ -13,7 +13,12 @@
                 <div class="content">
                     <div class="stats option l-options">
                         <h3 class="title2 stats-title">Comparisons statistics</h3>
-                        <p class="no chart" *ngIf="comparisonsStatistics.length === 0">No comparisons</p>
+                        <p 
+                            class="no chart" 
+                            *ngIf="comparisonsStatistics.length === 0"
+                        >
+                            No comparisons
+                        </p>
                         <div class="chart">
                             <canvas id="comparisons">{{ comparisons }}</canvas>
                         </div>
@@ -21,7 +26,12 @@
     
                     <div class="stats option l-options">
                         <h3 class="title2 stats-title">Competitors</h3>
-                        <p class="no chart" *ngIf="competitorsStatistics.length === 0">No competitors</p>
+                        <p 
+                            class="no chart" 
+                            *ngIf="competitorsStatistics.length === 0"
+                        >
+                            No competitors
+                        </p>
                         <div class="chart">
                             <canvas id="competitors">{{ competitors }}</canvas>
                         </div>
@@ -29,33 +39,80 @@
     
                     <div class="stats option l-options">
                         <h3 class="title2 stats-title">Products</h3>
-                        <p class="no chart" *ngIf="productsStatistics.length === 0">No products</p>
+                        <p 
+                            class="no chart" 
+                            *ngIf="productsStatistics.length === 0"
+                        >
+                            No products
+                        </p>
                         <div class="chart">
                             <canvas id="products">{{ products }}</canvas>
                         </div>
                     </div>
     
                     <div class="stats option s-option">
-                        <h3 class="title3">Total price change</h3>
+                        <h3 class="title3">
+                            Comparisons 
+                            {{ comparisonsChangeDATA[0] < 0 ? 'decrease' : 'increase' }}
+                        </h3>
                         <div class="s-chart">
-                            <canvas id="totalPrice">{{ totalPrice }}</canvas>
-                            <h1 class="procent">33%</h1>
+                            <canvas id="comparisonsChange">{{ comparisonsChange }}</canvas>
+                            <h1 
+                                class="procent" 
+                                *ngIf="comparisonsStatistics.length >= 2"
+                            >
+                                {{ comparisonsChangeDATA[0] | positive }}%
+                            </h1>
+                            <h1 
+                                class="no-procent" 
+                                *ngIf="comparisonsStatistics.length < 2"
+                            >
+                                No data
+                            </h1>
                         </div>
                     </div>
     
                     <div class="stats option s-option">
-                        <h3 class="title3">Competitors increase</h3>
+                        <h3 class="title3">
+                            Competitors 
+                            {{ competitorsChangeDATA[0] < 0 ? 'decrease' : 'increase' }}
+                        </h3>
                         <div class="s-chart">
-                            <canvas id="compIncrease">{{ compIncrease }}</canvas>
-                            <h1 class="procent">59%</h1>
+                            <canvas id="compChange">{{ compChange }}</canvas>
+                            <h1 
+                                class="procent" 
+                                *ngIf="competitorsStatistics.length >= 2"
+                            >
+                                {{ competitorsChangeDATA[0] | positive }}%
+                            </h1>
+                            <h1 
+                                class="no-procent" 
+                                *ngIf="competitorsStatistics.length < 2"
+                            >
+                                No data
+                            </h1>
                         </div>
                     </div>
     
                     <div class="stats option s-option">
-                        <h3 class="title3">Products increase</h3>
+                        <h3 class="title3">
+                            Products 
+                            {{ productsChangeDATA[0] < 0 ? 'decrease' : 'increase' }}
+                        </h3>
                         <div class="s-chart">
-                            <canvas id="productsIncrease">{{ productsIncrease }}</canvas>
-                            <h1 class="procent">10%</h1>
+                            <canvas id="productsChange">{{ productsChange }}</canvas>
+                            <h1 
+                                class="procent" 
+                                *ngIf="productsStatistics.length >= 2"
+                            >
+                                {{ productsChangeDATA[0] | positive }}%
+                            </h1>
+                            <h1 
+                                class="no-procent" 
+                                *ngIf="productsStatistics.length < 2"
+                            >
+                                No data
+                            </h1>
                         </div>
                     </div>
                 </div>
