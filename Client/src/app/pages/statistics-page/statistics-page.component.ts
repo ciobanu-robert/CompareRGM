@@ -17,6 +17,10 @@ import { CommonModule } from '@angular/common';
 })
 export class StatisticsPageComponent implements OnInit{
   constructor(private statistics: StatisticsService) {}
+
+  competitorsStatistics: IStatistics[] = [];
+  competitorsLABELS: string[] = [];
+  competitorsDATA: string[] = [];
   
   productsStatistics: IStatistics[] = [];
   productsLABELS: string[] = [];
@@ -57,12 +61,12 @@ export class StatisticsPageComponent implements OnInit{
   };
 
   competitorsData = {
-    labels: ['2020' , '2021', '2022', '2023', '2024'],
+    labels: this.competitorsLABELS,
 
     datasets: [
       {
         label: "Competitors",
-        data: ['1', '23', '53', '65', '86'],
+        data: this.competitorsDATA,
         backgroundColor: 'rgb(156, 20, 24)',
         borderColor: 'rgb(156, 20, 24)',
       }
@@ -201,6 +205,14 @@ export class StatisticsPageComponent implements OnInit{
 
   async ngOnInit() {
     this.createChartPrices();
+    
+    this.competitorsStatistics = await this.statistics.getCompetitors();
+    for (let products of this.competitorsStatistics) {
+      this.competitorsLABELS.push(`${products.year}`);
+      this.competitorsDATA.push(`${products.number}`);
+    }
+    this.competitorsLABELS = this.productsLABELS.slice(0, 5);
+    this.competitorsDATA = this.productsDATA.slice(0, 5);
     this.createChartCompetitors();
 
     this.productsStatistics = await this.statistics.getProducts();

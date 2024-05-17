@@ -30,6 +30,12 @@ const UserSchema = new mongoose.Schema({
                 quantity: { type: Number },
             }
         ],
+        competitorsStatistics: [
+            {
+                number: { type: Number },
+                year: { type: Number },
+            }
+        ],
         productsStatistics: [
             {
                 number: { type: Number },

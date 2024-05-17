@@ -20,6 +20,7 @@
     
                     <div class="stats option l-options">
                         <h3 class="title2 stats-title">Competitors</h3>
+                        <p class="no chart" *ngIf="competitorsStatistics.length === 0">No competitors</p>
                         <div class="chart">
                             <canvas id="competitors">{{ competitors }}</canvas>
                         </div>
@@ -29,11 +30,7 @@
                         <h3 class="title2 stats-title">Products</h3>
                         <p class="no chart" *ngIf="productsStatistics.length === 0">No products</p>
                         <div class="chart">
-                            <canvas 
-                                id="products" 
-                            >
-                                {{ products }}
-                            </canvas>
+                            <canvas id="products">{{ products }}</canvas>
                         </div>
                     </div>
     

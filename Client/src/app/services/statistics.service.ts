@@ -31,4 +31,18 @@ export class StatisticsService {
 
     return result.data;
   }
+
+  async getCompetitors() {
+    const result = await fetch('/api/statistics/get-competitors', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+
+    return result.data;
+  }
 }

@@ -54,7 +54,22 @@ async function httpGetProductsNumber(req, res) {
     }
 }
 
+async function httpGetCompetitorsNumber(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+        const user = await User.findById(_user.id);
+        const statistics = user.competitorsStatistics;
+
+        res.json({ status: 'ok', data: statistics });
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
+
 module.exports = {
     httpPostProductsNumber,
     httpGetProductsNumber,
+    httpGetCompetitorsNumber,
 };
