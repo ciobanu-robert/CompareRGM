@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CompareService } from '../../services/compare.service';
 import { IProduct } from '../../interfaces/product.interface';
 import { CommonModule } from '@angular/common';
+import { StatisticsService } from '../../services/statistics.service';
 
 @Component({
   selector: 'app-compare-products-page',
@@ -18,7 +19,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './compare-products-page.component.css'
 })
 export class CompareProductsPageComponent implements OnInit{
-  constructor(private compare:CompareService) {}
+  constructor(
+    private compare:CompareService,
+    private statistics: StatisticsService,
+  ) {}
 
   maxPrice = 0;
   maxSize = 0;
@@ -46,7 +50,7 @@ export class CompareProductsPageComponent implements OnInit{
     return Math.round(value);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.compare.getYourProduct.subscribe(product => this.yourProduct = product);
     this.compare.getCompetitorProduct.subscribe(product => this.competitorProduct = product);
 
@@ -71,5 +75,7 @@ export class CompareProductsPageComponent implements OnInit{
         this.maxQuantity = Math.ceil(this.competitorProduct.quantity / 10) * 10;
       }
     }
+    
+    await this.statistics.postComparisons()
   }
 }

@@ -45,4 +45,30 @@ export class StatisticsService {
 
     return result.data;
   }
+
+  async postComparisons() {
+    const result = await fetch('/api/statistics/post-comparisons', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+  }
+
+  async getComparisons() {
+    const result = await fetch('/api/statistics/get-comparisons', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token'),
+      })
+    }).then((res) => res.json());
+
+    return result.data;
+  }
 }

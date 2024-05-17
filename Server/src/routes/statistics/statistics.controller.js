@@ -68,8 +68,58 @@ async function httpGetCompetitorsNumber(req, res) {
     }
 }
 
+async function httpPostComparisonsNumber(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+        const _id = _user.id;
+        const user = await User.findById(_id);
+        const year = new Date().getFullYear();
+        let existsYear = false;
+        
+        for (let statistics of user.comparisonsStatistics) {
+            if (statistics.year === year) {
+                statistics.number ++;
+                existsYear = true;
+            }
+        }
+
+        if (existsYear === false ) {
+            user.comparisonsStatistics.push({
+                number: 1,
+                year: year,
+            });
+        }
+
+        await User.findByIdAndUpdate(_id, {
+            comparisonsStatistics: user.comparisonsStatistics,
+        });
+
+        res.json({ status: 'ok' });
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
+
+async function httpGetComparisonsNumber(req, res) {
+    const { token } = req.body;
+
+    try {
+        const _user = jwt.verify(token, JWT_SECRET);
+        const user = await User.findById(_user.id);
+        const statistics = user.comparisonsStatistics;
+
+        res.json({ status: 'ok', data: statistics });
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
+
 module.exports = {
     httpPostProductsNumber,
     httpGetProductsNumber,
     httpGetCompetitorsNumber,
+    httpPostComparisonsNumber,
+    httpGetComparisonsNumber,
 };

@@ -18,6 +18,17 @@ import { CommonModule } from '@angular/common';
 export class StatisticsPageComponent implements OnInit{
   constructor(private statistics: StatisticsService) {}
 
+  public comparisons: any;
+  public competitors: any;
+  public products: any;
+  public totalPrice: any;
+  public compIncrease: any;
+  public productsIncrease: any;
+
+  comparisonsStatistics: IStatistics[] = [];
+  comparisonsLABELS: string[] = [];
+  comparisonsDATA: string[] = [];
+
   competitorsStatistics: IStatistics[] = [];
   competitorsLABELS: string[] = [];
   competitorsDATA: string[] = [];
@@ -26,37 +37,16 @@ export class StatisticsPageComponent implements OnInit{
   productsLABELS: string[] = [];
   productsDATA: string[] = [];
 
-  public prices: any;
-  public competitors: any;
-  public products: any;
-  public totalPrice: any;
-  public compIncrease: any;
-  public productsIncrease: any;
-
-  date = new Date().getFullYear();
-
-  pricesData = {
-    labels: [`${this.date - 4}` , `${this.date - 3}`, `${this.date - 2}`, `${this.date - 1}`, `${this.date}`],
+  comparisonsData = {
+    labels: this.comparisonsLABELS,
 
     datasets: [
       {
-        label: "product1",
-        data: ['70', '32', '23', '34', '38'],
+        label: "Competitors",
+        data: this.comparisonsDATA,
         backgroundColor: 'rgb(23, 165, 20)',
         borderColor: 'rgb(23, 165, 20)',
-      },
-      {
-        label: "product2",
-        data: ['43', '21', '54', '75', '80'],
-        backgroundColor: 'rgb(20, 43, 165)',
-        borderColor: 'rgb(20, 43, 165)',
-      },
-      {
-        label: "product3",
-        data: ['43', '54', '67', '56', '40'],
-        backgroundColor: 'rgb(156, 20, 24)',
-        borderColor: 'rgb(156, 20, 24)',
-      },
+      }
     ]
   };
 
@@ -155,10 +145,10 @@ export class StatisticsPageComponent implements OnInit{
     }
   }
 
-  createChartPrices() {
-    this.prices = new Chart('prices', {
+  createChartComparisons() {
+    this.comparisons = new Chart('comparisons', {
       type: 'line',
-      data: this.pricesData,
+      data: this.comparisonsData,
       options: this.optionsLine,
     });
   }
@@ -204,18 +194,28 @@ export class StatisticsPageComponent implements OnInit{
   }
 
   async ngOnInit() {
-    this.createChartPrices();
+    this.comparisonsStatistics = await this.statistics.getComparisons();
+    this.comparisonsStatistics = this.comparisonsStatistics.reverse();
+    for (let products of this.comparisonsStatistics) {
+      this.comparisonsLABELS.push(`${products.year}`);
+      this.comparisonsDATA.push(`${products.number}`);
+    }
+    this.comparisonsLABELS = this.comparisonsLABELS.slice(0, 5);
+    this.comparisonsDATA = this.comparisonsDATA.slice(0, 5);
+    this.createChartComparisons();
     
     this.competitorsStatistics = await this.statistics.getCompetitors();
+    this.competitorsStatistics = this.competitorsStatistics.reverse();
     for (let products of this.competitorsStatistics) {
       this.competitorsLABELS.push(`${products.year}`);
       this.competitorsDATA.push(`${products.number}`);
     }
-    this.competitorsLABELS = this.productsLABELS.slice(0, 5);
-    this.competitorsDATA = this.productsDATA.slice(0, 5);
+    this.competitorsLABELS = this.competitorsLABELS.slice(0, 5);
+    this.competitorsDATA = this.competitorsDATA.slice(0, 5);
     this.createChartCompetitors();
 
     this.productsStatistics = await this.statistics.getProducts();
+    this.productsStatistics = this.productsStatistics.reverse();
     for (let products of this.productsStatistics) {
       this.productsLABELS.push(`${products.year}`);
       this.productsDATA.push(`${products.number}`);
