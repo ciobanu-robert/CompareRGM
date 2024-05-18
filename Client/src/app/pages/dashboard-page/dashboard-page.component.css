@@ -132,6 +132,23 @@ img {
     border-radius: 10px;
 }
 
+.c-stats {
+    position: relative;
+}
+
+.no {
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #BFBFBF;
+    padding-top: 55px;
+    height: 74px;
+    left: -5.5px;
+    top: 29px;
+}
+
 .button-stats {
     margin: 0.3em;
 }

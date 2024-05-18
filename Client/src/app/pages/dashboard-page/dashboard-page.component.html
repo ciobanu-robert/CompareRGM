@@ -42,10 +42,16 @@
                         </button>
                     </div>
                     
-                    <div class="stats option l-options">
-                        <h3 class="title2 stats-title">Price statistics</h3>
+                    <div class="c-stats option l-options">
+                        <h3 class="title2 stats-title">Comparisons statistics</h3>
+                        <p 
+                            class="no chart" 
+                            *ngIf="comparisonsStatistics.length === 0"
+                        >
+                            No comparisons
+                        </p>
                         <div class="chart">
-                            <canvas id="prices">{{ prices }}</canvas>
+                            <canvas id="comparisons">{{ comparisons }}</canvas>
                         </div>
                         <button 
                             class="button button-stats"

@@ -7,6 +7,8 @@ import { GetCompetitorsService } from '../../services/get-competitors.service';
 import { CommonModule } from '@angular/common';
 import { INotification } from '../../interfaces/notification.interface';
 import { ProductsService } from '../../services/products.service';
+import { StatisticsService } from '../../services/statistics.service';
+import { IStatistics } from '../../interfaces/statistics.interface';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -25,9 +27,9 @@ export class DashboardPageComponent implements OnInit{
     private getProfileInfo: GetProfileInfoService, 
     private getCompetitors: GetCompetitorsService,
     private productsService: ProductsService,
+    private statistics: StatisticsService,
   ) {}
 
-  prices: any;
   imageUrl = '';
   companyName= '';
   email = '';
@@ -35,33 +37,26 @@ export class DashboardPageComponent implements OnInit{
   countCompetitors = 0;
   countProducts = 0;
   productPrices = 0;
+  
+  comparisons: any;
+  comparisonsStatistics: IStatistics[] = [];
+  comparisonsLABELS: string[] = [];
+  comparisonsDATA: string[] = [];
 
-  createChart() {
-    this.prices = new Chart('prices', {
+  createChartComparisons() {
+    this.comparisons = new Chart('comparisons', {
       type: 'line',
 
       data: {
-        labels: ['2020' , '2021', '2022', '2023', '2024'],
+        labels: this.comparisonsLABELS,
 
         datasets: [
           {
-            label: "product1",
-            data: ['70', '32', '23', '34', '38'],
+            label: "Competitors",
+            data: this.comparisonsDATA,
             backgroundColor: 'rgb(23, 165, 20)',
             borderColor: 'rgb(23, 165, 20)',
-          },
-          {
-            label: "product2",
-            data: ['43', '21', '54', '75', '80'],
-            backgroundColor: 'rgb(20, 43, 165)',
-            borderColor: 'rgb(20, 43, 165)',
-          },
-          {
-            label: "product3",
-            data: ['43', '54', '67', '56', '40'],
-            backgroundColor: 'rgb(156, 20, 24)',
-            borderColor: 'rgb(156, 20, 24)',
-          },
+          }
         ]
       },
       options: {
@@ -87,13 +82,21 @@ export class DashboardPageComponent implements OnInit{
   }
 
   async ngOnInit() {
-      this.createChart();
       this.imageUrl = await this.getProfileInfo.image()
       this.companyName = await this.getProfileInfo.company();
       this.email = await this.getProfileInfo.email();
-      this.countCompetitors = await this.getCompetitors.number();
       this.topCompetitors = await this.getCompetitors.top();
+      this.comparisonsStatistics = await this.statistics.getComparisons();
+      this.comparisonsStatistics = this.comparisonsStatistics.reverse();
+      for (let products of this.comparisonsStatistics) {
+        this.comparisonsLABELS.push(`${products.year}`);
+        this.comparisonsDATA.push(`${products.number}`);
+      }
+      this.comparisonsLABELS = this.comparisonsLABELS.slice(0, 5);
+      this.comparisonsDATA = this.comparisonsDATA.slice(0, 5);
+      this.createChartComparisons();
       this.countProducts = await this.productsService.countProducts();
+      this.countCompetitors = await this.getCompetitors.number();
       this.productPrices = await this.productsService.productsPrices();
   }
 }
