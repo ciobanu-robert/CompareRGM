@@ -5,6 +5,8 @@ import { StatisticsService } from '../../services/statistics.service';
 import { IStatistics } from '../../interfaces/statistics.interface';
 import { CommonModule } from '@angular/common';
 import { PositivePipe } from '../../pipes/positive.pipe';
+import { IDownlaodStatistics } from '../../interfaces/download-statistics.interface';
+import { ExcelService } from '../../services/excel.service';
 
 @Component({
   selector: 'app-statistics-page',
@@ -18,7 +20,10 @@ import { PositivePipe } from '../../pipes/positive.pipe';
   styleUrl: './statistics-page.component.css'
 })
 export class StatisticsPageComponent implements OnInit{
-  constructor(private statistics: StatisticsService) {}
+  constructor(
+    private statistics: StatisticsService,
+    private excel: ExcelService,
+  ) {}
 
   public comparisons: any;
   public competitors: any;
@@ -31,19 +36,28 @@ export class StatisticsPageComponent implements OnInit{
   comparisonsLABELS: string[] = [];
   comparisonsDATA: string[] = [];
   comparisonsChangeDATA: number[] = [];
-  comparisonsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
+  comparisonsChangeColor: string[] = ['rgba(217, 217, 217, 0)'];
 
   competitorsStatistics: IStatistics[] = [];
   competitorsLABELS: string[] = [];
   competitorsDATA: string[] = [];
   competitorsChangeDATA: number[] = [];
-  competitorsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
+  competitorsChangeColor: string[] = ['rgba(217, 217, 217, 0)'];
   
   productsStatistics: IStatistics[] = [];
   productsLABELS: string[] = [];
   productsDATA: string[] = [];
   productsChangeDATA: number[] = [];
-  productsChangeColor: string[] = ['rgba(217, 217, 217, 0)']
+  productsChangeColor: string[] = ['rgba(217, 217, 217, 0)'];
+
+  downloadStatistics: IDownlaodStatistics[] = [{
+    comparisons: [],
+    competitors: [],
+    products: [],
+    years: [],
+  }];
+  years: string[] = [];
+  finalData: any;
 
   comparisonsData = {
     labels: this.comparisonsLABELS,
@@ -190,42 +204,118 @@ export class StatisticsPageComponent implements OnInit{
     });
   }
 
+  setStatistics() {
+    this.downloadStatistics[0].years = [...new Set(this.years)];
+
+    for (let year of this.downloadStatistics[0].years) {
+      let exists = false;
+
+      for (let product of this.comparisonsStatistics) {
+        if (Number(year) === product.year) {
+          this.downloadStatistics[0].comparisons.push(`${product.number}`);
+          exists = true;
+        }
+      }
+      if (exists === false) {
+        this.downloadStatistics[0].comparisons.push('-');
+      }
+
+      exists = false;
+
+      for (let product of this.competitorsStatistics) {
+        if (Number(year) === product.year) {
+          this.downloadStatistics[0].competitors.push(`${product.number}`);
+          exists = true;
+        }
+      }
+      if (exists === false) {
+        this.downloadStatistics[0].competitors.push('-');
+      }
+
+      exists = false;
+
+      for (let product of this.productsStatistics) {
+        if (Number(year) === product.year) {
+          this.downloadStatistics[0].products.push(`${product.number}`);
+          exists = true;
+        }
+      }
+      if (exists === false) {
+        this.downloadStatistics[0].products.push('-');
+      }
+    }
+  }
+
+  convertData() {
+    let elemCount;
+    let finalData: any[] = [];
+    for (const [key, value] of Object.entries(this.downloadStatistics[0])) {
+      elemCount = value.length;
+
+      for (let i = 0; i < elemCount; i++) {
+        if (!finalData[i]) {
+          finalData[i] = {
+            comparisons: "",
+            competitors: "",
+            products: "",
+            years: "",
+          };
+        }
+        finalData[i][key] = value[i];
+      }
+    }
+    return finalData;
+  }
+
+  download() {
+    this.excel.exportAsExcelFile(this.finalData, "statistics");
+  }
+
   async ngOnInit() {
     this.comparisonsStatistics = await this.statistics.getComparisons();
     this.comparisonsStatistics = this.comparisonsStatistics.reverse();
-    for (let products of this.comparisonsStatistics) {
-      this.comparisonsLABELS.push(`${products.year}`);
-      this.comparisonsDATA.push(`${products.number}`);
+    let comparisonsLABELS = [];
+    let comparisonsDATA = [];
+    for (let statistics of this.comparisonsStatistics) {
+      comparisonsLABELS.push(`${statistics.year}`);
+      comparisonsDATA.push(`${statistics.number}`);
+      this.years.push(`${statistics.year}`)
     }
-    this.comparisonsLABELS = this.comparisonsLABELS.slice(0, 5);
-    this.comparisonsDATA = this.comparisonsDATA.slice(0, 5);
+    this.comparisonsLABELS.push(...comparisonsLABELS.slice(0, 5).reverse());
+    this.comparisonsDATA.push(...comparisonsDATA.slice(0, 5).reverse());
     this.createChartComparisons();
     
     this.competitorsStatistics = await this.statistics.getCompetitors();
     this.competitorsStatistics = this.competitorsStatistics.reverse();
-    for (let products of this.competitorsStatistics) {
-      this.competitorsLABELS.push(`${products.year}`);
-      this.competitorsDATA.push(`${products.number}`);
+    let competitorsLABELS = [];
+    let competitorsDATA = [];
+    for (let statistics of this.competitorsStatistics) {
+      competitorsLABELS.push(`${statistics.year}`);
+      competitorsDATA.push(`${statistics.number}`);
+      this.years.push(`${statistics.year}`)
     }
-    this.competitorsLABELS = this.competitorsLABELS.slice(0, 5);
-    this.competitorsDATA = this.competitorsDATA.slice(0, 5);
+    this.competitorsLABELS.push(...competitorsLABELS.slice(0, 5).reverse());
+    this.competitorsDATA.push(...competitorsDATA.slice(0, 5).reverse());
     this.createChartCompetitors();
 
     this.productsStatistics = await this.statistics.getProducts();
     this.productsStatistics = this.productsStatistics.reverse();
-    for (let products of this.productsStatistics) {
-      this.productsLABELS.push(`${products.year}`);
-      this.productsDATA.push(`${products.number}`);
+    let productsLABELS = [];
+    let productsDATA = []
+    for (let statistics of this.productsStatistics) {
+      productsLABELS.push(`${statistics.year}`);
+      productsDATA.push(`${statistics.number}`);
+      this.years.push(`${statistics.year}`)
     }
-    this.productsLABELS = this.productsLABELS.slice(0, 5);
-    this.productsDATA = this.productsDATA.slice(0, 5);    
+    this.productsLABELS.push(...productsLABELS.slice(0, 5).reverse());
+    this.productsDATA.push(...productsDATA.slice(0, 5).reverse());    
     this.createChartProducts();
     
     this.comparisonsChangeDATA.push(
       Math.round(
-        (Number(this.comparisonsDATA[0]) 
-        - Number(this.comparisonsDATA[1])) 
-        / Number(this.comparisonsDATA[1]) * 100
+        (Number(this.comparisonsDATA[this.comparisonsDATA.length-1]) 
+        - Number(this.comparisonsDATA[this.comparisonsDATA.length-2])) 
+        / Number(this.comparisonsDATA[this.comparisonsDATA.length-2]) * 100
       )
     ); 
     this.comparisonsChangeDATA.push(100 - this.comparisonsChangeDATA[0]);
@@ -238,9 +328,9 @@ export class StatisticsPageComponent implements OnInit{
 
     this.competitorsChangeDATA.push(
       Math.round(
-        (Number(this.competitorsDATA[0]) 
-        - Number(this.competitorsDATA[1])) 
-        / Number(this.competitorsDATA[1]) * 100
+        (Number(this.competitorsDATA[this.competitorsDATA.length-1]) 
+        - Number(this.competitorsDATA[this.competitorsDATA.length-2])) 
+        / Number(this.competitorsDATA[this.competitorsDATA.length-2]) * 100
       )
     ); 
     this.competitorsChangeDATA.push(100 - this.competitorsChangeDATA[0]);
@@ -265,5 +355,8 @@ export class StatisticsPageComponent implements OnInit{
       this.productsChangeColor.unshift('rgb(156, 20, 24)');
     }
     this.createChartProductsChange();
+
+    this.setStatistics();
+    this.finalData = this.convertData();
   }
 }
