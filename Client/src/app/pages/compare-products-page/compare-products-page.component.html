@@ -92,7 +92,7 @@
                         <h3 class="text">Size</h3>
                         <div class="stats">
     
-                            <p>User: <span>${{ yourProduct.size }}</span></p>
+                            <p>User: <span>{{ yourProduct.size }}kg</span></p>
                             <div class="display user">
                                 
                                 <div class="range">
@@ -107,11 +107,11 @@
                                 </div>
                                 
                                 <div class="values">
-                                    <p class="value">$0</p>
-                                    <p class="value">${{ round(maxSize / 4) }}</p>
-                                    <p class="value">${{ round(maxSize / 2) }}</p>
-                                    <p class="value">${{ round(maxSize / 4*3) }}</p>
-                                    <p class="value">${{ maxSize }}</p>
+                                    <p class="value">0kg</p>
+                                    <p class="value">{{ round(maxSize / 4) }}kg</p>
+                                    <p class="value">{{ round(maxSize / 2) }}kg</p>
+                                    <p class="value">{{ round(maxSize / 4*3) }}kg</p>
+                                    <p class="value">{{ maxSize }}kg</p>
                                 </div>
                             </div>
     
@@ -129,15 +129,15 @@
                                     </div>
                                     
                                     <div class="values">
-                                        <p class="value">$0</p>
-                                        <p class="value">${{ round(maxSize / 4) }}</p>
-                                        <p class="value">${{ round(maxSize / 2) }}</p>
-                                        <p class="value">${{ round(maxSize / 4*3) }}</p>
-                                        <p class="value">${{ maxSize }}</p>
+                                        <p class="value">0kg</p>
+                                        <p class="value">{{ round(maxSize / 4) }}kg</p>
+                                        <p class="value">{{ round(maxSize / 2) }}kg</p>
+                                        <p class="value">{{ round(maxSize / 4*3) }}kg</p>
+                                        <p class="value">{{ maxSize }}kg</p>
                                     </div>
                                 </div>
                                 
-                                <p>Competitor: <span>${{ competitorProduct.size }}</span></p>
+                                <p>Competitor: <span>{{ competitorProduct.size }}kg</span></p>
                         </div>
                     </div>
                     
@@ -154,7 +154,7 @@
                         <h3 class="text">Quantity</h3>
                         <div class="stats">
     
-                            <p>User: <span>${{ yourProduct.quantity }}</span></p>
+                            <p>User: <span>{{ yourProduct.quantity }}</span></p>
                             <div class="display user">
                                 
                                 <div class="range">
@@ -169,11 +169,11 @@
                                 </div>
                                 
                                 <div class="values">
-                                    <p class="value">$0</p>
-                                    <p class="value">${{ round(maxQuantity / 4) }}</p>
-                                    <p class="value">${{ round(maxQuantity / 2) }}</p>
-                                    <p class="value">${{ round(maxQuantity / 4*3) }}</p>
-                                    <p class="value">${{ maxQuantity }}</p>
+                                    <p class="value">0</p>
+                                    <p class="value">{{ round(maxQuantity / 4) }}</p>
+                                    <p class="value">{{ round(maxQuantity / 2) }}</p>
+                                    <p class="value">{{ round(maxQuantity / 4*3) }}</p>
+                                    <p class="value">{{ maxQuantity }}</p>
                                 </div>
                             </div>
     
@@ -191,15 +191,15 @@
                                     </div>
                                     
                                     <div class="values">
-                                        <p class="value">$0</p>
-                                        <p class="value">${{ round(maxQuantity / 4) }}</p>
-                                        <p class="value">${{ round(maxQuantity / 2) }}</p>
-                                        <p class="value">${{ round(maxQuantity / 4*3) }}</p>
-                                        <p class="value">${{ maxQuantity }}</p>
+                                        <p class="value">0</p>
+                                        <p class="value">{{ round(maxQuantity / 4) }}</p>
+                                        <p class="value">{{ round(maxQuantity / 2) }}</p>
+                                        <p class="value">{{ round(maxQuantity / 4*3) }}</p>
+                                        <p class="value">{{ maxQuantity }}</p>
                                     </div>
                                 </div>
                                 
-                                <p>Competitor: <span>${{ competitorProduct.quantity }}</span></p>
+                                <p>Competitor: <span>{{ competitorProduct.quantity }}</span></p>
                         </div>
                     </div>
                 </div>

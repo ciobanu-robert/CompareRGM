@@ -88,12 +88,14 @@ export class DashboardPageComponent implements OnInit{
       this.topCompetitors = await this.getCompetitors.top();
       this.comparisonsStatistics = await this.statistics.getComparisons();
       this.comparisonsStatistics = this.comparisonsStatistics.reverse();
+      let comparisonsLABELS = [];
+      let comparisonsDATA = [];
       for (let products of this.comparisonsStatistics) {
-        this.comparisonsLABELS.push(`${products.year}`);
-        this.comparisonsDATA.push(`${products.number}`);
+        comparisonsLABELS.push(`${products.year}`);
+        comparisonsDATA.push(`${products.number}`);
       }
-      this.comparisonsLABELS = this.comparisonsLABELS.slice(0, 5);
-      this.comparisonsDATA = this.comparisonsDATA.slice(0, 5);
+      this.comparisonsLABELS.push(...comparisonsLABELS.slice(0, 5).reverse());
+      this.comparisonsDATA.push(...comparisonsDATA.slice(0, 5).reverse());
       this.createChartComparisons();
       this.countProducts = await this.productsService.countProducts();
       this.countCompetitors = await this.getCompetitors.number();

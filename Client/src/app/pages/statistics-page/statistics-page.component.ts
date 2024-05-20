@@ -343,13 +343,13 @@ export class StatisticsPageComponent implements OnInit{
 
     this.productsChangeDATA.push(
       Math.round(
-        (Number(this.productsDATA[0]) 
-        - Number(this.productsDATA[1])) 
-        / Number(this.productsDATA[1]) * 100
+        (Number(this.productsDATA[this.productsDATA.length-1]) 
+        - Number(this.productsDATA[this.productsDATA.length-2])) 
+        / Number(this.productsDATA[this.productsDATA.length-2]) * 100
       )
     ); 
     this.productsChangeDATA.push(100 - this.productsChangeDATA[0]);
-    if (this.competitorsChangeDATA[0] > 0) {
+    if (this.productsChangeDATA[0] > 0) {
       this.productsChangeColor.unshift('rgb(23, 165, 20)'); 
     } else {
       this.productsChangeColor.unshift('rgb(156, 20, 24)');
