@@ -1,0 +1,133 @@
+<div class="page">
+    <app-topbar class="topbar" [admin]="true"></app-topbar>
+    
+    <div class="contents">        
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Settings</h1>
+                    <app-alert class="alert" *ngIf="showAlert" [color]="alertColor">
+                        {{ alertMsg }}
+                    </app-alert>
+                    <div class="space"></div>
+                </div>
+            
+                <div class="content">
+                        <form 
+                            class="form" 
+                            [formGroup]="settingsForm"
+                            (ngSubmit)="save()"
+                        >
+                            <div class="about">
+                                <h3 class="title2">About</h3>
+                                <img 
+                                    *ngIf="newImage.errors || !imageUrl"
+                                    class="profile-picture" 
+                                    src="/assets/img/circle-user-solid.svg"
+                                >
+                                <img 
+                                    *ngIf="!newImage.errors"
+                                    class="profile-picture" 
+                                    [src]="imageUrl"
+                                >
+    
+                                <div class="input-container">                                
+                                    <i 
+                                        *ngIf="newImage.errors
+                                            || !newImage.touched
+                                            || !newImage.dirty"
+                                        class="fa-regular fa-image"
+                                    ></i>
+                                    <i 
+                                        *ngIf="!newImage.errors
+                                            && newImage.touched
+                                            && newImage.dirty"
+                                        class="fa-solid fa-image"
+                                    ></i>
+                                    <input 
+                                        #newImg
+                                        class="input upload" 
+                                        type="file"
+                                        title="Upload image"
+                                        accept="image/*"
+                                        formControlName="newImage"
+                                        (change)="showPreview($event)"
+                                    >
+                                </div>
+                                <p
+                                    *ngIf="newImage.touched 
+                                        && newImage.dirty
+                                        && newImage.errors"
+                                    class="errors"
+                                >
+                                    Please upload an image with height and width of 100 pixels.
+                                </p>
+                                
+                                <app-input 
+                                    [control]="newCompany" 
+                                    placeholder="Name" 
+                                    invalid_class="fa-user"
+                                    valid_class="fa-user-tie"
+                                ></app-input>
+                            </div>
+                            
+    
+                            <div class="password">
+                                <h3 class="title2">Password</h3>
+                                <app-input 
+                                    [control]="newPassword"
+                                    [type]="passwordTipe"
+                                    placeholder="Password" 
+                                    invalid_class="fa-lock"
+                                    valid_class="fa-unlock"
+                                ></app-input>
+                                <i 
+                                    *ngIf="passwordTipe === 'password'"
+                                    class="fa-solid fa-eye visible-password"
+                                    (click)="visiblePassword()"
+                                ></i>
+                                <i 
+                                    *ngIf="passwordTipe === 'text'"
+                                    class="fa-regular fa-eye visible-password"
+                                    (click)="visiblePassword()"
+                                ></i>
+                                
+                                <app-input
+                                    [control]="confirmNewPassword" 
+                                    [type]="confirmPasswordTipe"
+                                    placeholder="Confirm password" 
+                                    invalid_class="fa-lock"
+                                    valid_class="fa-unlock"
+                                ></app-input>
+                                <i 
+                                    *ngIf="confirmPasswordTipe === 'password'"
+                                    class="fa-solid fa-eye visible-confirm-password"
+                                    (click)="visibleConfirmPassword()"
+                                ></i>
+                                <i 
+                                    *ngIf="confirmPasswordTipe === 'text'"
+                                    class="fa-regular fa-eye visible-confirm-password"
+                                    (click)="visibleConfirmPassword()"
+                                ></i>
+            
+                            </div>
+                            
+                            <div class="buttons">
+                                <button 
+                                    class="button products"
+                                    routerLink="/admin/users"
+                                    routerLinkActive="active"
+                                >
+                                    Back to users
+                                </button>
+                                <button 
+                                    class="button save"
+                                    [disabled]="settingsForm.invalid || !settingsForm.dirty || !settingsForm.touched"
+                                >Save</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

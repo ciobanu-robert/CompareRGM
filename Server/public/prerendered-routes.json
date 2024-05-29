@@ -1,6 +1,7 @@
 {
   "routes": [
     "/",
+    "/admin/settings",
     "/admin/users",
     "/compare",
     "/compare/products",

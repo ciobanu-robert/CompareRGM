@@ -16,6 +16,7 @@ import { AuthGuardLoggedOutService } from './services/auth-guard-logged-out.serv
 import { CompareGuardService } from './services/compare-guard.service';
 import { AuthGuardAdminService } from './services/auth-guard-admin.service';
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { AdminSettingsComponent } from './pages/admin-settings/admin-settings.component';
 
 export const routes: Routes = [
     {
@@ -106,6 +107,13 @@ export const routes: Routes = [
         pathMatch: 'full',
         component: AdminUsersComponent,
         title: 'Users',
+        canActivate: [AuthGuardAdminService],
+    },
+    {
+        path: 'admin/settings',
+        pathMatch: 'full',
+        component: AdminSettingsComponent,
+        title: 'Settings',
         canActivate: [AuthGuardAdminService],
     },
     {

@@ -21,7 +21,7 @@
     </div>
 
     <div class="account" *ngIf="!disabled">
-        <span (click)="notifVisibility()">
+        <span (click)="notifVisibility()" *ngIf="!admin">
             <i
             *ngIf="!notifVisible" 
             class="fa-regular fa-bell"

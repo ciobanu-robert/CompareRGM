@@ -18,7 +18,7 @@ export class AuthGuardAdminService {
   ));
   
   canActivate() {
-    if (this.user && this.user.admin == true) {
+    if (this.user && this.user.admin === true) {
       return true;
     } else {
       this.router.navigate(['/PageNotFound']);

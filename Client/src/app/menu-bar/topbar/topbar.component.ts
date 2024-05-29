@@ -26,6 +26,7 @@ export class TopbarComponent {
   ) {}
 
   @Input() disabled = false;
+  @Input() admin = false;
   notifications: INotification[] = [];
 
   accVisible = false;
@@ -49,6 +50,9 @@ export class TopbarComponent {
       case '/compare':
       case '/settings/products':
       case '/admin/users':
+        break;
+      case '/admin/settings':
+        this.router.navigate(['/admin/users']);
         break;
       default:
         this.router.navigate(['/competitors']);
