@@ -19,6 +19,7 @@ async function httpGetUsers(req, res) {
             comparisonsStatistics: 0,
             competitorsStatistics: 0,
             productsStatistics: 0,
+            __v: 0,
         });
 
         res.json({ status: 'ok', data: competitorsList });

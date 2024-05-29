@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { IUser } from '../../interfaces/user.interface';
 import { SearchService } from '../../services/search.service';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { ExcelService } from '../../services/excel.service';
 
 @Component({
   selector: 'app-admin-users',
@@ -17,13 +18,26 @@ import { FilterPipe } from '../../pipes/filter.pipe';
   styleUrl: './admin-users.component.css'
 })
 export class AdminUsersComponent implements OnInit{
-  constructor(private search: SearchService) {
+  constructor(
+    private search: SearchService,
+    private excel: ExcelService,
+  ) {
     this.search.getSearchText.subscribe(text => this.searchText = text);
   }
 
   users: IUser[] = [];
 
   searchText = '';
+
+  download() {
+    const downloadUsers = this.users;
+    for (let user of downloadUsers) {
+      delete user.profileImage;
+      delete user.products;
+    }
+
+    this.excel.exportAsExcelFile(downloadUsers, "users_list")
+  }
 
   async admin(user: IUser) {
     user.admin = !user.admin;
