@@ -17,6 +17,8 @@ import { CompareGuardService } from './services/compare-guard.service';
 import { AuthGuardAdminService } from './services/auth-guard-admin.service';
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { AdminSettingsComponent } from './pages/admin-settings/admin-settings.component';
+import { AdminUserComponent } from './pages/admin-user/admin-user.component';
+import { UserGuardService } from './services/user-guard.service';
 
 export const routes: Routes = [
     {
@@ -108,6 +110,13 @@ export const routes: Routes = [
         component: AdminUsersComponent,
         title: 'Users',
         canActivate: [AuthGuardAdminService],
+    },
+    {
+        path: 'admin/user/:id',
+        pathMatch: 'full',
+        component: AdminUserComponent,
+        title: 'User',
+        canActivate: [UserGuardService],
     },
     {
         path: 'admin/settings',

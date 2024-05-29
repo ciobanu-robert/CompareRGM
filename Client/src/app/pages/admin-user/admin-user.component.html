@@ -1,0 +1,70 @@
+<div class="page">
+    <app-topbar class="topbar" [admin]="true"></app-topbar>
+    
+    <div class="contents">
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <div class="profile-info">
+                        <img 
+                            class="profile-img" 
+                            [src]="user.profileImage || '/assets/img/circle-user-solid.svg'"
+                        >
+                        <h1>{{ user.company }}</h1>
+                    </div>
+                    
+                    <div class="buttons">
+                        <button 
+                        class="button"
+                        (click)="download()"
+                        >
+                            Export data
+                        </button>
+                        <button
+                            class="button"
+                            routerLink="/admin/users"
+                            routerLinkActive="active"
+                        >
+                            Back
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content">
+
+                    <div class="table">
+
+                        <table class="products">
+                            <tr class="table-header">
+                                <th class="name">Name</th>
+                                <th class="category">Category</th>
+                                <th class="price">Price ($)</th>
+                                <th class="size">Size (kg)</th>
+                                <th class="quantity">Quantity</th>
+                                <th class="edit"></th>
+                            </tr>
+
+                            <tr class="product" *ngFor="let product of user.products| filter: searchText">
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>${{ product.price }}</td>
+                                <td>{{ product.size }}kg</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>
+                                    <button 
+                                        class="x-button"
+                                        (click)="delete(product.productID)"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="no-products" *ngIf="user.products?.length === 0">
+                            <p>No products</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

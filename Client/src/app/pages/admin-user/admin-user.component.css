@@ -46,6 +46,18 @@
     align-items: center;
 }
 
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    border-radius: 50px;
+    margin-right: 1em;
+}
 
 .content {
     background-color: #FFFFFF;
@@ -54,7 +66,7 @@
     height: 507px;
 }
 
-.users {
+.products {
     margin: 0 3.5em;
     width: 90%;
     border-collapse: collapse;
@@ -93,29 +105,25 @@ th, td {
     padding: 0.5em;
 }
 
-.id {
-    width: 20%;
-}
-
-.email  {
-    width: 20%;
-}
-
 .name {
+    width: 35%;
+}
+
+.category {
+    width: 25%;
+}
+
+.price, .size, .quantity, .edit {
     width: 10%;
 }
 
-.image {
-    width: 10%;
-}
-
-.profile-img {
-    width: 40px;
-    border-radius: 50px;
-}
-
-.buttons {
-    width: 40%;
+.no-products {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 9.5em 0;
+    width: 100%;
 }
 
 .button {
@@ -130,16 +138,6 @@ th, td {
     box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
 }
 
-.button-admin {
-    background-image: linear-gradient(45deg, #8670FF, #582796);
-    color: #D9D9D9;
-}
-
-.button-ban {
-    background-image: linear-gradient(45deg, #e56978, #A51418);
-    color: #D9D9D9;
-}
-
 .button:hover {
     color: #1E1E1E;
     background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
@@ -150,49 +148,21 @@ th, td {
     color: #D9D9D9;
 }
 
-.button-admin:active {
-    background-image: linear-gradient(225deg, #2F2B44, #2F2B44);
-    color: #D9D9D9;
-}
-
-.button-ban:active {
-    background-image: linear-gradient(225deg, #520306, #520306);
-    color: #D9D9D9;
-}
-
-.true {
-    color: #1E1E1E;
-    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
-}
-
-.button-admin.true:hover {
-    background-image: linear-gradient(45deg, #8670FF, #582796);
-    color: #D9D9D9;
-}
-
-.button-ban.true:hover {
-    background-image: linear-gradient(45deg, #e56978, #A51418);
-    color: #D9D9D9;
-}
-
-.view-user {
-    width: 35px;
-    height: 35px;
-    font-size: 15px;
-    margin: 0 1em;
+.x-button {
+    background-color: #A51418;
     border: none;
-    border-radius: 10px;
-    background-image: linear-gradient(45deg, #6882e9, #2046a4);
+    border-radius: 5px;
+    font-size: 16px;
     color: #D9D9D9;
-    box-shadow: rgba(0, 0, 0, 0.5) -4px 4px 8px;
+    margin: 0 0.2em;
+    width: 25px;
+    height: 25px;
 }
 
-.view-user:hover {
-    color: #1E1E1E;
-    background-image: linear-gradient(45deg, #D9D9D9, #D9D9D9);
+.x-button:hover {
+    background-color: #d5262c;
 }
 
-.view-user:active {
-    color: #D9D9D9;
-    background-image: linear-gradient(45deg, #0d1f4b, #0d1f4b);
+.x-button:active {
+    background-color: #3f0809;
 }

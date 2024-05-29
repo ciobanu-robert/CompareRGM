@@ -25,7 +25,7 @@
                                 <th class="image">Image</th>
                                 <th class="email">Email</th>
                                 <th class="name">Company</th>
-                                <th class="buttons"></th>
+                                <th class="buttons">Options</th>
                             </tr>
 
                             <tr class="user" *ngFor="let user of users | filter: searchText">
@@ -51,9 +51,16 @@
                                     >
                                         {{ user.banned ? 'Unban' : 'Ban' }} user
                                     </button>
+                                    <button 
+                                        class="view-user"
+                                        (mouseover)="hover($event, user)" 
+                                        (mouseout)="hover($event, user)" 
+                                        (click)="viewUser(user)"
+                                    >
+                                        <i class="{{ user.icon }} fa-eye"></i>
+                                    </button>
                                 </td>
                             </tr>
-                            
                         </table>
                 </div>
             </div>

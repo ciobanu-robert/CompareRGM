@@ -46,16 +46,18 @@ export class TopbarComponent {
 
   navigate() {
 
-    switch (this.router.url) {
-      case '/compare':
-      case '/settings/products':
-      case '/admin/users':
-        break;
-      case '/admin/settings':
-        this.router.navigate(['/admin/users']);
-        break;
-      default:
-        this.router.navigate(['/competitors']);
+    if (!this.router.url.includes('/admin/user')) {
+      switch (this.router.url) {
+        case '/compare':
+        case '/settings/products':
+        case '/admin/users':
+          break;
+        case '/admin/settings':
+          this.router.navigate(['/admin/users']);
+          break;
+        default:
+          this.router.navigate(['/competitors']);
+      }
     }
   }
 

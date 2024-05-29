@@ -5,6 +5,8 @@ import { IUser } from '../../interfaces/user.interface';
 import { SearchService } from '../../services/search.service';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { ExcelService } from '../../services/excel.service';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-users',
@@ -21,6 +23,8 @@ export class AdminUsersComponent implements OnInit{
   constructor(
     private search: SearchService,
     private excel: ExcelService,
+    private user: UserService,
+    private router: Router,
   ) {
     this.search.getSearchText.subscribe(text => this.searchText = text);
   }
@@ -29,11 +33,24 @@ export class AdminUsersComponent implements OnInit{
 
   searchText = '';
 
+  icon = 'fa-regular';
+
+  hover(e: Event, user: IUser) {
+    user.icon = e.type == 'mouseover' ? 'fa-solid' : 'fa-regular';
+  }
+
+  viewUser(user: IUser) {
+    this.user.setUser(user);
+
+    this.router.navigate([`/admin/user/${user._id}`])
+  }
+
   download() {
     const downloadUsers = this.users;
     for (let user of downloadUsers) {
       delete user.profileImage;
       delete user.products;
+      delete user.icon;
     }
 
     this.excel.exportAsExcelFile(downloadUsers, "users_list")
@@ -79,5 +96,8 @@ export class AdminUsersComponent implements OnInit{
     }).then((res) => res.json());
 
     this.users = result.data; 
+    for(let user of this.users) {
+      user.icon = this.icon;
+    }
   }
 }
