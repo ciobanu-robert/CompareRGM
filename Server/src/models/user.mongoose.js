@@ -6,6 +6,8 @@ const UserSchema = new mongoose.Schema({
         company: { type: String, require: true, unique: true },
         description: { type: String, require: true },
         password: { type: String, require: true },
+        admin: { type: Boolean, required: true },
+        banned: { type: Boolean, required: true },
         notifications: [
             {
                 competitorID: { type: String },

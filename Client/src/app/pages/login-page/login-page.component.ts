@@ -63,7 +63,20 @@ export class LoginPageComponent {
       this.alertMsg = 'Login successful.';
       this.alertColor = 'green';
       localStorage.setItem('token', result.data);
-      this.router.navigate(['/dashboard']);
+
+      const token = `${result.data}`;
+      const user = JSON.parse(atob(
+        token.substring(
+          token.indexOf('.') + 1,
+          token.lastIndexOf('.')
+        )
+      ));
+      if (user.admin === false) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/admin/users']);
+      }
+
     } else {
       this.showAlert = true;
       this.alertMsg = result.error;

@@ -1,0 +1,55 @@
+<div class="page">
+    <app-topbar class="topbar"></app-topbar>
+    
+    <div class="contents">
+        <div class="container">
+            <div class="shadow">
+                <div class="title">
+                    <h1>Users</h1>
+                </div>
+                    
+                <div class="content">
+
+                    <div class="table">
+
+                        <table class="users">
+                            <tr class="table-header">
+                                <th class="ID">ID</th>
+                                <th class="image">Image</th>
+                                <th class="email">Email</th>
+                                <th class="name">Company</th>
+                                <th class="buttons"></th>
+                            </tr>
+
+                            <tr class="user" *ngFor="let user of users | filter: searchText">
+                                <td>{{ user._id }}</td>
+                                <td>
+                                    <img 
+                                    class="profile-img" 
+                                    [src]="user.profileImage || '/assets/img/circle-user-solid.svg'"
+                                >
+                                </td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.company }}</td>
+                                <td>
+                                    <button 
+                                        class="button button-admin {{ user.admin }}"
+                                        (click)="admin(user)"
+                                    >
+                                        {{ user.admin ? 'Unmake' : 'Make' }} admin
+                                    </button>
+                                    <button 
+                                        class="button button-ban {{ user.banned }}"
+                                        (click)="ban(user)"
+                                    >
+                                        {{ user.banned ? 'Unban' : 'Ban' }} user
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

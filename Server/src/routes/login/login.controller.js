@@ -17,7 +17,9 @@ async function httpGetUser(req, res) {
     if (await bcrypt.compare(password, user.password)) {
         const token = jwt.sign({ 
                 id: user._id, 
-                email: user.email, 
+                email: user.email,
+                admin: user.admin,
+                banned: user.banned,
             }, 
             JWT_SECRET
         );

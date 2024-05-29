@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardLoggedInService {
+export class AuthGuardAdminService {
   constructor(private router: Router) {}
   
   token = `${localStorage.getItem('token')}`;
@@ -17,11 +18,7 @@ export class AuthGuardLoggedInService {
   ));
   
   canActivate() {
-    if (
-      this.user 
-      && this.user.admin === false
-      &&  this.user.banned === false
-    ) {
+    if (this.user && this.user.admin == true) {
       return true;
     } else {
       this.router.navigate(['/PageNotFound']);

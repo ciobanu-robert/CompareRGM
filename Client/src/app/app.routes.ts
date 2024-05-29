@@ -14,6 +14,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuardLoggedInService } from './services/auth-guard-logged-in.service';
 import { AuthGuardLoggedOutService } from './services/auth-guard-logged-out.service';
 import { CompareGuardService } from './services/compare-guard.service';
+import { AuthGuardAdminService } from './services/auth-guard-admin.service';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 
 export const routes: Routes = [
     {
@@ -98,6 +100,13 @@ export const routes: Routes = [
         component: StatisticsPageComponent,
         title: 'Statistics',
         canActivate: [AuthGuardLoggedInService],
+    },
+    {
+        path: 'admin/users',
+        pathMatch: 'full',
+        component: AdminUsersComponent,
+        title: 'Users',
+        canActivate: [AuthGuardAdminService],
     },
     {
         path: '**',

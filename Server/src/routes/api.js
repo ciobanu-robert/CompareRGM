@@ -8,6 +8,7 @@ const inviteRouter = require('./invite/invite.router');
 const notificationsRouter = require('./notifications/notifications.router');
 const productsRouter = require('./products/products.router');
 const statisticsRouter = require('./statistics/statistics.router');
+const adminRouter = require('./admin/admin.router');
 
 const api = express.Router();
 
@@ -20,5 +21,7 @@ api.use('/invite', inviteRouter);
 api.use('/notifications', notificationsRouter);
 api.use('/products', productsRouter);
 api.use('/statistics', statisticsRouter);
+api.use('/admin', adminRouter);
+
 
 module.exports = api;

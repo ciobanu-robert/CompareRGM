@@ -10,6 +10,8 @@ async function httpAddNewUser(req,res) {
     
     const profileImage = '';
     const description = '';
+    const admin = false;
+    const banned = false;
 
     try {
         await User.create({
@@ -18,6 +20,8 @@ async function httpAddNewUser(req,res) {
             company,
             description,
             password,
+            admin,
+            banned,
         });
     } catch (error) {
         if (error.code === 11000  && error.keyPattern.email === 1) {

@@ -20,11 +20,20 @@ async function httpGetCompetitors(req, res) {
             negateUsers.push(competitor.competitorID);
         }
 
-        const competitorsList = await User.find({_id: {'$nin': negateUsers}}).select({
-            password: 0,
-            notifications: 0,
-            competitors: 0,
-        });
+        const competitorsList = await User.find({
+            _id: {'$nin': negateUsers}, 
+            admin: {'$ne': true}})
+            .select({
+                password: 0,
+                notifications: 0,
+                competitors: 0,
+                products: 0,
+                admin: 0,
+                banned: 0,
+                comparisonsStatistics: 0,
+                competitorsStatistics: 0,
+                productsStatistics: 0,
+            });
 
         res.json({ status: 'ok', data: competitorsList });
     } catch {

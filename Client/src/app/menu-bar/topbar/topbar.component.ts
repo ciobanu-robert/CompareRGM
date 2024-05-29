@@ -44,10 +44,14 @@ export class TopbarComponent {
   }
 
   navigate() {
-    if (this.router.url !== '/compare') {
-      if (this.router.url !== '/settings/products') {
+
+    switch (this.router.url) {
+      case '/compare':
+      case '/settings/products':
+      case '/admin/users':
+        break;
+      default:
         this.router.navigate(['/competitors']);
-      }
     }
   }
 
