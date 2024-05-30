@@ -24,17 +24,18 @@ export class UserGuardService {
     products: [],
   };
 
-  token = `${localStorage.getItem('token')}` || '';
-
-  logged = JSON.parse(atob(
-    this.token.substring(
-      this.token.indexOf('.') + 1,
-      this.token.lastIndexOf('.')
-    )
-  ));
-
   canActivate() {
-    if (this.logged && this.logged.admin === true) {
+   const token = `${localStorage.getItem('token')}` || '';
+
+    const logged = JSON.parse(atob(
+      token.substring(
+        token.indexOf('.') + 1,
+        token.lastIndexOf('.')
+      )
+    ));
+  
+
+    if (logged && logged.admin === true) {
       if (this.user._id != '') {
         return true;
       } else {

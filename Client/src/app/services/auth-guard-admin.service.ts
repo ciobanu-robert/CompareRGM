@@ -8,20 +8,26 @@ import { Router } from '@angular/router';
 export class AuthGuardAdminService {
   constructor(private router: Router) {}
   
-  token = `${localStorage.getItem('token')}`;
-
-  user = JSON.parse(atob(
-    this.token.substring(
-      this.token.indexOf('.') + 1,
-      this.token.lastIndexOf('.')
-    )
-  ));
-  
   canActivate() {
-    if (this.user && this.user.admin === true) {
+    const token = `${localStorage.getItem('token')}`;
+
+    const user = JSON.parse(atob(
+      token.substring(
+        token.indexOf('.') + 1,
+        token.lastIndexOf('.')
+      )
+    ));
+    
+    if (
+      user 
+      && user.admin === true
+    ) {
       return true;
+    } else if (user.admin === false) {
+      this.router.navigate(['PageNotFound']);
+      return false;
     } else {
-      this.router.navigate(['/PageNotFound']);
+      this.router.navigate(['PageNotFound']);
       return false;
     }
   }

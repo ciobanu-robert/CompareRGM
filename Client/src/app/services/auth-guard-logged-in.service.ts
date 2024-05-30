@@ -7,23 +7,23 @@ import { Router } from '@angular/router';
 export class AuthGuardLoggedInService {
   constructor(private router: Router) {}
   
-  token = `${localStorage.getItem('token')}`;
-
-  user = JSON.parse(atob(
-    this.token.substring(
-      this.token.indexOf('.') + 1,
-      this.token.lastIndexOf('.')
-    )
-  ));
-  
   canActivate() {
+    const token = `${localStorage.getItem('token')}`;
+
+    const user = JSON.parse(atob(
+      token.substring(
+        token.indexOf('.') + 1,
+        token.lastIndexOf('.')
+      )
+    ));
+
     if (
-      this.user 
-      && this.user.admin === false
-      &&  this.user.banned === false
+      user 
+      && user.admin === false
+      &&  user.banned === false
     ) {
       return true;
-    } else if (this.user.admin === true) {
+    } else if (user.admin === true) {
       this.router.navigate(['/admin/users']);
       return false;
     } else {
