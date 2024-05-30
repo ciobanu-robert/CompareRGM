@@ -46,11 +46,16 @@ export class AdminUsersComponent implements OnInit{
   }
 
   download() {
-    const downloadUsers = this.users;
-    for (let user of downloadUsers) {
-      delete user.profileImage;
-      delete user.products;
-      delete user.icon;
+    const downloadUsers = []
+
+    for (let user of this.users) {
+      downloadUsers.push(...[{
+        ID: user._id,
+        Email: user.email,
+        Company: user.company,
+        Admin: user.admin,
+        Banned: user.banned,
+      }]);
     }
 
     this.excel.exportAsExcelFile(downloadUsers, "users_list")

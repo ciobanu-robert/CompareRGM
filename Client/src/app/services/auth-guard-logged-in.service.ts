@@ -23,8 +23,11 @@ export class AuthGuardLoggedInService {
       &&  this.user.banned === false
     ) {
       return true;
+    } else if (this.user.admin === true) {
+      this.router.navigate(['/admin/users']);
+      return false;
     } else {
-      this.router.navigate(['/PageNotFound']);
+      this.router.navigate(['PageNotFound']);
       return false;
     }
   }

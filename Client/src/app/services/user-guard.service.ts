@@ -24,7 +24,7 @@ export class UserGuardService {
     products: [],
   };
 
-  token = `${localStorage.getItem('token')}`;
+  token = `${localStorage.getItem('token')}` || '';
 
   logged = JSON.parse(atob(
     this.token.substring(
