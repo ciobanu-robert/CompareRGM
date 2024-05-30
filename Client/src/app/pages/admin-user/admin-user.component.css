@@ -75,7 +75,7 @@
 }
 
 .table {
-    height: 508px;
+    height: 450px;
     overflow: auto;
 }
 
@@ -124,6 +124,10 @@ th, td {
     color: #BFBFBF;
     margin: 9.5em 0;
     width: 100%;
+}
+
+.buttons {
+    float: right;
 }
 
 .button {

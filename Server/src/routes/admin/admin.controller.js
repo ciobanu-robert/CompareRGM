@@ -56,9 +56,43 @@ async function httpChangeBan(req, res) {
     }
 }
 
+async function httpSaveProducts(req, res) {
+    const { id, products, productsNumber } = req.body;
+    
+    try {
+        const user = await User.findById(id);
+        const productsNr = productsNumber - user.products.length;
+        const year = new Date().getFullYear();
+        let existsYear = false;
+        
+        for (let statistics of user.productsStatistics) {
+            if (statistics.year === year) {
+                statistics.number += productsNr;
+                existsYear = true;
+            }
+        }
+
+        if (existsYear === false ) {
+            user.productsStatistics.push({
+                number: productsNumber,
+                year: year,
+            });
+        }
+
+        await User.findByIdAndUpdate(id, {
+            products,
+            productsStatistics: user.productsStatistics,
+        });
+
+        res.json({ status: 'ok' });
+    } catch {
+        res.json({ status: 'error', error: 'Something went wrong.' });
+    }
+}
 
 module.exports = {
     httpGetUsers,
     httpChangeAdmin,
     httpChangeBan,
+    httpSaveProducts,
 };

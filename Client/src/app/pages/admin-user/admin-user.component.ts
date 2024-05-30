@@ -61,6 +61,20 @@ export class AdminUserComponent implements OnInit{
     });
   }
 
+  async save() {
+    await fetch('/api/admin/save-products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: this.user._id,
+        products: this.user.products,
+        productsNumber: this.user.products?.length,
+      })
+    }).then((res) => res.json());
+  }
+
   ngOnInit() {
     this.userService.getUser.subscribe(user => this.user = user);
   }

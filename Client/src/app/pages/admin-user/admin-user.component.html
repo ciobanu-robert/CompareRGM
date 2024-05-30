@@ -13,21 +13,12 @@
                         <h1>{{ user.company }}</h1>
                     </div>
                     
-                    <div class="buttons">
-                        <button 
+                    <button 
                         class="button"
                         (click)="download()"
-                        >
-                            Export data
-                        </button>
-                        <button
-                            class="button"
-                            routerLink="/admin/users"
-                            routerLinkActive="active"
-                        >
-                            Back
-                        </button>
-                    </div>
+                    >
+                        Export data
+                    </button>
                 </div>
                 
                 <div class="content">
@@ -63,6 +54,21 @@
                         <div class="no-products" *ngIf="user.products?.length === 0">
                             <p>No products</p>
                         </div>
+                </div>
+                <div class="buttons">
+                    <button
+                        class="button"
+                        routerLink="/admin/users"
+                        routerLinkActive="active"
+                    >
+                        Back
+                    </button>
+                    <button 
+                        class="button save"
+                        (click)="save()"
+                    >
+                        Save
+                    </button>
                 </div>
             </div>
         </div>
