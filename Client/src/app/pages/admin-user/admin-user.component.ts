@@ -44,10 +44,18 @@ export class AdminUserComponent implements OnInit{
   };
 
   download() {
-    const downloadUserProducts: any = this.user.products;
+    const downloadUserProducts = [];
+    const products = this.user.products || [];
 
-    for (let product of downloadUserProducts) {
-      delete product._id;
+    for (let product of products) {
+      downloadUserProducts.push(...[{
+        ProductID: product.productID,
+        Name: product.name,
+        Category: product.category,
+        Price: product.price,
+        Weight: product.size,
+        Quantity: product.quantity,
+      }]);
     }
 
     this.excel.exportAsExcelFile(downloadUserProducts, `${this.user.company}_${this.user._id}`)

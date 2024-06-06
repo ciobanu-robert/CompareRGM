@@ -114,6 +114,15 @@ th, td {
     border-radius: 50px;
 }
 
+.no-products {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #BFBFBF;
+    margin: 11em 0;
+    width: 100%;
+}
+
 .buttons {
     width: 40%;
 }
