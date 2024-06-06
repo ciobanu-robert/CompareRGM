@@ -5,7 +5,6 @@ import { TopbarComponent } from '../../menu-bar/topbar/topbar.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FilterPipe } from '../../pipes/filter.pipe';
-import { IProduct } from '../../interfaces/product.interface';
 import { SearchService } from '../../services/search.service';
 import { ExcelService } from '../../services/excel.service';
 
