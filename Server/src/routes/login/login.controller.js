@@ -14,6 +14,10 @@ async function httpGetUser(req, res) {
         return res.json({ status: 'error', error: 'Invalid email' });
     }
 
+    if (user.banned) {
+        return res.json({ status: 'error', error: 'This account has been banned'});
+    }
+
     if (await bcrypt.compare(password, user.password)) {
         const token = jwt.sign({ 
                 id: user._id, 

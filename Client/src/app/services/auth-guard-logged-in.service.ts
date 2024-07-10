@@ -27,7 +27,7 @@ export class AuthGuardLoggedInService {
       this.router.navigate(['/admin/users']);
       return false;
     } else {
-      this.router.navigate(['PageNotFound']);
+      localStorage.removeItem('token');
       return false;
     }
   }
